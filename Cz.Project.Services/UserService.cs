@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cz.Project.Abstraction.Enums;
 using Cz.Project.Domain;
 using Cz.Project.Dto;
 using Cz.Project.Dto.Exceptions;
@@ -8,6 +9,7 @@ using Cz.Project.Services.UserSession;
 using Cz.Project.SQLContext;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -35,8 +37,9 @@ namespace Cz.Project.Services
                 Session.Login(user);
                 return Session.GetInstance().AdminUser;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
                 throw;
             }
         }
@@ -48,8 +51,9 @@ namespace Cz.Project.Services
                 var adminUsersContext = new AdminUsersContext();
                 return this.MapUsers(adminUsersContext.GetAll());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
                 throw;
             }
         }
@@ -64,10 +68,18 @@ namespace Cz.Project.Services
 
         public AdminUsers GetByKey(string key)
         {
-            var adminUsersContext = new AdminUsersContext();
-            var adminUser = adminUsersContext.GetByKey(key);
+            try
+            {
+                var adminUsersContext = new AdminUsersContext();
+                var adminUser = adminUsersContext.GetByKey(key);
 
-            return adminUser;
+                return adminUser;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
+                throw;
+            }
         }
 
         public void Add(AdminUserDto adminUserDto)
@@ -83,11 +95,12 @@ namespace Cz.Project.Services
                     throw new CustomException("El usuario ya existe");
 
                 adminUserDto.Password = HashHelper.Encrypt(adminUserDto.Password, HasAlgorithm.SHA512, null);
-
                 adminUsersContext.Add(this.MapUser(adminUserDto));
+                LogHelper.Log(LogTypeCodeEnum.Info, $"Se creo el usuario: {adminUserDto.Name} Key: {adminUserDto.Key} satisfactoriamente");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
                 throw;
             }
         }
@@ -100,7 +113,6 @@ namespace Cz.Project.Services
                 newUserValues.Password = HashHelper.Encrypt(newUserValues.Password, HasAlgorithm.SHA512, null);
 
                 var AdminUsersContext = new AdminUsersContext();
-
                 var userToChange = AdminUsersContext.GetByName(MapUser(newUserValues));
 
                 if (userToChange != null)
@@ -111,21 +123,34 @@ namespace Cz.Project.Services
 
                 AdminUsersContext.Update(userToChange);
 
+                LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {currentUser.Name} Key: {currentUser.Key} actualizo al Usuario: {newUserValues.Name} Key: {newUserValues.Key}");
                 return MapUser(userToChange);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
                 throw;
             }
         }
 
         public void Delete(AdminUserDto selectedUser)
         {
-            var AdminUsersContext = new AdminUsersContext();
-            
-            var adminUser = MapUser(selectedUser);
-            var userToDelete = AdminUsersContext.GetByName(adminUser);
-            AdminUsersContext.Delete(userToDelete);
+            try
+            {
+                var AdminUsersContext = new AdminUsersContext();
+
+                var adminUser = MapUser(selectedUser);
+                var userToDelete = AdminUsersContext.GetByName(adminUser);
+                AdminUsersContext.Delete(userToDelete);
+
+                var userSession = Session.GetInstance().AdminUser;
+                LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {userSession.Name} Key: {userSession.Key} Elimino al Usuario: {selectedUser.Name} Key: {selectedUser.Key}");
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
+                throw;
+            }
         }
 
         private void ValidatePassword(AdminUserDto adminUserDto)
