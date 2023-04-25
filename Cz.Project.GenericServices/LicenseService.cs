@@ -1,15 +1,10 @@
 ﻿using Cz.Project.Abstraction;
 using Cz.Project.Domain;
-using Cz.Project.Dto;
-using Cz.Project.Services.UserSession;
-using Cz.Project.SQLContext;
 using Cz.Project.SQLContext.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Cz.Project.Services
+namespace Cz.Project.GenericServices
 {
     public class LicenseService
     {
@@ -114,7 +109,6 @@ namespace Cz.Project.Services
         {
             AddLicenses(allLicenses);
             AddRelations(allRelations);
-
         }
 
         public void AddLicenses(IList<License> allLicenses)

@@ -1,19 +1,16 @@
-﻿using AutoMapper;
-using Cz.Project.Abstraction.Enums;
+﻿using Cz.Project.Abstraction.Enums;
 using Cz.Project.Domain;
 using Cz.Project.Dto;
-using Cz.Project.Dto.Exceptions;
-using Cz.Project.Repository;
+using Cz.Project.Abstraction.Exceptions;
+using Cz.Project.GenericServices.UserSession;
 using Cz.Project.Services.Helpers;
-using Cz.Project.Services.UserSession;
 using Cz.Project.SQLContext;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
+using Cz.Project.GenericServices.Helpers;
 
-namespace Cz.Project.Services
+namespace Cz.Project.GenericServices
 {
     public class UserService
     {

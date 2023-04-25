@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Cz.Project.Services.Helpers
+namespace Cz.Project.GenericServices.Helpers
 {
     public class InMemoryLicenses
     {

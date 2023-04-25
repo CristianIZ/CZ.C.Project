@@ -78,11 +78,11 @@ namespace Cz.Project.SQLContext
                 sqlParameters.Add(SqlHelper.CreateParameter("AdminUserId", adminUser.Id));
 
                 var table = DA.Read(query, sqlParameters);
-                return UserLicenses(table, adminUser);
+                return MapUserLicenses(table, adminUser);
             }
         }
 
-        public IList<AdminUserLicenses> UserLicenses(DataTable table, AdminUsers adminUser)
+        private IList<AdminUserLicenses> MapUserLicenses(DataTable table, AdminUsers adminUser)
         {
             if (table.Rows.Count > 0)
             {
@@ -101,7 +101,7 @@ namespace Cz.Project.SQLContext
             }
         }
 
-        public AdminUserLicenses MapAdminUser(DataRow dataRow, AdminUsers adminUser)
+        private AdminUserLicenses MapAdminUser(DataRow dataRow, AdminUsers adminUser)
         {
             return new AdminUserLicenses()
             {

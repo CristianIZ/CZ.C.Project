@@ -8,7 +8,7 @@ using System.Text;
 using System.Linq;
 using Cz.Project.Abstraction;
 
-namespace Cz.Project.Services
+namespace Cz.Project.GenericServices
 {
     public class AdminUserLicenseService
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cz.Project.Services.MappingProfile
+namespace Cz.Project.GenericServices
 {
     public static class MapperWrapper
     {

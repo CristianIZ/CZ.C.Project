@@ -1,4 +1,4 @@
-﻿using Cz.Project.Dto.Exceptions;
+﻿using Cz.Project.Abstraction.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;

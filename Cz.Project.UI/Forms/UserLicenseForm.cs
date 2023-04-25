@@ -1,14 +1,9 @@
 ﻿using Cz.Project.Dto;
-using Cz.Project.Services;
-using Cz.Project.Services.UserSession;
+using Cz.Project.GenericServices;
+using Cz.Project.GenericServices.UserSession;
 using Cz.Project.UI.Forms.Helpers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Cz.Project.UI.Forms

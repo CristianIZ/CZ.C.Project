@@ -1,15 +1,9 @@
-﻿using Cz.Project.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
-using Cz.Project.Dto;
 using Cz.Project.Services.Helpers;
 using Cz.Project.Abstraction;
 using Cz.Project.UI.Forms.Helpers;
+using Cz.Project.GenericServices.Helpers;
 
 namespace Cz.Project.UI.Forms
 {

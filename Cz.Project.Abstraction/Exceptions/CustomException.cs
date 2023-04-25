@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cz.Project.Dto.Exceptions
+namespace Cz.Project.Abstraction.Exceptions
 {
     public class CustomException : Exception
     {

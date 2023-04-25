@@ -1,14 +1,7 @@
-﻿using Cz.Project.Abstraction;
-using Cz.Project.Abstraction.Enums;
+﻿using Cz.Project.Abstraction.Enums;
 using Cz.Project.Abstraction.Translation_Observer;
-using Cz.Project.Services;
-using Cz.Project.UI.Shared;
+using Cz.Project.GenericServices;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Cz.Project.UI.Forms

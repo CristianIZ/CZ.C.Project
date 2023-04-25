@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Forms\BusinessForms\**" />
+    <EmbeddedResource Remove="Forms\BusinessForms\**" />
+    <None Remove="Forms\BusinessForms\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Cz.Project.Business\Cz.Project.Business.csproj" />
     <ProjectReference Include="..\Cz.Project.Dto\Cz.Project.Dto.csproj" />
+    <ProjectReference Include="..\Cz.Project.GenericServices\Cz.Project.GenericServices.csproj" />
     <ProjectReference Include="..\Cz.Project.Services\Cz.Project.Services.csproj" />
   </ItemGroup>
 
@@ -25,10 +32,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Forms\BusinessForms\" />
   </ItemGroup>
 
 </Project>

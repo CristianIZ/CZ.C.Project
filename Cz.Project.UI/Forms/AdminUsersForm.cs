@@ -1,13 +1,8 @@
 ﻿using Cz.Project.Dto;
-using Cz.Project.Services;
+using Cz.Project.GenericServices;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Cz.Project.Dto.Exceptions;
+using Cz.Project.Abstraction.Exceptions;
 
 namespace Cz.Project.UI.Forms
 {

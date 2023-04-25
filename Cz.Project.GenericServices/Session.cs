@@ -1,14 +1,15 @@
-﻿using Cz.Project.Abstraction.Enums;
+﻿using AutoMapper;
+using Cz.Project.Abstraction.Enums;
+using Cz.Project.Abstraction.Exceptions;
+using Cz.Project.Domain;
 using Cz.Project.Dto;
 using Cz.Project.Dto.Exceptions;
-using Cz.Project.Repository;
+using Cz.Project.GenericServices.Helpers;
 using Cz.Project.Services.Helpers;
+using Cz.Project.SQLContext;
 using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
 
-namespace Cz.Project.Services.UserSession
+namespace Cz.Project.GenericServices.UserSession
 {
     public class Session
     {
@@ -18,8 +19,15 @@ namespace Cz.Project.Services.UserSession
         public DateTime LoginDate { get; set; }
 
         public static object _lock = new object();
+        public static IMapper mapper = InitializeMapper();
 
-        private Session() { }
+        private Session() {}
+
+        public static IMapper InitializeMapper()
+        {
+            var config = new AutoMapperProfiles();
+            return new Mapper(config.MapConfig());
+        }
 
         public static Session GetInstance()
         {
@@ -38,8 +46,8 @@ namespace Cz.Project.Services.UserSession
             {
                 try
                 {
-                    var userRepository = new UserRepository();
-                    var adminUser = userRepository.GetByName(userDto);
+                    var userRepository = new AdminUsersContext();
+                    var adminUser = userRepository.GetByName(mapper.Map<AdminUsers>(userDto));
 
                     if (adminUser == null)
                         throw new InvalidAdminUsersException("User not found");
