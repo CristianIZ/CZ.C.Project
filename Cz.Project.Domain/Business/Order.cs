@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Cz.Project.Domain
 {
-    public class Order : KeyEntity
+    public class Order : KeyEntity, VerificationEntity
     {
+        public string CheckDigit { get; set; }
+
         public User User { get; set; }
         public StoreFood Store { get; set; }
         public int Number { get; set; }

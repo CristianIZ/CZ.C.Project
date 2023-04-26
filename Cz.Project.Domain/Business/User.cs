@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Cz.Project.Domain
 {
-    public class User : KeyEntity
+    public class User : KeyEntity, VerificationEntity
     {
+        public string CheckDigit { get; set; }
+
         public string UserName { get; set; }
     }
 }

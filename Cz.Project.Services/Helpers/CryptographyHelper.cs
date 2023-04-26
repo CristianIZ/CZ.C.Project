@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cz.Project.Services.Helpers
 {
-    public static class Cryptography
+    public static class CryptographyHelper
     {
         public static string Encrypt(string input)
         {

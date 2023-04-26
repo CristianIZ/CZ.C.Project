@@ -5,8 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cz.Project.Domain
 {
-    public class AdminUsers : KeyEntity
+    public class AdminUsers : KeyEntity, VerificationEntity
     {
+        public string CheckDigit { get; set; }
+
         [Required]
         [StringLength(150)]
         public string Name { get; set; }
@@ -16,4 +18,3 @@ namespace Cz.Project.Domain
         public string Password { get; set; }
     }
 }
-    
