@@ -163,6 +163,9 @@ namespace Cz.Project.SQLContext
 
         public void CheckSecurityDigit(AdminUsers adminUser)
         {
+            if (adminUser == null)
+                return;
+
             if (string.IsNullOrEmpty(adminUser.CheckDigit))
                 return;
 

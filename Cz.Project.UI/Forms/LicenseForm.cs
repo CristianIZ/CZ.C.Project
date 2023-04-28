@@ -62,5 +62,15 @@ namespace Cz.Project.UI.Forms
             TreeViewHelper.FillLicenseTreeView(this.inMemoryLicenses.GetTree(), this.licensesTreeView);
             this.licensesTreeView.ExpandAll();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

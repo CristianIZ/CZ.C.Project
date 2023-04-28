@@ -92,6 +92,7 @@ namespace Cz.Project.GenericServices
                     throw new CustomException("El usuario ya existe");
 
                 adminUserDto.Password = HashHelper.Encrypt(adminUserDto.Password, HasAlgorithm.SHA512, null);
+                adminUserDto.Key = Guid.NewGuid().ToString();
                 adminUsersContext.Add(this.MapUser(adminUserDto));
                 LogHelper.Log(LogTypeCodeEnum.Info, $"Se creo el usuario: {adminUserDto.Name} Key: {adminUserDto.Key} satisfactoriamente");
             }
@@ -102,7 +103,7 @@ namespace Cz.Project.GenericServices
             }
         }
 
-        public AdminUserDto Update(AdminUserDto currentUser, AdminUserDto newUserValues)
+        public AdminUserDto Update(AdminUserDto selectedUser, AdminUserDto newUserValues)
         {
             try
             {
@@ -115,12 +116,20 @@ namespace Cz.Project.GenericServices
                 if (userToChange != null)
                     throw new CustomException("El usuario ya existe");
 
-                userToChange.Name = newUserValues.Name;
-                userToChange.Password = newUserValues.Password;
+                var selectedUserData = AdminUsersContext.GetByKey(selectedUser.Key);
+
+                userToChange = new AdminUsers() 
+                {
+                    Id = selectedUserData.Id,
+                    Name = newUserValues.Name,
+                    Password = newUserValues.Password,
+                    Key = selectedUser.Key,
+                    CheckDigit = selectedUserData.CheckDigit
+                };
 
                 AdminUsersContext.Update(userToChange);
 
-                LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {currentUser.Name} Key: {currentUser.Key} actualizo al Usuario: {newUserValues.Name} Key: {newUserValues.Key}");
+                LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {selectedUser.Name} Key: {selectedUser.Key} actualizo al Usuario: {newUserValues.Name} Key: {newUserValues.Key}");
                 return MapUser(userToChange);
             }
             catch (Exception ex)
