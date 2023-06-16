@@ -16,9 +16,9 @@ namespace Cz.Project.GenericServices
     {
         public bool IsLoggedIn()
         {
-            var user = Session.GetInstance();
+            var session = Session.GetInstance();
 
-            if (user != null)
+            if (session.AdminUser != null)
                 return true;
             else
                 return false;

@@ -7,8 +7,8 @@ namespace Cz.Project.Abstraction.Translation_Observer
 {
     public interface ITranslation
     {
-        void Attach(IObserver observer);
-        void Detach(IObserver observer);
+        void Attach(ITranslationNotifier observer);
+        void Detach(ITranslationNotifier observer);
         void Notify();
     }
 }

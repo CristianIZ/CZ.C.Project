@@ -4,16 +4,13 @@ using System.Text;
 
 namespace Cz.Project.UI.Enums
 {
-    public enum WordsCodeEnum
+    public enum MainFormWordsEnum
     {
         // Main options
-        MainMenu = 1,
-        UserManagement = 2,
-        Languaje = 3,
-        
-        // User management sub options
-        Users = 4,
-        Permissions = 5,
-        PermissionsAssignments = 6
+        Home = 1,
+        UserManagement = 2, 
+        Permissions = 4,
+        PermissionsAssignments = 5,
+        Config = 6,
     }
 }

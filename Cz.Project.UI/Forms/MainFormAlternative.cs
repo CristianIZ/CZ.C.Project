@@ -1,12 +1,18 @@
-﻿using System;
+﻿using Cz.Project.Abstraction;
+using Cz.Project.Abstraction.Enums;
+using Cz.Project.Abstraction.Translation_Observer;
+using Cz.Project.GenericServices;
+using Cz.Project.GenericServices.Helpers;
+using Cz.Project.UI.Enums;
+using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Cz.Project.UI.Forms
 {
-    public partial class MainFormAlternative : Form
+    public partial class MainFormAlternative : Form, ITranslationNotifier
     {
         public Form ActiveForm;
-
         public MainFormAlternative()
         {
             InitializeComponent();
@@ -16,6 +22,10 @@ namespace Cz.Project.UI.Forms
         {
             var loginForm = new LoginForm();
             loginForm.ShowDialog();
+
+            TranslationHelper.Translation.Attach(this);
+
+            btnHome.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Home };
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -40,7 +50,7 @@ namespace Cz.Project.UI.Forms
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new ConfigForm());
         }
 
         private void OpenChildForm(Form childForm)
@@ -58,6 +68,14 @@ namespace Cz.Project.UI.Forms
             childForm.Show();
             lblTitle.Text = childForm.Text;
 
+        }
+
+        public void Update(LanguajesCodeEnum languaje)
+        {
+            var translationService = new TranslationService();
+            var words = translationService.GetWords(languaje);
+
+            btnHome.Text = $"\t{words.Where(w => w.Code == (int)MainFormWordsEnum.Home).Select(w => w.Text).First()}";
         }
     }
 }

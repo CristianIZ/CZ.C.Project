@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Cz.Project.UI.Forms
 {
-    public partial class MainForm : Form, IObserver
+    public partial class MainForm : Form, ITranslationNotifier
     {
         public MainForm()
         {

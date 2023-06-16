@@ -7,15 +7,15 @@ namespace Cz.Project.Abstraction.Translation_Observer
 {
     public class Translation : ITranslation
     {
-        private List<IObserver> _observers = new List<IObserver>();
+        private List<ITranslationNotifier> _observers = new List<ITranslationNotifier>();
         public LanguajesCodeEnum CurrentLanguaje;
 
-        public void Attach(IObserver observer)
+        public void Attach(ITranslationNotifier observer)
         {
             this._observers.Add(observer);
         }
 
-        public void Detach(IObserver observer)
+        public void Detach(ITranslationNotifier observer)
         {
             this._observers.Remove(observer);
         }

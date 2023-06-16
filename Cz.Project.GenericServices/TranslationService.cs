@@ -1,4 +1,5 @@
-﻿using Cz.Project.Abstraction;
+﻿using AutoMapper;
+using Cz.Project.Abstraction;
 using Cz.Project.Abstraction.Enums;
 using Cz.Project.Domain;
 using Cz.Project.SQLContext.Services;
@@ -9,34 +10,29 @@ namespace Cz.Project.GenericServices
 {
     public class TranslationService
     {
+        public IMapper mapper;
+
+        public TranslationService()
+        {
+            var config = new AutoMapperProfiles();
+            mapper = new Mapper(config.MapConfig());
+        }
+
         public void ChangeLenguaje(LanguajesCodeEnum languaje)
         {
 
         }
 
+        public IList<LanguajeDto> GetLanguages()
+        {
+            var languajeContext = new LanguajesContext();
+            return mapper.Map<IList<LanguajeDto>>(languajeContext.GetAll());
+        }
+
         public IList<WordDto> GetWords(LanguajesCodeEnum languajeCode)
         {
             var wordContext = new WordContext();
-            return MapWords(wordContext.GetWordsByLanguaje((int)languajeCode));
-        }
-
-        public IList<WordDto> MapWords(IList<Word> words)
-        {
-            return words.Select(w => new WordDto()
-            {
-                Code = w.Code,
-                Translate = w.Translate,
-                Languaje = MapLanguaje(w.Languaje)
-            }).ToList();
-        }
-
-        public LanguajeDto MapLanguaje(Languaje languaje)
-        {
-            return new LanguajeDto()
-            {
-                Code = languaje.Code,
-                Name = languaje.Name
-            };
+            return mapper.Map<IList<WordDto>>(wordContext.GetWordsByLanguaje((int)languajeCode));
         }
     }
 }

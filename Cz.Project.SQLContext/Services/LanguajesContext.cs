@@ -76,7 +76,6 @@ namespace Cz.Project.SQLContext.Services
                 Id = Convert.ToInt32(dataRow["Id"]),
                 Name = dataRow["Name"].ToString(),
                 Code = Convert.ToInt32(dataRow["Code"]),
-                Key = dataRow["Key"].ToString()
             };
         }
     }

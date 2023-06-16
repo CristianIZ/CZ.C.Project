@@ -31,7 +31,7 @@ namespace Cz.Project.SQLContext.Services
                 var sqlParameters = new ArrayList();
                 sqlParameters.Add(SqlHelper.CreateParameter("Code", languajeCode));
 
-                var table = DA.Read(query);
+                var table = DA.Read(query, sqlParameters);
                 return ReadWords(table);
             }
         }
@@ -74,9 +74,8 @@ namespace Cz.Project.SQLContext.Services
             var result = new Word()
             {
                 Id = Convert.ToInt32(dataRow["Id"]),
-                Translate = dataRow["Translate"].ToString(),
+                Text = dataRow["Text"].ToString(),
                 Code = Convert.ToInt32(dataRow["Code"]),
-                Key = dataRow["Key"].ToString(),
                 LanguajeId = Convert.ToInt32(dataRow["LanguajeId"])
             };
 

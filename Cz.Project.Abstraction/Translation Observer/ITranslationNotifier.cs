@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Cz.Project.Abstraction.Translation_Observer
 {
-    public interface IObserver
+    public interface ITranslationNotifier
     {
         void Update(LanguajesCodeEnum languaje);
     }

@@ -31,6 +31,9 @@ namespace Cz.Project.GenericServices.UserSession
 
         public static Session GetInstance()
         {
+            if (_session == null)
+                return new Session();
+
             return _session;
         }
 
