@@ -39,7 +39,7 @@ namespace Cz.Project.GenericServices.UserSession
 
         public static void Login(AdminUserDto userDto)
         {
-            if (_session != null)
+            if (_session?.AdminUser != null)
             {
                 LogHelper.Log(LogTypeCodeEnum.Warning, $"Usuario {userDto.Name} Key: {userDto.Key} esta intentando iniciar sesion pero la sesion ya se encuentra iniciada por el usuario: {_session.AdminUser.Name} Key: {_session.AdminUser.Key}");
                 throw new CustomException("Ya existe una sesion iniciada");
@@ -79,8 +79,10 @@ namespace Cz.Project.GenericServices.UserSession
             {
                 if (_session != null)
                 {
-                    LogHelper.Log(LogTypeCodeEnum.Info, $"Usuario {_session.AdminUser.Name} Key: {_session.AdminUser.Key} Inicio sesion");
-                    _session = null;
+                    if ( _session.AdminUser != null)
+                        LogHelper.Log(LogTypeCodeEnum.Info, $"Usuario {_session.AdminUser.Name} Key: {_session.AdminUser.Key} cerro sesion");
+
+                    _session = new Session();
                 }
                 else
                 {

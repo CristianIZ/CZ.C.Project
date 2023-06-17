@@ -18,21 +18,16 @@ namespace Cz.Project.GenericServices
             mapper = new Mapper(config.MapConfig());
         }
 
-        public void ChangeLenguaje(LanguajesCodeEnum languaje)
-        {
-
-        }
-
         public IList<LanguajeDto> GetLanguages()
         {
             var languajeContext = new LanguajesContext();
             return mapper.Map<IList<LanguajeDto>>(languajeContext.GetAll());
         }
 
-        public IList<WordDto> GetWords(LanguajesCodeEnum languajeCode)
+        public IList<WordDto> GetWords(LanguajeDto languajeCode)
         {
             var wordContext = new WordContext();
-            return mapper.Map<IList<WordDto>>(wordContext.GetWordsByLanguaje((int)languajeCode));
+            return mapper.Map<IList<WordDto>>(wordContext.GetWordsByLanguaje(languajeCode.Code));
         }
     }
 }

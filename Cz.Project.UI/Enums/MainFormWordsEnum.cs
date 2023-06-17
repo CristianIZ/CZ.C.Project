@@ -8,9 +8,9 @@ namespace Cz.Project.UI.Enums
     {
         // Main options
         Home = 1,
-        UserManagement = 2, 
-        Permissions = 4,
-        PermissionsAssignments = 5,
-        Config = 6,
+        UserManagement = 2,
+        License = 3,
+        LicenseAssignment = 4,
+        Config = 5,
     }
 }

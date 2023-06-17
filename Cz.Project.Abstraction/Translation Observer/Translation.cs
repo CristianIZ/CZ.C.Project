@@ -8,7 +8,7 @@ namespace Cz.Project.Abstraction.Translation_Observer
     public class Translation : ITranslation
     {
         private List<ITranslationNotifier> _observers = new List<ITranslationNotifier>();
-        public LanguajesCodeEnum CurrentLanguaje;
+        public LanguajeDto CurrentLanguaje;
 
         public void Attach(ITranslationNotifier observer)
         {
@@ -28,7 +28,7 @@ namespace Cz.Project.Abstraction.Translation_Observer
             }
         }
 
-        public void ChangeLenguaje(LanguajesCodeEnum languaje)
+        public void ChangeLenguaje(LanguajeDto languaje)
         {
             this.CurrentLanguaje = languaje;
             this.Notify();

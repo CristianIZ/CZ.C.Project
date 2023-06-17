@@ -1,4 +1,5 @@
-﻿using Cz.Project.Abstraction.Enums;
+﻿using Cz.Project.Abstraction;
+using Cz.Project.Abstraction.Enums;
 using Cz.Project.Abstraction.Translation_Observer;
 using Cz.Project.GenericServices;
 using System;
@@ -65,17 +66,13 @@ namespace Cz.Project.UI.Forms
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var translationService = new TranslationService();
-            translationService.ChangeLenguaje(LanguajesCodeEnum.english);
         }
 
         private void españolToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var translationService = new TranslationService();
-            translationService.ChangeLenguaje(LanguajesCodeEnum.spanish);
         }
 
-        public void Update(LanguajesCodeEnum languaje)
+        public void Update(LanguajeDto languaje)
         {
 
         }

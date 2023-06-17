@@ -54,7 +54,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(559, 429);
             Controls.Add(cmbLanguaje);
             Controls.Add(label1);
             Name = "ConfigForm";

@@ -39,10 +39,14 @@
             label1 = new System.Windows.Forms.Label();
             lblTitle = new System.Windows.Forms.Label();
             panel3 = new System.Windows.Forms.Panel();
+            panel4 = new System.Windows.Forms.Panel();
+            lblUserName = new System.Windows.Forms.Label();
+            btnLogOut = new System.Windows.Forms.Button();
             pnlFormReplace = new System.Windows.Forms.Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -191,12 +195,55 @@
             // panel3
             // 
             panel3.BackColor = System.Drawing.Color.FromArgb(0, 150, 136);
+            panel3.Controls.Add(panel4);
             panel3.Controls.Add(lblTitle);
             panel3.Dock = System.Windows.Forms.DockStyle.Top;
             panel3.Location = new System.Drawing.Point(220, 0);
             panel3.Name = "panel3";
             panel3.Size = new System.Drawing.Size(564, 80);
             panel3.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(lblUserName);
+            panel4.Controls.Add(btnLogOut);
+            panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            panel4.Location = new System.Drawing.Point(364, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new System.Drawing.Size(200, 80);
+            panel4.TabIndex = 0;
+            // 
+            // lblUserName
+            // 
+            lblUserName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblUserName.AutoSize = true;
+            lblUserName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblUserName.ForeColor = System.Drawing.Color.Gainsboro;
+            lblUserName.Location = new System.Drawing.Point(57, 9);
+            lblUserName.Name = "lblUserName";
+            lblUserName.Size = new System.Drawing.Size(104, 25);
+            lblUserName.TabIndex = 0;
+            lblUserName.Text = "UserName";
+            lblUserName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnLogOut
+            // 
+            btnLogOut.BackColor = System.Drawing.Color.Teal;
+            btnLogOut.Dock = System.Windows.Forms.DockStyle.Bottom;
+            btnLogOut.FlatAppearance.BorderSize = 0;
+            btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogOut.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnLogOut.ForeColor = System.Drawing.Color.Gainsboro;
+            btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnLogOut.Location = new System.Drawing.Point(0, 45);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnLogOut.Size = new System.Drawing.Size(200, 35);
+            btnLogOut.TabIndex = 3;
+            btnLogOut.Text = "Cerrar sesion";
+            btnLogOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // pnlFormReplace
             // 
@@ -223,6 +270,8 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -239,5 +288,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlFormReplace;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Label lblUserName;
     }
 }

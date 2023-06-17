@@ -44,8 +44,8 @@ namespace Cz.Project.UI.Forms
 
             if (ValidateLanguajeExistence((string)cmbLanguaje.SelectedItem))
             {
-                var currentLanguaje = _languajes.Where(w => w.Name.Equals(cmbLanguaje.SelectedItem)).First();
-                TranslationHelper.Translation.ChangeLenguaje(TranslationHelper.GetEnum(currentLanguaje.Code));
+                var selectedLang = _languajes.Where(w => w.Name.Equals(cmbLanguaje.SelectedItem)).First();
+                TranslationHelper.Translation.ChangeLenguaje(selectedLang);
             }
 
         }

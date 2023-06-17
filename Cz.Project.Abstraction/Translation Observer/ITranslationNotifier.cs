@@ -7,6 +7,6 @@ namespace Cz.Project.Abstraction.Translation_Observer
 {
     public interface ITranslationNotifier
     {
-        void Update(LanguajesCodeEnum languaje);
+        void Update(LanguajeDto languaje);
     }
 }
