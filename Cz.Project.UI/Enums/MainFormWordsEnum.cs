@@ -9,8 +9,8 @@ namespace Cz.Project.UI.Enums
         // Main options
         Home = 1,
         UserManagement = 2,
-        License = 3,
+        Config = 3,
         LicenseAssignment = 4,
-        Config = 5,
+        License = 5,
     }
 }
