@@ -43,6 +43,7 @@
             lblUserName = new System.Windows.Forms.Label();
             btnLogOut = new System.Windows.Forms.Button();
             pnlFormReplace = new System.Windows.Forms.Panel();
+            btnAddLanguaje = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -52,6 +53,7 @@
             // panel1
             // 
             panel1.BackColor = System.Drawing.Color.FromArgb(51, 51, 76);
+            panel1.Controls.Add(btnAddLanguaje);
             panel1.Controls.Add(btnConfig);
             panel1.Controls.Add(btnAssignLicenses);
             panel1.Controls.Add(btnLicenses);
@@ -77,7 +79,7 @@
             btnConfig.Name = "btnConfig";
             btnConfig.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             btnConfig.Size = new System.Drawing.Size(220, 60);
-            btnConfig.TabIndex = 6;
+            btnConfig.TabIndex = 7;
             btnConfig.Text = "     Config";
             btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnConfig.UseVisualStyleBackColor = true;
@@ -177,9 +179,9 @@
             label1.ForeColor = System.Drawing.Color.Gainsboro;
             label1.Location = new System.Drawing.Point(50, 25);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(101, 25);
+            label1.Size = new System.Drawing.Size(83, 25);
             label1.TabIndex = 0;
-            label1.Text = "AppName";
+            label1.Text = "Restapp";
             // 
             // lblTitle
             // 
@@ -253,6 +255,24 @@
             pnlFormReplace.Size = new System.Drawing.Size(564, 481);
             pnlFormReplace.TabIndex = 2;
             // 
+            // btnAddLanguaje
+            // 
+            btnAddLanguaje.Dock = System.Windows.Forms.DockStyle.Top;
+            btnAddLanguaje.FlatAppearance.BorderSize = 0;
+            btnAddLanguaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAddLanguaje.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnAddLanguaje.ForeColor = System.Drawing.Color.Gainsboro;
+            btnAddLanguaje.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAddLanguaje.Location = new System.Drawing.Point(0, 380);
+            btnAddLanguaje.Name = "btnAddLanguaje";
+            btnAddLanguaje.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnAddLanguaje.Size = new System.Drawing.Size(220, 60);
+            btnAddLanguaje.TabIndex = 6;
+            btnAddLanguaje.Text = "     Nuevo Lenguaje";
+            btnAddLanguaje.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnAddLanguaje.UseVisualStyleBackColor = true;
+            btnAddLanguaje.Click += btnAddLanguaje_Click;
+            // 
             // MainFormAlternative
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -263,7 +283,7 @@
             Controls.Add(panel1);
             MinimumSize = new System.Drawing.Size(800, 600);
             Name = "MainFormAlternative";
-            Text = "MainFormAlternative";
+            Text = "Restapp";
             Load += MainFormAlternative_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -291,5 +311,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Button btnAddLanguaje;
     }
 }

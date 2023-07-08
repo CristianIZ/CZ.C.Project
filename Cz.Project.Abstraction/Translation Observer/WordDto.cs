@@ -11,5 +11,10 @@ namespace Cz.Project.Abstraction
         public LanguajeDto Languaje { get; set; }
         public string Text { get; set; }
         public int Code { get; set; }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

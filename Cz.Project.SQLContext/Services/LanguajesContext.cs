@@ -22,6 +22,34 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
+        public IList<Languaje> GetByName(string languajeName)
+        {
+            string query = $"SELECT * FROM [Languajes] WHERE [Name] LIKE @Name";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Name", languajeName));
+
+                var table = DA.Read(query, sqlParameters);
+                return ReadLanguaje(table);
+            }
+        }
+
+        public void Add(Languaje languaje)
+        {
+            string query = $"INSERT INTO [Languajes] ([Name], [Code]) VALUES (@Name, @Code)";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Name", languaje.Name));
+                sqlParameters.Add(SqlHelper.CreateParameter("Code", languaje.Code));
+
+                DA.ExecuteQuery(query, sqlParameters);
+            }
+        }
+
         public Languaje GetById(int id)
         {
             string query = $"SELECT * FROM [Languajes] WHERE Id = @Id";

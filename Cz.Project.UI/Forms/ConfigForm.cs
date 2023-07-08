@@ -2,6 +2,8 @@
 using Cz.Project.Dto.Enums;
 using Cz.Project.GenericServices;
 using Cz.Project.GenericServices.Helpers;
+using Cz.Project.SQLContext.Services;
+using Cz.Project.UI.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,19 +41,51 @@ namespace Cz.Project.UI.Forms
 
         private void cmbLanguaje_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbLanguaje.SelectedItem == null)
-                return;
-
-            if (ValidateLanguajeExistence((string)cmbLanguaje.SelectedItem))
+            try
             {
+                if (cmbLanguaje.SelectedItem == null)
+                    return;
+
                 var selectedLang = _languajes.Where(w => w.Name.Equals(cmbLanguaje.SelectedItem)).First();
-                TranslationHelper.Translation.ChangeLenguaje(selectedLang);
+
+                if (!ValidateLanguajeComplete(selectedLang))
+                    throw new ApplicationException("No se puede elegir el idioma porque no esta completo");
+
+                if (ValidateLanguajeExistence(selectedLang))
+                    TranslationHelper.Translation.ChangeLenguaje(selectedLang);
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show("No es posible cambiar el idioma");
             }
         }
 
-        private bool ValidateLanguajeExistence(string languajeName)
+        private bool ValidateLanguajeComplete(LanguajeDto selectedLanguaje)
         {
-            if (!_languajes.Select(a => a.Name).Contains(languajeName))
+            var wordContext = new WordContext();
+            var words = wordContext.GetWordsByLanguaje(selectedLanguaje.Code);
+
+            var enumList = (MainFormWordsEnum[])Enum.GetValues(typeof(MainFormWordsEnum));
+
+            if (words == null)
+                return false;
+
+            foreach (MainFormWordsEnum item in enumList)
+            {
+                if (!words.Select(w => w.Code).Contains((int)item))
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidateLanguajeExistence(LanguajeDto selectedLanguaje)
+        {
+            if (!_languajes.Select(a => a.Name).Contains(selectedLanguaje.Name))
             {
                 MessageBox.Show("El lenguaje seleccionado no es un lenguaje disponible");
                 return false;

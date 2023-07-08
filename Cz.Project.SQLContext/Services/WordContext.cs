@@ -22,6 +22,35 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
+        public void Add(Word word)
+        {
+            string query = $"INSERT INTO [dbo].[Words] ([LanguajeId], [Text], [Code]) VALUES (@LanguajeId, @Text, @Code)";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("LanguajeId", word.LanguajeId));
+                sqlParameters.Add(SqlHelper.CreateParameter("Text", word.Text));
+                sqlParameters.Add(SqlHelper.CreateParameter("Code", word.Code));
+
+                DA.ExecuteQuery(query, sqlParameters);
+            }
+        }
+
+        public void Update(Word word)
+        {
+            string query = $"UPDATE [dbo].[Words] SET [Text] = @Text WHERE [Id] = @Id";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Text", word.Text));
+                sqlParameters.Add(SqlHelper.CreateParameter("Id", word.Id));
+
+                DA.ExecuteQuery(query, sqlParameters);
+            }
+        }
+
         public IList<Word> GetWordsByLanguaje(int languajeCode)
         {
             string query = $"SELECT W.* FROM [Words] AS W JOIN [Languajes] AS L ON W.LanguajeId = L.Id WHERE L.Code = @Code";
@@ -36,17 +65,24 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
-        public Word GetByCode(int code)
+        public Word GetByCode(int code, int languajeId)
         {
-            string query = $"SELECT * FROM [Words] WHERE Code = @Code";
+            string query = $"SELECT * FROM [Words] WHERE Code = @Code AND [LanguajeId] = @LanguajeId";
 
             using (var DA = new SQLDataAccess())
             {
                 var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("LanguajeId", languajeId));
                 sqlParameters.Add(SqlHelper.CreateParameter("Code", code));
 
                 var table = DA.Read(query, sqlParameters);
-                return ReadWords(table).First();
+
+                var word = ReadWords(table);
+
+                if (word != null)
+                    return word.FirstOrDefault();
+                else
+                    return null;
             }
         }
 
