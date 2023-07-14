@@ -43,9 +43,6 @@
             btnFamilyLicenses = new System.Windows.Forms.Button();
             panel2 = new System.Windows.Forms.Panel();
             label1 = new System.Windows.Forms.Label();
-            panel11 = new System.Windows.Forms.Panel();
-            panel12 = new System.Windows.Forms.Panel();
-            btnLicenses = new System.Windows.Forms.Button();
             panel7 = new System.Windows.Forms.Panel();
             panel8 = new System.Windows.Forms.Panel();
             btnHome = new System.Windows.Forms.Button();
@@ -67,7 +64,6 @@
             panel13.SuspendLayout();
             panel5.SuspendLayout();
             panel2.SuspendLayout();
-            panel11.SuspendLayout();
             panel7.SuspendLayout();
             panel17.SuspendLayout();
             panel15.SuspendLayout();
@@ -83,7 +79,6 @@
             panel1.Controls.Add(panel13);
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(panel11);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(panel17);
             panel1.Controls.Add(panel15);
@@ -150,7 +145,7 @@
             // 
             panel13.Controls.Add(panel14);
             panel13.Controls.Add(btnAddLanguaje);
-            panel13.Location = new System.Drawing.Point(-3, 344);
+            panel13.Location = new System.Drawing.Point(0, 344);
             panel13.Name = "panel13";
             panel13.Size = new System.Drawing.Size(220, 60);
             panel13.TabIndex = 2;
@@ -186,7 +181,7 @@
             // 
             panel5.Controls.Add(panel6);
             panel5.Controls.Add(btnFamilyLicenses);
-            panel5.Location = new System.Drawing.Point(0, 410);
+            panel5.Location = new System.Drawing.Point(0, 212);
             panel5.Name = "panel5";
             panel5.Size = new System.Drawing.Size(220, 60);
             panel5.TabIndex = 0;
@@ -240,43 +235,6 @@
             label1.TabIndex = 0;
             label1.Text = "Restapp";
             // 
-            // panel11
-            // 
-            panel11.Controls.Add(panel12);
-            panel11.Controls.Add(btnLicenses);
-            panel11.Location = new System.Drawing.Point(0, 212);
-            panel11.Name = "panel11";
-            panel11.Size = new System.Drawing.Size(220, 60);
-            panel11.TabIndex = 2;
-            // 
-            // panel12
-            // 
-            panel12.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel12.BackgroundImage");
-            panel12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            panel12.Location = new System.Drawing.Point(0, 0);
-            panel12.Name = "panel12";
-            panel12.Size = new System.Drawing.Size(56, 60);
-            panel12.TabIndex = 0;
-            // 
-            // btnLicenses
-            // 
-            btnLicenses.Dock = System.Windows.Forms.DockStyle.Right;
-            btnLicenses.FlatAppearance.BorderSize = 0;
-            btnLicenses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnLicenses.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnLicenses.ForeColor = System.Drawing.Color.Gainsboro;
-            btnLicenses.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnLicenses.Location = new System.Drawing.Point(62, 0);
-            btnLicenses.Name = "btnLicenses";
-            btnLicenses.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnLicenses.Size = new System.Drawing.Size(158, 60);
-            btnLicenses.TabIndex = 4;
-            btnLicenses.Text = "Permisos";
-            btnLicenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnLicenses.UseVisualStyleBackColor = true;
-            btnLicenses.Click += btnLicenses_Click;
-            // 
             // panel7
             // 
             panel7.Controls.Add(panel8);
@@ -318,7 +276,7 @@
             // 
             panel17.Controls.Add(btnConfig);
             panel17.Controls.Add(panel18);
-            panel17.Location = new System.Drawing.Point(0, 476);
+            panel17.Location = new System.Drawing.Point(0, 410);
             panel17.Name = "panel17";
             panel17.Size = new System.Drawing.Size(220, 60);
             panel17.TabIndex = 2;
@@ -479,7 +437,6 @@
             panel5.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel11.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel17.ResumeLayout(false);
             panel15.ResumeLayout(false);
