@@ -88,7 +88,7 @@ namespace Cz.Project.UI
                 MessageBox.Show("Lenguaje de destino no valido");
             }
 
-            var tService = new TranslationService();
+             var tService = new TranslationService();
             tService.AddWord((LanguajeDto)cmbSourceLanguaje.SelectedItem, (LanguajeDto)cmbTargetLanguaje.SelectedItem, (WordDto)cmbWord.SelectedItem, txtTranslation.Text.Trim());
 
         }

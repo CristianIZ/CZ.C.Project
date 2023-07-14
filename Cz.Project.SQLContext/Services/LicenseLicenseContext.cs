@@ -21,6 +21,45 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
+        public void AddFamilyLicense(FamilyLicenses familyLicenses)
+        {
+            var commands = new List<SqlCommand>();
+            var query = $"INSERT INTO [FamilyLicenses] ([Name]) VALUES (@Name);";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Name", familyLicenses.Name));
+
+                commands.Add(DA.CreateCommand(query, sqlParameters));
+
+                DA.InsertAllCommands(commands);
+            }
+        }
+
+        public int GetLastFamily()
+        {
+            string query = $"SELECT TOP (1) [Id] FROM [FamilyLicenses] ORDER BY [Id] DESC";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var table = DA.Read(query);
+                return ReadInt(table, "Id");
+            }
+        }
+
+        public int ReadInt(DataTable table, string columnToRead)
+        {
+            IList<LicenseLicense> licenses = new List<LicenseLicense>();
+
+            foreach (DataRow item in table.Rows)
+            {
+                return Convert.ToInt32(item[$"{columnToRead}"]);
+            }
+
+            throw new ApplicationException("No se encontro ningun entero para leer");
+        }
+
         public IList<LicenseLicense> ReadLicenses(DataTable table)
         {
             if (table.Rows.Count > 0)
@@ -46,14 +85,18 @@ namespace Cz.Project.SQLContext.Services
             {
                 Id = Convert.ToInt32(dataRow["Id"]),
                 IdPadre = Convert.ToInt32(dataRow["IdPadre"]),
-                IdHijo = Convert.ToInt32(dataRow["IdHijo"])
+                IdHijo = Convert.ToInt32(dataRow["IdHijo"]),
+                FamilyLicense = new FamilyLicenses()
+                {
+                    Id = Convert.ToInt32(dataRow["FamilyLicenseId"])
+                },
             };
         }
 
         public void Add(IList<LicenseLicense> licRel)
         {
             var commands = new List<SqlCommand>();
-            var query = $"INSERT INTO LicenseLicense ([IdPadre], [IdHijo]) VALUES (@IdPadre, @IdHijo);";
+            var query = $"INSERT INTO LicenseLicense ([IdPadre], [IdHijo], [FamilyLicenseId]) VALUES (@IdPadre, @IdHijo, @FamilyLicenseId);";
 
             using (var DA = new SQLDataAccess())
             {
@@ -62,6 +105,7 @@ namespace Cz.Project.SQLContext.Services
                     var sqlParameters = new ArrayList();
                     sqlParameters.Add(SqlHelper.CreateParameter("IdPadre", item.IdPadre));
                     sqlParameters.Add(SqlHelper.CreateParameter("IdHijo", item.IdHijo));
+                    sqlParameters.Add(SqlHelper.CreateParameter("FamilyLicenseId", item.FamilyLicense.Id));
 
                     commands.Add(DA.CreateCommand(query, sqlParameters));
                 }

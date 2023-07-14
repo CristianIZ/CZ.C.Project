@@ -28,7 +28,7 @@ namespace Cz.Project.UI.Forms.Helpers
                         node.Checked = true;
                 }
 
-                PopulateTree(ref node, ((FamilyLicenseDto)item).GetChilds(), assignedLicenses);
+                PopulateTree(ref node, ((ParentLicenseDto)item).GetChilds(), assignedLicenses);
                 licenseTreeView.Nodes.Add(node);
             }
 
@@ -186,6 +186,32 @@ namespace Cz.Project.UI.Forms.Helpers
         /// <param name="root"></param>
         /// <param name="licenses"></param>
         /// <returns></returns>
+        public static List<LicenseDto> GetCheckedLeafs(TreeNodeCollection root, List<LicenseDto> licenses)
+        {
+            foreach (TreeNode node in root)
+            {
+                if (node.Nodes.Count > 0)
+                {
+                    GetCheckedLeafs(node.Nodes, licenses);
+                }
+                else if (node.Nodes.Count == 0 && node.Checked)
+                {
+                    var name = ((LicenseDto)node.Tag).Name;
+                    var code = ((LicenseDto)node.Tag).LicenseCode;
+
+                    licenses.Add(new LicenseDto(name, code, 0));
+                }
+            }
+
+            return licenses;
+        }
+
+        /// <summary>
+        /// Obtiene las hojas del arbol
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="licenses"></param>
+        /// <returns></returns>
         public static List<LicenseDto> GetLeafs(TreeNodeCollection root, List<LicenseDto> licenses)
         {
             foreach (TreeNode node in root)
@@ -194,16 +220,100 @@ namespace Cz.Project.UI.Forms.Helpers
                 {
                     GetLeafs(node.Nodes, licenses);
                 }
-                else if (node.Nodes.Count == 0 && node.Checked)
+                else if (node.Nodes.Count == 0)
                 {
                     var name = ((LicenseDto)node.Tag).Name;
                     var code = ((LicenseDto)node.Tag).LicenseCode;
 
-                    licenses.Add(new LicenseDto(name, code));
+                    licenses.Add(new LicenseDto(name, code, 0));
                 }
             }
 
             return licenses;
+        }
+
+        /// <summary>
+        /// Obtiene toda la densendecia en forma de lista de licencias
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="licenses"></param>
+        /// <returns></returns>
+        public static IList<LicenseDto> GetDescent(TreeNodeCollection root, List<LicenseDto> licenses)
+        {
+
+            foreach (TreeNode node in root)
+            {
+                var name = ((LicenseDto)node.Tag).Name;
+                var code = ((LicenseDto)node.Tag).LicenseCode;
+
+                licenses.Add(new LicenseDto(name, code, 0));
+
+                if (node.Nodes.Count > 0)
+                {
+                    GetDescent(node.Nodes, licenses);
+                }
+            }
+
+            return licenses;
+        }
+
+        /// <summary>
+        /// Convierte el treeview a la version composite del mismo
+        /// </summary>
+        /// <param name="rootNodes"></param>
+        /// <returns></returns>
+        public static IList<ComponentDto> TreviewToComposite(TreeNodeCollection rootNodes)
+        {
+            IList<ComponentDto> listComponent = new List<ComponentDto>();
+
+            foreach (TreeNode item in rootNodes)
+            {
+                var name = ((LicenseDto)item.Tag).Name;
+                var code = ((LicenseDto)item.Tag).LicenseCode;
+
+                if (item.Nodes.Count == 0)
+                {
+                    var license = new LicenseDto(name, code, 0);
+                    listComponent.Add(license);
+                }
+                else
+                {
+                    var parentLicense = new ParentLicenseDto(name, code, 0);
+                    TreeViewHelper.ConvertToComposite(item.Nodes, parentLicense);
+
+                    listComponent.Add(parentLicense);
+                }
+            }
+
+            return listComponent;
+        }
+
+        /// <summary>
+        /// Recorre recursivamente el treeview y lo comvierte a conposite
+        /// Usar con TreviewToComposite()
+        /// </summary>
+        /// <param name="root">Base del treeview</param>
+        /// <param name="componentDto">Componente que va a contener todas las licencias</param>
+        private static void ConvertToComposite(TreeNodeCollection root, ComponentDto componentDto)
+        {
+            foreach (TreeNode node in root)
+            {
+                var name = ((LicenseDto)node.Tag).Name;
+                var code = ((LicenseDto)node.Tag).LicenseCode;
+
+                if (node.Nodes.Count == 0)
+                {
+                    var license = new LicenseDto(name, code, 0);
+                    componentDto.AddChild(license);
+                }
+                else
+                {
+                    var parentLicense = new ParentLicenseDto(name, code, 0);
+                    componentDto.AddChild(parentLicense);
+
+                    ConvertToComposite(node.Nodes, parentLicense);
+                }
+            }
         }
     }
 }
