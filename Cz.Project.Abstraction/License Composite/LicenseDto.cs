@@ -9,7 +9,7 @@ namespace Cz.Project.Abstraction
     {
         public LicenseDto() { }
 
-        public LicenseDto(string name, int code) : base(name, code) { }
+        public LicenseDto(string name, int code, int familyLicenseId) : base(name, code, familyLicenseId) { }
 
         public override void AddChild(ComponentDto c)
         {
@@ -19,6 +19,11 @@ namespace Cz.Project.Abstraction
         public override IList<ComponentDto> GetChilds()
         {
             return null;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

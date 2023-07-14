@@ -10,7 +10,11 @@ namespace Cz.Project.Domain
     {
         [Required]
         public int IdPadre { get; set; }
+
         [Required]
         public int IdHijo { get; set; }
+
+        [Required]
+        public FamilyLicenses FamilyLicense { get; set; }
     }
 }

@@ -50,7 +50,7 @@ namespace Cz.Project.UI.Forms
                     Key = session.AdminUser.Key,
                     Password = session.AdminUser.Password
                 },
-                Licenses = TreeViewHelper.GetLeafs(this.treeLicenses.Nodes, new List<Abstraction.LicenseDto>())
+                Licenses = TreeViewHelper.GetCheckedLeafs(this.treeLicenses.Nodes, new List<Abstraction.LicenseDto>())
             };
 
             var licenseService = new AdminUserLicenseService();

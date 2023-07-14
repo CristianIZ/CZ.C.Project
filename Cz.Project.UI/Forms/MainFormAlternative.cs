@@ -22,7 +22,7 @@ namespace Cz.Project.UI.Forms
         private void MainFormAlternative_Load(object sender, EventArgs e)
         {
             ForceLogin();
-                
+
             TranslationHelper.Translation.Attach(this);
             btnHome.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Home };
             btnUsers.Tag = new WordDto() { Code = (int)MainFormWordsEnum.UserManagement };
@@ -59,6 +59,11 @@ namespace Cz.Project.UI.Forms
         private void btnAddLanguaje_Click(object sender, EventArgs e)
         {
             OpenChildForm(new ABMLanguajeForm());
+        }
+
+        private void btnFamilyLicenses_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FamilyLicenseForm());
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
