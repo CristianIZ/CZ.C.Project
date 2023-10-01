@@ -9,6 +9,6 @@ namespace Cz.Project.Domain
     {
         public LogType Type { get; set; }
         public string Message { get; set; }
-        public int? LogCode { get; set; }
+        public DateTime Date { get; set; }
     }
 }

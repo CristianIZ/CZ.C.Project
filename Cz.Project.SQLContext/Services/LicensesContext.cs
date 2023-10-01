@@ -105,5 +105,48 @@ namespace Cz.Project.SQLContext.Services
                 Code = Convert.ToInt32(dataRow["Code"])
             };
         }
+
+        // -------------- Families -----------------
+
+        public IList<FamilyLicenses> GetFamilies()
+        {
+            string query = $"SELECT * FROM [FamilyLicenses]";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+
+                var table = DA.Read(query, sqlParameters);
+                return ReadFamilies(table);
+            }
+        }
+
+        public IList<FamilyLicenses> ReadFamilies(DataTable table)
+        {
+            if (table.Rows.Count > 0)
+            {
+                IList<FamilyLicenses> families = new List<FamilyLicenses>();
+
+                foreach (DataRow item in table.Rows)
+                {
+                    families.Add(MapFamily(item));
+                }
+
+                return families;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public FamilyLicenses MapFamily(DataRow dataRow)
+        {
+            return new FamilyLicenses()
+            {
+                Id = Convert.ToInt32(dataRow["Id"]),
+                Name = dataRow["Name"].ToString(),
+            };
+        }
     }
 }

@@ -26,11 +26,25 @@ namespace Cz.Project.GenericServices
             return result;
         }
 
+        public IList<FamilyLicenseDto> GetFamilies()
+        {
+            var familyLicenses = new LicensesContext().GetFamilies();
+
+            var result = new List<FamilyLicenseDto>();
+
+            foreach (var item in familyLicenses)
+            {
+                result.Add(MapFamilyLicense(item));
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Get from database and builds the composite
         /// </summary>
         /// <returns></returns>
-        public IList<ComponentDto> GetLicenseTree()
+        public IList<ComponentDto> GetLicenseTree(int? familyId = null)
         {
             var licenses = new LicensesContext().GetAll();
             var licenseLicense = new LicenseLicenseContext().GetAll();
@@ -47,12 +61,26 @@ namespace Cz.Project.GenericServices
         /// <param name="licenses">All the licenses</param>
         /// <param name="licenseRelation">All the relations</param>
         /// <returns></returns>
-        public IList<ComponentDto> BuildTree(IList<License> licenses, IList<LicenseCodeRelation> licenseRelation)
+        public IList<ComponentDto> BuildTree(IList<License> licenses, IList<LicenseCodeRelation> licenseRelation, int? familyId = null)
         {
-            var familyGroup = licenseRelation.GroupBy(f => f.FamilyLicense.Id)
+            List<List<LicenseCodeRelation>> familyGroup;
+
+            if (familyId.HasValue)
+            {
+                familyGroup = licenseRelation.GroupBy(f => f.FamilyLicense.Id)
+                                             .Select(group => new { familyId = group.Key, familyDto = group.Where(g => g.Id == familyId).ToList() })
+                                             .Select(f => f.familyDto)
+                                             .ToList();
+            }
+            else
+            {
+                familyGroup = licenseRelation.GroupBy(f => f.FamilyLicense.Id)
                                              .Select(group => new { familyId = group.Key, familyDto = group.ToList() })
                                              .Select(f => f.familyDto)
                                              .ToList();
+            }
+
+
 
             var linceseTree = new List<ComponentDto>();
 

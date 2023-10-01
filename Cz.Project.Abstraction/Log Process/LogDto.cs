@@ -8,6 +8,11 @@ namespace Cz.Project.Abstraction.Log_Process
     {
         public LogTypeDto Type { get; set; }
         public string Message { get; set; }
-        public int? LogCode { get; set; }
+        public DateTime Date { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Type.Code}: {Message}: {Date}";
+        }
     }
 }

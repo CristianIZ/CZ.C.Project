@@ -58,6 +58,9 @@
             lblUserName = new System.Windows.Forms.Label();
             btnLogOut = new System.Windows.Forms.Button();
             pnlFormReplace = new System.Windows.Forms.Panel();
+            panel21 = new System.Windows.Forms.Panel();
+            panel22 = new System.Windows.Forms.Panel();
+            btnBitacoraAndLogs = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
             panel19.SuspendLayout();
             panel9.SuspendLayout();
@@ -69,11 +72,13 @@
             panel15.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
+            panel21.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = System.Drawing.Color.FromArgb(51, 51, 76);
+            panel1.Controls.Add(panel21);
             panel1.Controls.Add(panel19);
             panel1.Controls.Add(panel9);
             panel1.Controls.Add(panel13);
@@ -418,6 +423,41 @@
             pnlFormReplace.Size = new System.Drawing.Size(691, 573);
             pnlFormReplace.TabIndex = 2;
             // 
+            // panel21
+            // 
+            panel21.Controls.Add(btnBitacoraAndLogs);
+            panel21.Controls.Add(panel22);
+            panel21.Location = new System.Drawing.Point(0, 476);
+            panel21.Name = "panel21";
+            panel21.Size = new System.Drawing.Size(220, 60);
+            panel21.TabIndex = 3;
+            // 
+            // panel22
+            // 
+            panel22.Dock = System.Windows.Forms.DockStyle.Left;
+            panel22.Location = new System.Drawing.Point(0, 0);
+            panel22.Name = "panel22";
+            panel22.Size = new System.Drawing.Size(56, 60);
+            panel22.TabIndex = 0;
+            // 
+            // btnBitacoraAndLogs
+            // 
+            btnBitacoraAndLogs.Dock = System.Windows.Forms.DockStyle.Right;
+            btnBitacoraAndLogs.FlatAppearance.BorderSize = 0;
+            btnBitacoraAndLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnBitacoraAndLogs.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnBitacoraAndLogs.ForeColor = System.Drawing.Color.Gainsboro;
+            btnBitacoraAndLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnBitacoraAndLogs.Location = new System.Drawing.Point(62, 0);
+            btnBitacoraAndLogs.Name = "btnBitacoraAndLogs";
+            btnBitacoraAndLogs.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnBitacoraAndLogs.Size = new System.Drawing.Size(158, 60);
+            btnBitacoraAndLogs.TabIndex = 8;
+            btnBitacoraAndLogs.Text = "Bitacora y Logs";
+            btnBitacoraAndLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnBitacoraAndLogs.UseVisualStyleBackColor = true;
+            btnBitacoraAndLogs.Click += btnBitacoraAndLogs_Click;
+            // 
             // MainFormAlternative
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -444,6 +484,7 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel21.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -481,5 +522,8 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Button btnAssignLicenses;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button btnBitacoraAndLogs;
+        private System.Windows.Forms.Panel panel22;
     }
 }

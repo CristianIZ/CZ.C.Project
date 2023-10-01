@@ -26,7 +26,7 @@ namespace Cz.Project.UI.Forms
             TranslationHelper.Translation.Attach(this);
             btnHome.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Home };
             btnUsers.Tag = new WordDto() { Code = (int)MainFormWordsEnum.UserManagement };
-            btnLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.License };
+            // btnLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.License };
             btnAssignLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.LicenseAssignment };
             btnConfig.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Config };
         }
@@ -64,6 +64,11 @@ namespace Cz.Project.UI.Forms
         private void btnFamilyLicenses_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FamilyLicenseForm());
+        }
+
+        private void btnBitacoraAndLogs_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new BitacoraAndLogsForm());
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -108,7 +113,7 @@ namespace Cz.Project.UI.Forms
             var identation = "    ";
             btnHome.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.Home).Select(w => w.Text).First()}";
             btnUsers.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.UserManagement).Select(w => w.Text).First()}";
-            btnLicenses.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.License).Select(w => w.Text).First()}";
+            // btnLicenses.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.License).Select(w => w.Text).First()}";
             btnAssignLicenses.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.LicenseAssignment).Select(w => w.Text).First()}";
             btnConfig.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.Config).Select(w => w.Text).First()}";
         }

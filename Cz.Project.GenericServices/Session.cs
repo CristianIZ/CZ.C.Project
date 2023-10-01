@@ -3,6 +3,7 @@ using Cz.Project.Abstraction.Enums;
 using Cz.Project.Abstraction.Exceptions;
 using Cz.Project.Domain;
 using Cz.Project.Dto;
+using Cz.Project.Dto.Enums;
 using Cz.Project.Dto.Exceptions;
 using Cz.Project.GenericServices.Helpers;
 using Cz.Project.Services.Helpers;
@@ -80,7 +81,10 @@ namespace Cz.Project.GenericServices.UserSession
                 if (_session != null)
                 {
                     if ( _session.AdminUser != null)
+                    {
+                        new BitacoraService().Add(EventTypeEnum.Log_Off, $"El usuario nombre = {_session.AdminUser.Name}, key = {_session.AdminUser.Key} cerro sesion", _session.AdminUser);
                         LogHelper.Log(LogTypeCodeEnum.Info, $"Usuario {_session.AdminUser.Name} Key: {_session.AdminUser.Key} cerro sesion");
+                    }
 
                     _session = new Session();
                 }

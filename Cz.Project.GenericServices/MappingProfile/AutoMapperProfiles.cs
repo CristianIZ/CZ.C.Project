@@ -3,6 +3,7 @@ using Cz.Project.Abstraction;
 using Cz.Project.Abstraction.Log_Process;
 using Cz.Project.Domain;
 using Cz.Project.Dto;
+using Cz.Project.Dto.Enums;
 
 namespace Cz.Project.GenericServices
 {
@@ -31,12 +32,12 @@ namespace Cz.Project.GenericServices
 
                 cfg.CreateMap<LogDto, Log>(MemberList.None)
                     .ForMember(dest => dest.Message, src => src.MapFrom(v => v.Message))
-                    .ForMember(dest => dest.LogCode, src => src.MapFrom(v => v.LogCode))
+                    .ForMember(dest => dest.Date, src => src.MapFrom(v => v.Date))
                     .ForMember(dest => dest.Type, src => src.MapFrom(v => v.Type));
 
                 cfg.CreateMap<Log, LogDto>(MemberList.None)
                     .ForMember(dest => dest.Message, src => src.MapFrom(v => v.Message))
-                    .ForMember(dest => dest.LogCode, src => src.MapFrom(v => v.LogCode))
+                    .ForMember(dest => dest.Date, src => src.MapFrom(v => v.Date))
                     .ForMember(dest => dest.Type, src => src.MapFrom(v => v.Type));
 
                 // --------------- LogType ---------------
@@ -69,6 +70,17 @@ namespace Cz.Project.GenericServices
                 cfg.CreateMap<Word, WordDto>(MemberList.None)
                     .ForMember(dest => dest.Code, src => src.MapFrom(v => v.Code))
                     .ForMember(dest => dest.Languaje, src => src.MapFrom(v => v.Languaje))
+                    .ForMember(dest => dest.Text, src => src.MapFrom(v => v.Text));
+
+                // --------------- Bitacora ---------------
+
+                cfg.CreateMap<BitacoraDto, Bitacora>(MemberList.None)
+                    .ForMember(dest => dest.Date, src => src.MapFrom(v => v.Date))
+                    .ForMember(dest => dest.Text, src => src.MapFrom(v => v.Text));
+
+                cfg.CreateMap<Bitacora, BitacoraDto>(MemberList.None)
+                    .ForMember(dest => dest.Date, src => src.MapFrom(v => v.Date))
+                    .ForMember(dest => dest.Code, src => src.MapFrom(v => (EventTypeEnum)(v.Type.Code)))
                     .ForMember(dest => dest.Text, src => src.MapFrom(v => v.Text));
             });
         }

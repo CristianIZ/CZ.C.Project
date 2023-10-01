@@ -28,94 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmbUsers = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.treeLicenses = new System.Windows.Forms.TreeView();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            cmbUsers = new System.Windows.Forms.ComboBox();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            btnSave = new System.Windows.Forms.Button();
+            treeLicenses = new System.Windows.Forms.TreeView();
+            btnReset = new System.Windows.Forms.Button();
+            cmbFamily = new System.Windows.Forms.ComboBox();
+            label3 = new System.Windows.Forms.Label();
+            SuspendLayout();
             // 
             // cmbUsers
             // 
-            this.cmbUsers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbUsers.FormattingEnabled = true;
-            this.cmbUsers.Location = new System.Drawing.Point(65, 12);
-            this.cmbUsers.Name = "cmbUsers";
-            this.cmbUsers.Size = new System.Drawing.Size(395, 23);
-            this.cmbUsers.TabIndex = 0;
-            this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
+            cmbUsers.FormattingEnabled = true;
+            cmbUsers.Location = new System.Drawing.Point(65, 12);
+            cmbUsers.Name = "cmbUsers";
+            cmbUsers.Size = new System.Drawing.Size(279, 23);
+            cmbUsers.TabIndex = 0;
+            cmbUsers.SelectedIndexChanged += cmbUsers_SelectedIndexChanged;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Usuario";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(12, 15);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(47, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Usuario";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 44);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Licencias disponibles";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(12, 44);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(118, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Licencias disponibles";
             // 
             // btnSave
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(304, 327);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(156, 34);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Guardar";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnSave.Location = new System.Drawing.Point(501, 407);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new System.Drawing.Size(156, 34);
+            btnSave.TabIndex = 8;
+            btnSave.Text = "Guardar";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // treeLicenses
             // 
-            this.treeLicenses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeLicenses.CheckBoxes = true;
-            this.treeLicenses.Location = new System.Drawing.Point(12, 62);
-            this.treeLicenses.Name = "treeLicenses";
-            this.treeLicenses.Size = new System.Drawing.Size(448, 259);
-            this.treeLicenses.TabIndex = 2;
-            this.treeLicenses.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeLicenses_AfterCheck);
+            treeLicenses.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            treeLicenses.CheckBoxes = true;
+            treeLicenses.Location = new System.Drawing.Point(12, 62);
+            treeLicenses.Name = "treeLicenses";
+            treeLicenses.Size = new System.Drawing.Size(645, 339);
+            treeLicenses.TabIndex = 2;
+            treeLicenses.AfterCheck += treeLicenses_AfterCheck;
             // 
             // btnReset
             // 
-            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(12, 327);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(286, 34);
-            this.btnReset.TabIndex = 9;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnReset.Location = new System.Drawing.Point(12, 407);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new System.Drawing.Size(483, 34);
+            btnReset.TabIndex = 9;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            // 
+            // cmbFamily
+            // 
+            cmbFamily.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            cmbFamily.FormattingEnabled = true;
+            cmbFamily.Location = new System.Drawing.Point(404, 12);
+            cmbFamily.Name = "cmbFamily";
+            cmbFamily.Size = new System.Drawing.Size(253, 23);
+            cmbFamily.TabIndex = 10;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(350, 15);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(48, 15);
+            label3.TabIndex = 11;
+            label3.Text = "Familia:";
             // 
             // UserLicenseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 368);
-            this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.treeLicenses);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbUsers);
-            this.Name = "UserLicenseForm";
-            this.Text = "UserLicenseForm";
-            this.Load += new System.EventHandler(this.UserLicenseForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(669, 448);
+            Controls.Add(label3);
+            Controls.Add(cmbFamily);
+            Controls.Add(btnReset);
+            Controls.Add(btnSave);
+            Controls.Add(label2);
+            Controls.Add(treeLicenses);
+            Controls.Add(label1);
+            Controls.Add(cmbUsers);
+            Name = "UserLicenseForm";
+            Text = "UserLicenseForm";
+            Load += UserLicenseForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -126,5 +142,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TreeView treeLicenses;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ComboBox cmbFamily;
+        private System.Windows.Forms.Label label3;
     }
 }

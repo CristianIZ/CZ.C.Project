@@ -1,4 +1,5 @@
-﻿using Cz.Project.Dto;
+﻿using Cz.Project.Abstraction.License_Composite;
+using Cz.Project.Dto;
 using Cz.Project.GenericServices;
 using Cz.Project.GenericServices.UserSession;
 using Cz.Project.UI.Forms.Helpers;
@@ -18,22 +19,36 @@ namespace Cz.Project.UI.Forms
         private void UserLicenseForm_Load(object sender, EventArgs e)
         {
             var userService = new UserService();
+            var licenseService = new LicenseService();
 
             foreach (var item in userService.GetAll())
             {
                 cmbUsers.Items.Add(item);
             }
 
-            cmbUsers.SelectedIndex = 0;
+            foreach (var item in licenseService.GetFamilies())
+            {
+                cmbFamily.Items.Add(item);
+            }
+
+            cmbFamily.SelectedItem = cmbFamily.Items[0];
+            cmbUsers.SelectedItem = cmbUsers.Items[0];
         }
 
         private void treeLicenses_AfterCheck(object sender, TreeViewEventArgs e)
         {
+            #region Unsubscribe
             treeLicenses.Enabled = false;
             this.treeLicenses.AfterCheck -= this.treeLicenses_AfterCheck;
+            #endregion
+
             TreeViewHelper.CheckNodeBeheavor(e);
+
+            #region Subscribe back
             this.treeLicenses.AfterCheck += new TreeViewEventHandler(this.treeLicenses_AfterCheck);
             treeLicenses.Enabled = true;
+            #endregion
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -61,14 +76,20 @@ namespace Cz.Project.UI.Forms
 
         private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
+            treeLicenses.Nodes.Clear();
+
             if (cmbUsers.SelectedItem == null)
                 return;
-            
+
             var selectedUser = (AdminUserDto)cmbUsers.SelectedItem;
             var adminUser = new UserService().GetByKeyDto(selectedUser.Key);
             var adminUserLicenses = new AdminUserLicenseService().GetLicensesByUser(adminUser.Key);
 
-            TreeViewHelper.FillLicenseTreeView(new LicenseService().GetLicenseTree(), treeLicenses, adminUserLicenses?.Licenses);
+            var familyDto = ((FamilyLicenseDto)cmbFamily.SelectedItem);
+
+            TreeViewHelper.FillLicenseTreeView(new LicenseService().GetLicenseTree(familyDto.Id),
+                                               treeLicenses,
+                                               adminUserLicenses?.Licenses);
         }
     }
 }
