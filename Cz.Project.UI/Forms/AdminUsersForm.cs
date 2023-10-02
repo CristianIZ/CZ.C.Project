@@ -78,7 +78,6 @@ namespace Cz.Project.UI.Forms
 
                 var selectedUser = (AdminUserDto)lstUsers.SelectedItems[0];
 
-
                 var newUserValues = new AdminUserDto()
                 {
                     Name = txtName.Text,
@@ -99,6 +98,24 @@ namespace Cz.Project.UI.Forms
             {
                 MessageBox.Show($"Fallo la crecion de usuario, intentelo nuevamente");
             }
+        }
+
+        private void btnRecover_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lstHistoricalInformation.Items.Clear();
+
+            if (lstUsers.SelectedItems == null)
+                return;
+
+            var selectedUser = (AdminUserDto)lstUsers.SelectedItems[0];
+
+
+
         }
 
         private void RefreshList()

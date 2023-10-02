@@ -28,117 +28,160 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstUsers = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            lstUsers = new System.Windows.Forms.ListBox();
+            btnAdd = new System.Windows.Forms.Button();
+            btnEdit = new System.Windows.Forms.Button();
+            btnDelete = new System.Windows.Forms.Button();
+            txtName = new System.Windows.Forms.TextBox();
+            txtPassword = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            lstHistoricalInformation = new System.Windows.Forms.ListBox();
+            label4 = new System.Windows.Forms.Label();
+            btnRecover = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // lstUsers
             // 
-            this.lstUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lstUsers.FormattingEnabled = true;
-            this.lstUsers.ItemHeight = 15;
-            this.lstUsers.Location = new System.Drawing.Point(12, 100);
-            this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(387, 244);
-            this.lstUsers.TabIndex = 0;
+            lstUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lstUsers.FormattingEnabled = true;
+            lstUsers.ItemHeight = 15;
+            lstUsers.Location = new System.Drawing.Point(12, 130);
+            lstUsers.Name = "lstUsers";
+            lstUsers.Size = new System.Drawing.Size(421, 409);
+            lstUsers.TabIndex = 0;
+            lstUsers.SelectedIndexChanged += lstUsers_SelectedIndexChanged;
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 350);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(158, 31);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Agregar";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnAdd.Location = new System.Drawing.Point(12, 545);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new System.Drawing.Size(192, 31);
+            btnAdd.TabIndex = 1;
+            btnAdd.Text = "Agregar";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(176, 350);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(153, 31);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Editar";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnEdit.Location = new System.Drawing.Point(210, 545);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(153, 31);
+            btnEdit.TabIndex = 2;
+            btnEdit.Text = "Editar";
+            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(335, 350);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(64, 31);
-            this.btnDelete.TabIndex = 3;
-            this.btnDelete.Text = "Eliminar";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnDelete.Location = new System.Drawing.Point(369, 545);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new System.Drawing.Size(64, 31);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "Eliminar";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // txtName
             // 
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.Location = new System.Drawing.Point(12, 27);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(387, 23);
-            this.txtName.TabIndex = 4;
+            txtName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtName.Location = new System.Drawing.Point(12, 27);
+            txtName.Name = "txtName";
+            txtName.Size = new System.Drawing.Size(747, 23);
+            txtName.TabIndex = 4;
             // 
             // txtPassword
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(12, 71);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(387, 23);
-            this.txtPassword.TabIndex = 5;
+            txtPassword.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            txtPassword.Location = new System.Drawing.Point(12, 71);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new System.Drawing.Size(747, 23);
+            txtPassword.TabIndex = 5;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 15);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nombre de usuario";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(109, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Nombre de usuario";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Contraseña";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(12, 53);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(67, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Contraseña";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(12, 112);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(52, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Usuarios";
+            // 
+            // lstHistoricalInformation
+            // 
+            lstHistoricalInformation.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            lstHistoricalInformation.FormattingEnabled = true;
+            lstHistoricalInformation.ItemHeight = 15;
+            lstHistoricalInformation.Location = new System.Drawing.Point(439, 130);
+            lstHistoricalInformation.Name = "lstHistoricalInformation";
+            lstHistoricalInformation.Size = new System.Drawing.Size(320, 409);
+            lstHistoricalInformation.TabIndex = 9;
+            // 
+            // label4
+            // 
+            label4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(439, 112);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(55, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Historico";
+            // 
+            // btnRecover
+            // 
+            btnRecover.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnRecover.Location = new System.Drawing.Point(670, 545);
+            btnRecover.Name = "btnRecover";
+            btnRecover.Size = new System.Drawing.Size(89, 31);
+            btnRecover.TabIndex = 11;
+            btnRecover.Text = "Recuperar";
+            btnRecover.UseVisualStyleBackColor = true;
+            btnRecover.Click += btnRecover_Click;
             // 
             // AdminUsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 391);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.lstUsers);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.btnEdit);
-            this.Name = "AdminUsersForm";
-            this.Text = "Administracion de usuarios";
-            this.Load += new System.EventHandler(this.AdminUsersForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(774, 599);
+            Controls.Add(btnRecover);
+            Controls.Add(label4);
+            Controls.Add(lstHistoricalInformation);
+            Controls.Add(label3);
+            Controls.Add(label1);
+            Controls.Add(label2);
+            Controls.Add(lstUsers);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
+            Controls.Add(txtName);
+            Controls.Add(txtPassword);
+            Controls.Add(btnEdit);
+            Name = "AdminUsersForm";
+            Text = "Administracion de usuarios";
+            Load += AdminUsersForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -151,5 +194,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lstHistoricalInformation;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRecover;
     }
 }

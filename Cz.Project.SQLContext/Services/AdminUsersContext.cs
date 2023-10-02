@@ -37,7 +37,7 @@ namespace Cz.Project.SQLContext
                 var tabla = DA.Read(query, sqlParameters);
                 result = ReadUsers(tabla)?.FirstOrDefault();
             }
-            
+
             CheckSecurityDigit(result);
             return result;
         }
@@ -114,15 +114,17 @@ namespace Cz.Project.SQLContext
         /// <param name="userToChange"></param>
         public void Update(AdminUsers userToChange)
         {
-            GetSecurityDigit(userToChange);
+            userToChange.CheckDigit = GetSecurityDigit(userToChange);
 
-            string query = $"UPDATE AdminUsers SET [Name] = @Name, [Password] = @Password WHERE [Id] = @Id;";
+            string query = $"UPDATE [AdminUsers] SET [Name] = @Name, [Password] = @Password, [Key] = @Key, [CheckDigit] = @CheckDigit WHERE [Id] = @Id;";
 
             var sqlParameters = new ArrayList();
 
             sqlParameters.Add(SqlHelper.CreateParameter("Id", userToChange.Id));
             sqlParameters.Add(SqlHelper.CreateParameter("Name", userToChange.Name));
             sqlParameters.Add(SqlHelper.CreateParameter("Password", userToChange.Password));
+            sqlParameters.Add(SqlHelper.CreateParameter("Key", userToChange.Key));
+            sqlParameters.Add(SqlHelper.CreateParameter("CheckDigit", userToChange.CheckDigit));
 
             using (var DA = new SQLDataAccess())
             {

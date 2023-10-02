@@ -18,78 +18,105 @@ namespace Cz.Project.UI.Forms
 
         private void UserLicenseForm_Load(object sender, EventArgs e)
         {
-            var userService = new UserService();
-            var licenseService = new LicenseService();
-
-            foreach (var item in userService.GetAll())
+            try
             {
-                cmbUsers.Items.Add(item);
-            }
+                var userService = new UserService();
+                var licenseService = new LicenseService();
 
-            foreach (var item in licenseService.GetFamilies())
+                foreach (var item in userService.GetAll())
+                {
+                    cmbUsers.Items.Add(item);
+                }
+
+                foreach (var item in licenseService.GetFamilies())
+                {
+                    cmbFamily.Items.Add(item);
+                }
+
+                cmbFamily.SelectedItem = cmbFamily.Items[0];
+                cmbUsers.SelectedItem = cmbUsers.Items[0];
+            }
+            catch (Exception ex)
             {
-                cmbFamily.Items.Add(item);
+                MessageBox.Show(ex.Message);
             }
-
-            cmbFamily.SelectedItem = cmbFamily.Items[0];
-            cmbUsers.SelectedItem = cmbUsers.Items[0];
         }
 
         private void treeLicenses_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            #region Unsubscribe
-            treeLicenses.Enabled = false;
-            this.treeLicenses.AfterCheck -= this.treeLicenses_AfterCheck;
-            #endregion
+            try
+            {
+                #region Unsubscribe
+                treeLicenses.Enabled = false;
+                this.treeLicenses.AfterCheck -= this.treeLicenses_AfterCheck;
+                #endregion
 
-            TreeViewHelper.CheckNodeBeheavor(e);
+                TreeViewHelper.CheckNodeBeheavor(e);
 
-            #region Subscribe back
-            this.treeLicenses.AfterCheck += new TreeViewEventHandler(this.treeLicenses_AfterCheck);
-            treeLicenses.Enabled = true;
-            #endregion
-
+                #region Subscribe back
+                this.treeLicenses.AfterCheck += new TreeViewEventHandler(this.treeLicenses_AfterCheck);
+                treeLicenses.Enabled = true;
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            treeLicenses.Enabled = false;
-
-            var session = Session.GetInstance();
-
-            var adminLicenses = new AdminUserLicenseDto()
+            try
             {
-                AdminUser = new AdminUserDto()
+                treeLicenses.Enabled = false;
+
+                var session = Session.GetInstance();
+
+                var adminLicenses = new AdminUserLicenseDto()
                 {
-                    Name = session.AdminUser.Name,
-                    Key = session.AdminUser.Key,
-                    Password = session.AdminUser.Password
-                },
-                Licenses = TreeViewHelper.GetCheckedLeafs(this.treeLicenses.Nodes, new List<Abstraction.LicenseDto>())
-            };
+                    AdminUser = new AdminUserDto()
+                    {
+                        Name = session.AdminUser.Name,
+                        Key = session.AdminUser.Key,
+                        Password = session.AdminUser.Password
+                    },
+                    Licenses = TreeViewHelper.GetCheckedLeafs(this.treeLicenses.Nodes, new List<Abstraction.LicenseDto>())
+                };
 
-            var licenseService = new AdminUserLicenseService();
-            licenseService.SetPermissions(adminLicenses);
+                var licenseService = new AdminUserLicenseService();
+                licenseService.SetPermissions(adminLicenses);
 
-            treeLicenses.Enabled = true;
+                treeLicenses.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            treeLicenses.Nodes.Clear();
+            try
+            {
+                treeLicenses.Nodes.Clear();
 
-            if (cmbUsers.SelectedItem == null)
-                return;
+                if (cmbUsers.SelectedItem == null)
+                    return;
 
-            var selectedUser = (AdminUserDto)cmbUsers.SelectedItem;
-            var adminUser = new UserService().GetByKeyDto(selectedUser.Key);
-            var adminUserLicenses = new AdminUserLicenseService().GetLicensesByUser(adminUser.Key);
+                var selectedUser = (AdminUserDto)cmbUsers.SelectedItem;
+                var adminUser = new UserService().GetByKeyDto(selectedUser.Key);
+                var adminUserLicenses = new AdminUserLicenseService().GetLicensesByUser(adminUser.Key);
 
-            var familyDto = ((FamilyLicenseDto)cmbFamily.SelectedItem);
+                var familyDto = ((FamilyLicenseDto)cmbFamily.SelectedItem);
 
-            TreeViewHelper.FillLicenseTreeView(new LicenseService().GetLicenseTree(familyDto.Id),
-                                               treeLicenses,
-                                               adminUserLicenses?.Licenses);
+                TreeViewHelper.FillLicenseTreeView(new LicenseService().GetLicenseTree(familyDto.Id),
+                                                   treeLicenses,
+                                                   adminUserLicenses?.Licenses);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
