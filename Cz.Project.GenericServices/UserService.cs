@@ -55,7 +55,7 @@ namespace Cz.Project.GenericServices
             try
             {
                 var adminUsersContext = new AdminUsersContext();
-                return this.MapUsers(adminUsersContext.GetAll());
+                return this.mapper.Map<IList<AdminUserDto>>(adminUsersContext.GetAll());
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace Cz.Project.GenericServices
             var adminUsersContext = new AdminUsersContext();
             var adminUser = adminUsersContext.GetByKey(key);
 
-            return MapUser(adminUser);
+            return mapper.Map<AdminUserDto>(adminUser);
         }
 
         public AdminUsers GetByKey(string key)
@@ -90,7 +90,15 @@ namespace Cz.Project.GenericServices
 
         public AdminUserDto GetByName(string name)
         {
-            return mapper.Map<AdminUserDto>(new AdminUsersContext().GetByName(name));
+            try
+            {
+                return mapper.Map<AdminUserDto>(new AdminUsersContext().GetByName(name));
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTypeCodeEnum.Error, ex.Message);
+                throw;
+            }
         }
 
         public void Add(AdminUserDto adminUserDto)
@@ -100,13 +108,13 @@ namespace Cz.Project.GenericServices
                 ValidatePassword(adminUserDto);
                 var adminUsersContext = new AdminUsersContext();
 
-                var user = adminUsersContext.GetByName(this.MapUser(adminUserDto));
+                var user = adminUsersContext.GetByName(this.mapper.Map<AdminUsers>(adminUserDto));
                 if (user != null)
                     throw new CustomException("El usuario ya existe");
 
                 adminUserDto.Password = HashHelper.Encrypt(adminUserDto.Password, HasAlgorithm.SHA512, null);
                 adminUserDto.Key = Guid.NewGuid().ToString();
-                adminUsersContext.Add(this.MapUser(adminUserDto));
+                adminUsersContext.Add(this.mapper.Map<AdminUsers>(adminUserDto));
 
                 new BitacoraService().Add(Dto.Enums.EventTypeEnum.Data_modified, $"El usuario agrego un nuevo usuario con la key: {adminUserDto.Key}", adminUserDto);
                 LogHelper.Log(LogTypeCodeEnum.Info, $"Se creo el usuario: {adminUserDto.Name} Key: {adminUserDto.Key} satisfactoriamente");
@@ -126,7 +134,7 @@ namespace Cz.Project.GenericServices
                 newUserValues.Password = HashHelper.Encrypt(newUserValues.Password, HasAlgorithm.SHA512, null);
 
                 var AdminUsersContext = new AdminUsersContext();
-                var userToChange = AdminUsersContext.GetByName(MapUser(newUserValues));
+                var userToChange = AdminUsersContext.GetByName(this.mapper.Map<AdminUsers>(newUserValues));
 
                 if (userToChange != null)
                     throw new CustomException("El usuario ya existe");
@@ -147,7 +155,7 @@ namespace Cz.Project.GenericServices
 
                 new BitacoraService().Add(Dto.Enums.EventTypeEnum.Data_modified, $"Se edito el usuario con key: {selectedUser.Key}", selectedUser);
                 LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {selectedUser.Name} Key: {selectedUser.Key} actualizo al Usuario: {newUserValues.Name} Key: {newUserValues.Key}");
-                return MapUser(userToChange);
+                return this.mapper.Map<AdminUserDto>(userToChange);
             }
             catch (Exception ex)
             {
@@ -162,7 +170,7 @@ namespace Cz.Project.GenericServices
             {
                 var AdminUsersContext = new AdminUsersContext();
 
-                var adminUser = MapUser(selectedUser);
+                var adminUser = this.mapper.Map<AdminUsers>(selectedUser);
                 var userToDelete = AdminUsersContext.GetByName(adminUser);
                 AdminUsersContext.Delete(userToDelete);
 
@@ -184,46 +192,6 @@ namespace Cz.Project.GenericServices
             {
                 throw new CustomException("La contraseña debe tener entre 8 y 20 caracteres");
             }
-        }
-
-        public AdminUsers MapUser(AdminUserDto adminUser)
-        {
-            return new AdminUsers()
-            {
-                Key = adminUser.Key,
-                Name = adminUser.Name,
-                Password = adminUser.Password
-            };
-        }
-
-        public AdminUserDto MapUser(AdminUsers adminUser)
-        {
-            return new AdminUserDto()
-            {
-                Key = adminUser.Key,
-                Name = adminUser.Name,
-                Password = adminUser.Password
-            };
-        }
-
-        public IList<AdminUsers> MapUsers(IList<AdminUserDto> adminUsers)
-        {
-            return adminUsers.Select(a => new AdminUsers()
-            {
-                Key = a.Key,
-                Name = a.Name,
-                Password = a.Password
-            }).ToList();
-        }
-
-        public IList<AdminUserDto> MapUsers(IList<AdminUsers> adminUsers)
-        {
-            return adminUsers.Select(a => new AdminUserDto()
-            {
-                Key = a.Key,
-                Name = a.Name,
-                Password = a.Password
-            }).ToList();
         }
     }
 }

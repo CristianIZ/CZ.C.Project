@@ -19,7 +19,7 @@ namespace Cz.Project.GenericServices
             if (!adminUserLicenses.Any())
                 return null;
 
-            var adminUser = new UserService().MapUser(adminUserLicenses.First().AdminUser);
+            var adminUser = new UserService().mapper.Map<AdminUserDto>(adminUserLicenses.First().AdminUser);
             var licenses = new List<LicenseDto>();
 
             foreach (var userLicense in adminUserLicenses)
