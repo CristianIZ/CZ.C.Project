@@ -62,21 +62,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<LicenseLicense> ReadLicenses(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<LicenseLicense> licenses = new List<LicenseLicense>();
+            IList<LicenseLicense> licenses = new List<LicenseLicense>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    licenses.Add(MapLicense(item));
-                }
-
-                return licenses;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                licenses.Add(MapLicense(item));
             }
+
+            return licenses;
         }
 
         public LicenseLicense MapLicense(DataRow dataRow)

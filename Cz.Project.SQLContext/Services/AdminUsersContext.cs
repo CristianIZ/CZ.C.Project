@@ -60,6 +60,24 @@ namespace Cz.Project.SQLContext
             return result;
         }
 
+        public AdminUsers GetByName(string adminUserName)
+        {
+            string query = $"SELECT * FROM [AdminUsers] WHERE [Name] = @Name";
+
+            var sqlParameters = new ArrayList();
+            sqlParameters.Add(SqlHelper.CreateParameter("Name", adminUserName));
+
+            AdminUsers result;
+            using (var DA = new SQLDataAccess())
+            {
+                var tabla = DA.Read(query, sqlParameters);
+                result = ReadUsers(tabla)?.FirstOrDefault();
+            }
+
+            CheckSecurityDigit(result);
+            return result;
+        }
+
         public AdminUsers GetByKey(string key)
         {
             string query = $"SELECT * FROM [AdminUsers] WHERE [Key] = @Key";
@@ -134,21 +152,14 @@ namespace Cz.Project.SQLContext
 
         public IList<AdminUsers> ReadUsers(DataTable table)
         {
-            if (table.Rows.Count > 0)
+            IList<AdminUsers> users = new List<AdminUsers>();
+            
+            foreach (DataRow item in table.Rows)
             {
-                IList<AdminUsers> users = new List<AdminUsers>();
-
-                foreach (DataRow item in table.Rows)
-                {
-                    users.Add(MapEntity(item));
-                }
-
-                return users;
+                users.Add(MapEntity(item));
             }
-            else
-            {
-                return null;
-            }
+            
+            return users;
         }
 
         public AdminUsers MapEntity(DataRow dataRow)

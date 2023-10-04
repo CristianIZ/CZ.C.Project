@@ -9,11 +9,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cz.Project.GenericServices.Helpers;
+using AutoMapper;
 
 namespace Cz.Project.GenericServices
 {
     public class UserService
     {
+        public IMapper mapper;
+
+        public UserService()
+        {
+            var config = new AutoMapperProfiles();
+            mapper = new Mapper(config.MapConfig());
+        }
+
         public bool IsLoggedIn()
         {
             var session = Session.GetInstance();
@@ -79,12 +88,16 @@ namespace Cz.Project.GenericServices
             }
         }
 
+        public AdminUserDto GetByName(string name)
+        {
+            return mapper.Map<AdminUserDto>(new AdminUsersContext().GetByName(name));
+        }
+
         public void Add(AdminUserDto adminUserDto)
         {
             try
             {
                 ValidatePassword(adminUserDto);
-
                 var adminUsersContext = new AdminUsersContext();
 
                 var user = adminUsersContext.GetByName(this.MapUser(adminUserDto));
@@ -94,6 +107,8 @@ namespace Cz.Project.GenericServices
                 adminUserDto.Password = HashHelper.Encrypt(adminUserDto.Password, HasAlgorithm.SHA512, null);
                 adminUserDto.Key = Guid.NewGuid().ToString();
                 adminUsersContext.Add(this.MapUser(adminUserDto));
+
+                new BitacoraService().Add(Dto.Enums.EventTypeEnum.Data_modified, $"El usuario agrego un nuevo usuario con la key: {adminUserDto.Key}", adminUserDto);
                 LogHelper.Log(LogTypeCodeEnum.Info, $"Se creo el usuario: {adminUserDto.Name} Key: {adminUserDto.Key} satisfactoriamente");
             }
             catch (Exception ex)
@@ -117,8 +132,9 @@ namespace Cz.Project.GenericServices
                     throw new CustomException("El usuario ya existe");
 
                 var selectedUserData = AdminUsersContext.GetByKey(selectedUser.Key);
+                new AdminUserHistoricalService().Add(selectedUserData.Key);
 
-                userToChange = new AdminUsers() 
+                userToChange = new AdminUsers()
                 {
                     Id = selectedUserData.Id,
                     Name = newUserValues.Name,
@@ -129,6 +145,7 @@ namespace Cz.Project.GenericServices
 
                 AdminUsersContext.Update(userToChange);
 
+                new BitacoraService().Add(Dto.Enums.EventTypeEnum.Data_modified, $"Se edito el usuario con key: {selectedUser.Key}", selectedUser);
                 LogHelper.Log(LogTypeCodeEnum.Info, $"El Usuario: {selectedUser.Name} Key: {selectedUser.Key} actualizo al Usuario: {newUserValues.Name} Key: {newUserValues.Key}");
                 return MapUser(userToChange);
             }

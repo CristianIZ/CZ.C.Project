@@ -59,21 +59,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<License> ReadLicenses(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<License> licenses = new List<License>();
+            IList<License> licenses = new List<License>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    licenses.Add(MapLicense(item));
-                }
-
-                return licenses;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                licenses.Add(MapLicense(item));
             }
+
+            return licenses;
         }
 
         public void Add(IList<License> lic)
@@ -123,21 +116,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<FamilyLicenses> ReadFamilies(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<FamilyLicenses> families = new List<FamilyLicenses>();
+            IList<FamilyLicenses> families = new List<FamilyLicenses>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    families.Add(MapFamily(item));
-                }
-
-                return families;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                families.Add(MapFamily(item));
             }
+
+            return families;
         }
 
         public FamilyLicenses MapFamily(DataRow dataRow)

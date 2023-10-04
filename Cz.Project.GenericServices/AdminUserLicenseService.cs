@@ -16,7 +16,7 @@ namespace Cz.Project.GenericServices
         {
             var adminUserLicenses = new AdminUserLicenseContext().GetUserLicenses(key);
 
-            if (adminUserLicenses == null)
+            if (!adminUserLicenses.Any())
                 return null;
 
             var adminUser = new UserService().MapUser(adminUserLicenses.First().AdminUser);

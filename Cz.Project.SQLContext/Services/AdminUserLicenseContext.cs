@@ -84,21 +84,14 @@ namespace Cz.Project.SQLContext
 
         private IList<AdminUserLicenses> MapUserLicenses(DataTable table, AdminUsers adminUser)
         {
-            if (table.Rows.Count > 0)
-            {
-                var adminUserLicense = new List<AdminUserLicenses>();
+            var adminUserLicense = new List<AdminUserLicenses>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    adminUserLicense.Add(MapAdminUser(item, adminUser));
-                }
-
-                return adminUserLicense;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                adminUserLicense.Add(MapAdminUser(item, adminUser));
             }
+
+            return adminUserLicense;
         }
 
         private AdminUserLicenses MapAdminUser(DataRow dataRow, AdminUsers adminUser)

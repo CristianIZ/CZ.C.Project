@@ -28,8 +28,8 @@ namespace Cz.Project.UI.Forms
                     Password = txtPassword.Text
                 };
 
-                var sqlUserContext = new UserService();
-                sqlUserContext.Add(adminUserDto);
+                var userService = new UserService();
+                userService.Add(adminUserDto);
 
                 RefreshList();
                 MessageBox.Show("Usuario creado correctamente");
@@ -84,8 +84,8 @@ namespace Cz.Project.UI.Forms
                     Password = txtPassword.Text
                 };
 
-                var sqlUserContext = new UserService();
-                sqlUserContext.Update(selectedUser, newUserValues);
+                var userService = new UserService();
+                userService.Update(selectedUser, newUserValues);
 
                 RefreshList();
                 MessageBox.Show("Usuario creado correctamente");
@@ -102,20 +102,33 @@ namespace Cz.Project.UI.Forms
 
         private void btnRecover_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (lstUsers.SelectedItem == null)
+                    throw new Exception("No se selecciono ningun usuario");
 
+                if (lstHistoricalInformation.SelectedItem == null)
+                    throw new Exception("No se selecciono ningun dato historico para recuperar");
+
+                var selectedHistoricalUser = (AdminUserHistoricalDto)lstHistoricalInformation.SelectedItem;
+                var user = new UserService().GetByName(selectedHistoricalUser.Name);
+
+                if (user != null)
+                    throw new Exception("No se puede recuperar un usuario historico porque ese nombre esta siendo ocupado por otro usuario actual");
+
+                var selectedUser = (AdminUserDto)lstUsers.SelectedItem;
+                new AdminUserHistoricalService().RecoverUser(selectedUser, selectedHistoricalUser);
+                this.RefreshList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void lstUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstHistoricalInformation.Items.Clear();
-
-            if (lstUsers.SelectedItems == null)
-                return;
-
-            var selectedUser = (AdminUserDto)lstUsers.SelectedItems[0];
-
-
-
+            this.FillHistoricalList();
         }
 
         private void RefreshList()
@@ -131,10 +144,28 @@ namespace Cz.Project.UI.Forms
                 {
                     lstUsers.Items.Add(user);
                 }
+
+                this.FillHistoricalList();
             }
             catch (Exception)
             {
                 MessageBox.Show("Algo salio mal");
+            }
+        }
+
+        private void FillHistoricalList()
+        {
+            lstHistoricalInformation.Items.Clear();
+
+            if (lstUsers.SelectedItem == null)
+                return;
+
+            var selectedUser = (AdminUserDto)lstUsers.SelectedItems[0];
+            var historicalData = new AdminUserHistoricalService().GetByAdminUser(selectedUser.Key);
+
+            foreach (var item in historicalData)
+            {
+                lstHistoricalInformation.Items.Add(item);
             }
         }
     }

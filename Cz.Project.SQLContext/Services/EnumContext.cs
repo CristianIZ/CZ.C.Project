@@ -11,7 +11,7 @@ namespace Cz.Project.SQLContext.Services
 {
     public class EnumContext
     {
-        public IList<LogType> GetLogTypes() 
+        public IList<LogType> GetLogTypes()
         {
             string query = $"SELECT * FROM [LogTypes]";
 
@@ -100,21 +100,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<LogType> ReadLogTypes(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<LogType> logType = new List<LogType>();
+            IList<LogType> logType = new List<LogType>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    logType.Add(MapLogType(item));
-                }
-
-                return logType;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                logType.Add(MapLogType(item));
             }
+
+            return logType;
         }
 
         public EventType MapEventType(DataRow dataRow)

@@ -126,21 +126,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<Bitacora> ReadBitacora(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<Bitacora> bitacoras = new List<Bitacora>();
+            IList<Bitacora> bitacoras = new List<Bitacora>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    bitacoras.Add(MapBitacora(item));
-                }
-
-                return bitacoras;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                bitacoras.Add(MapBitacora(item));
             }
+
+            return bitacoras;
         }
 
         public Bitacora MapBitacora(DataRow dataRow)

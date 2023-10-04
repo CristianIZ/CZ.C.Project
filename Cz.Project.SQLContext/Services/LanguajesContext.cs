@@ -80,21 +80,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<Languaje> ReadLanguaje(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<Languaje> languajes = new List<Languaje>();
+            IList<Languaje> languajes = new List<Languaje>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    languajes.Add(MapLanguaje(item));
-                }
-
-                return languajes;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                languajes.Add(MapLanguaje(item));
             }
+
+            return languajes;
         }
 
         public Languaje MapLanguaje(DataRow dataRow)

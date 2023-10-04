@@ -88,21 +88,14 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<Word> ReadWords(DataTable table)
         {
-            if (table.Rows.Count > 0)
-            {
-                IList<Word> words = new List<Word>();
+            IList<Word> words = new List<Word>();
 
-                foreach (DataRow item in table.Rows)
-                {
-                    words.Add(MapWord(item));
-                }
-
-                return words;
-            }
-            else
+            foreach (DataRow item in table.Rows)
             {
-                return null;
+                words.Add(MapWord(item));
             }
+
+            return words;
         }
 
         public Word MapWord(DataRow dataRow)

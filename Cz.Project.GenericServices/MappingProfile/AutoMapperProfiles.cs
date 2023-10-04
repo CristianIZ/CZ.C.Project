@@ -28,6 +28,25 @@ namespace Cz.Project.GenericServices
                     .ForMember(dest => dest.Password, src => src.MapFrom(v => v.Password))
                     .ForMember(dest => dest.Key, src => src.MapFrom(v => v.Key));
 
+                // --------------- AdminUsersHistorical ---------------
+
+               cfg.CreateMap<AdminUserHistorical, AdminUserHistoricalDto>(MemberList.None)
+                    .ForMember(dest => dest.Id, src => src.MapFrom(v => v.Id))
+                    .ForMember(dest => dest.Name, src => src.MapFrom(v => v.Name))
+                    .ForMember(dest => dest.Password, src => src.MapFrom(v => v.Password))
+                    .ForMember(dest => dest.CreatedDate, src => src.MapFrom(v => v.CreatedDate))
+                    .ForMember(dest => dest.CheckDigit, src => src.MapFrom(v => v.CheckDigit))
+                    .ForMember(dest => dest.User, src => src.MapFrom(v => v.User));
+
+                // Dto to Domain
+                cfg.CreateMap<AdminUserHistoricalDto, AdminUserHistorical>(MemberList.None)
+                    .ForMember(dest => dest.Id, src => src.MapFrom(v => v.Id))
+                    .ForMember(dest => dest.Name, src => src.MapFrom(v => v.Name))
+                    .ForMember(dest => dest.Password, src => src.MapFrom(v => v.Password))
+                    .ForMember(dest => dest.CreatedDate, src => src.MapFrom(v => v.CreatedDate))
+                    .ForMember(dest => dest.CheckDigit, src => src.MapFrom(v => v.CheckDigit))
+                    .ForMember(dest => dest.User, src => src.MapFrom(v => v.User));
+
                 // --------------- Log ---------------
 
                 cfg.CreateMap<LogDto, Log>(MemberList.None)
