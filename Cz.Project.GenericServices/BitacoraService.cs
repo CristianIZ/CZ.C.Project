@@ -22,7 +22,6 @@ namespace Cz.Project.GenericServices
             mapper = InitializeMapper();
         }
 
-
         public IMapper InitializeMapper()
         {
             var config = new AutoMapperProfiles();

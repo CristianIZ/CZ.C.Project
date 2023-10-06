@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Cz.Project.Services.Helpers
+namespace Cz.Project.SQLContext.Helpers
 {
     public static class CryptographyHelper
     {

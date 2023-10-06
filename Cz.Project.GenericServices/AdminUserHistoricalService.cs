@@ -39,7 +39,7 @@ namespace Cz.Project.GenericServices
         public AdminUserHistorical GetById(int id)
         {
             var historicalDto = new AdminUserHistoricalContext().GetById(id);
-            historicalDto.User = new AdminUsersContext().GetById(historicalDto.UserId);
+            historicalDto.User = new AdminUsersContext().GetById(historicalDto.UserId.Value);
 
             return historicalDto;
         }

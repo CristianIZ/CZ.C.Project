@@ -9,7 +9,7 @@ namespace Cz.Project.Domain
     public class AdminUserHistorical : BaseEntity, IDateAudit
     {
         public AdminUsers User { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public string CheckDigit { get; set; }
 
         [Required]

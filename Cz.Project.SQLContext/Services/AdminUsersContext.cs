@@ -1,6 +1,5 @@
 ﻿using Cz.Project.Domain;
 using Cz.Project.SQLContext.Interfaces;
-using Cz.Project.Services.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,13 +7,20 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Cz.Project.Abstraction.Exceptions;
+using Cz.Project.SQLContext.Enums;
+using Cz.Project.SQLContext.Helpers;
+using Cz.Project.SQLContext.Services;
+using System.Security;
 
 namespace Cz.Project.SQLContext
 {
     public class AdminUsersContext : ISQLContext<AdminUsers, DataRow>, IRowIntegrityCheck<AdminUsers>
     {
-        public IList<AdminUsers> GetAll()
+        public IList<AdminUsers> GetAll(bool isInternalRequest = false)
         {
+            if (!isInternalRequest)
+                this.CheckTableIntegrity();
+
             string query = $"SELECT * FROM [AdminUsers]";
 
             using (var DA = new SQLDataAccess())
@@ -26,7 +32,9 @@ namespace Cz.Project.SQLContext
 
         public AdminUsers GetById(int id)
         {
-            string query = $"SELECT * FROM [AdminUsers] WHERE [id] = @id";
+            this.CheckTableIntegrity();
+
+            string query = $"SELECT * FROM [{TableAndColumnNamesEnum.AdminUserTable}] WHERE [id] = @id";
 
             var sqlParameters = new ArrayList();
             sqlParameters.Add(SqlHelper.CreateParameter("Id", id));
@@ -38,13 +46,15 @@ namespace Cz.Project.SQLContext
                 result = ReadUsers(tabla)?.FirstOrDefault();
             }
 
-            CheckSecurityDigit(result);
+            CheckRowIntegrity(result);
             return result;
         }
 
         public AdminUsers GetByName(AdminUsers adminUsers)
         {
-            string query = $"SELECT * FROM [AdminUsers] WHERE [Name] = @Name";
+            this.CheckTableIntegrity();
+
+            string query = $"SELECT * FROM [{TableAndColumnNamesEnum.AdminUserTable}] WHERE [Name] = @Name";
 
             var sqlParameters = new ArrayList();
             sqlParameters.Add(SqlHelper.CreateParameter("Name", adminUsers.Name));
@@ -56,13 +66,15 @@ namespace Cz.Project.SQLContext
                 result = ReadUsers(tabla)?.FirstOrDefault();
             }
 
-            CheckSecurityDigit(result);
+            CheckRowIntegrity(result);
             return result;
         }
 
         public AdminUsers GetByName(string adminUserName)
         {
-            string query = $"SELECT * FROM [AdminUsers] WHERE [Name] = @Name";
+            this.CheckTableIntegrity();
+
+            string query = $"SELECT * FROM [{TableAndColumnNamesEnum.AdminUserTable}] WHERE [Name] = @Name";
 
             var sqlParameters = new ArrayList();
             sqlParameters.Add(SqlHelper.CreateParameter("Name", adminUserName));
@@ -74,13 +86,15 @@ namespace Cz.Project.SQLContext
                 result = ReadUsers(tabla)?.FirstOrDefault();
             }
 
-            CheckSecurityDigit(result);
+            CheckRowIntegrity(result);
             return result;
         }
 
         public AdminUsers GetByKey(string key)
         {
-            string query = $"SELECT * FROM [AdminUsers] WHERE [Key] = @Key";
+            this.CheckTableIntegrity();
+
+            string query = $"SELECT * FROM [{TableAndColumnNamesEnum.AdminUserTable}] WHERE [Key] = @Key";
 
             var sqlParameters = new ArrayList();
             sqlParameters.Add(SqlHelper.CreateParameter("Key", key));
@@ -92,30 +106,36 @@ namespace Cz.Project.SQLContext
                 result = ReadUsers(tabla)?.FirstOrDefault();
             }
 
-            CheckSecurityDigit(result);
+            CheckRowIntegrity(result);
             return result;
         }
 
         public void Add(AdminUsers adminUser)
         {
-            string query = $"INSERT INTO AdminUsers ([Name], [Password], [Key], [CheckDigit]) VALUES (@Name, @Password, @Key, @CheckDigit);";
+            this.CheckTableIntegrity();
+
+            string query = $"INSERT INTO [{TableAndColumnNamesEnum.AdminUserTable}] ([Name], [Password], [Key], [CheckDigit]) VALUES (@Name, @Password, @Key, @CheckDigit);";
 
             var sqlParameters = new ArrayList();
 
             sqlParameters.Add(SqlHelper.CreateParameter("Name", adminUser.Name));
             sqlParameters.Add(SqlHelper.CreateParameter("Password", adminUser.Password));
             sqlParameters.Add(SqlHelper.CreateParameter("Key", adminUser.Key));
-            sqlParameters.Add(SqlHelper.CreateParameter("CheckDigit", GetSecurityDigit(adminUser)));
+            sqlParameters.Add(SqlHelper.CreateParameter("CheckDigit", SecurityDigitHelper.SecurityLogicToEncrypt($"{adminUser.Name}{adminUser.Password}{adminUser.Key}")));
 
             using (var DA = new SQLDataAccess())
             {
                 DA.ExecuteQuery(query, sqlParameters);
             }
+
+            this.GenerateTableVerificationDigit();
         }
 
         public void Delete(AdminUsers adminUser)
         {
-            string query = $"DELETE FROM AdminUsers WHERE Id = @Id";
+            this.CheckTableIntegrity();
+
+            string query = $"DELETE FROM [{TableAndColumnNamesEnum.AdminUserTable}] WHERE Id = @Id";
 
             var sqlParameters = new ArrayList();
             sqlParameters.Add(SqlHelper.CreateParameter("Id", adminUser.Id));
@@ -124,6 +144,8 @@ namespace Cz.Project.SQLContext
             {
                 DA.ExecuteQuery(query, sqlParameters);
             }
+
+            this.GenerateTableVerificationDigit();
         }
 
         /// <summary>
@@ -132,9 +154,11 @@ namespace Cz.Project.SQLContext
         /// <param name="userToChange"></param>
         public void Update(AdminUsers userToChange)
         {
-            userToChange.CheckDigit = GetSecurityDigit(userToChange);
+            this.CheckTableIntegrity();
 
-            string query = $"UPDATE [AdminUsers] SET [Name] = @Name, [Password] = @Password, [Key] = @Key, [CheckDigit] = @CheckDigit WHERE [Id] = @Id;";
+            userToChange.CheckDigit = SecurityDigitHelper.SecurityLogicToEncrypt($"{userToChange.Name}{userToChange.Password}{userToChange.Key}");
+
+            string query = $"UPDATE [{TableAndColumnNamesEnum.AdminUserTable}] SET [Name] = @Name, [Password] = @Password, [Key] = @Key, [CheckDigit] = @CheckDigit WHERE [Id] = @Id;";
 
             var sqlParameters = new ArrayList();
 
@@ -148,17 +172,19 @@ namespace Cz.Project.SQLContext
             {
                 DA.ExecuteQuery(query, sqlParameters);
             }
+
+            this.GenerateTableVerificationDigit();
         }
 
         public IList<AdminUsers> ReadUsers(DataTable table)
         {
             IList<AdminUsers> users = new List<AdminUsers>();
-            
+
             foreach (DataRow item in table.Rows)
             {
                 users.Add(MapEntity(item));
             }
-            
+
             return users;
         }
 
@@ -174,7 +200,7 @@ namespace Cz.Project.SQLContext
             };
         }
 
-        public void CheckSecurityDigit(AdminUsers adminUser)
+        public void CheckRowIntegrity(AdminUsers adminUser)
         {
             if (adminUser == null)
                 return;
@@ -182,7 +208,7 @@ namespace Cz.Project.SQLContext
             if (string.IsNullOrEmpty(adminUser.CheckDigit))
                 return;
 
-            var securityDigit = GetSecurityDigit(adminUser);
+            var securityDigit = SecurityDigitHelper.SecurityLogicToEncrypt($"{adminUser.Name}{adminUser.Password}{adminUser.Key}");
 
             if (adminUser.CheckDigit != securityDigit)
             {
@@ -190,17 +216,62 @@ namespace Cz.Project.SQLContext
             }
         }
 
-        public string GetSecurityDigit(AdminUsers adminUser)
+        public void CheckTableIntegrity()
         {
-            var result = $"{adminUser.Name}{adminUser.Password}{adminUser.Key}";
-            int numericValue = 0;
+            var tableData = new DigitColumnVerificationContext().GetByTableName(TableAndColumnNamesEnum.AdminUserTable);
+            var adminUsersDataTable = this.GetAll(true);
 
-            foreach (var item in result)
+            ValidateColumnData(tableData, TableAndColumnNamesEnum.AdminUserTableNameColumn, adminUsersDataTable.Select(a => a.Name).ToList());
+            ValidateColumnData(tableData, TableAndColumnNamesEnum.AdminUserTableKeyColumn, adminUsersDataTable.Select(a => a.Key).ToList());
+            ValidateColumnData(tableData, TableAndColumnNamesEnum.AdminUserTableCheckDigitColumn, adminUsersDataTable.Select(a => a.CheckDigit).ToList());
+            ValidateColumnData(tableData, TableAndColumnNamesEnum.AdminUserTablePasswordColumn, adminUsersDataTable.Select(a => a.Password).ToList());
+        }
+
+        public void ValidateColumnData(IEnumerable<DigitColumnVerification> tableData, string columnName, IList<string> data)
+        {
+            var columnData = tableData.Where(d => d.Column == columnName);
+
+            try
             {
-                numericValue += item;
-            }
 
-            return CryptographyHelper.Encrypt(numericValue.ToString());
+                if (!columnData.Any())
+                    throw new Exception($"No existe digito verificador para la columna {columnName}");
+
+                SecurityDigitHelper.CompareDataIntegrity(columnData.First().VerificationDigit, data);
+            }
+            catch (ColumnModificationException ex)
+            {
+                throw new ColumnModificationException($"La columna {columnData.First().Column} en la tabla {columnData.First().Table} fue modificada externamente");
+            }
+        }
+
+        public void GenerateTableVerificationDigit()
+        {
+            var adminUsersData = this.GetAll(true);
+
+            AddOrUpdateVerificationDigit(adminUsersData.Select(u => u.Name).ToList(), TableAndColumnNamesEnum.AdminUserTable, TableAndColumnNamesEnum.AdminUserTableNameColumn);
+            AddOrUpdateVerificationDigit(adminUsersData.Select(u => u.Key).ToList(), TableAndColumnNamesEnum.AdminUserTable, TableAndColumnNamesEnum.AdminUserTableKeyColumn);
+            AddOrUpdateVerificationDigit(adminUsersData.Select(u => u.CheckDigit).ToList(), TableAndColumnNamesEnum.AdminUserTable, TableAndColumnNamesEnum.AdminUserTableCheckDigitColumn);
+            AddOrUpdateVerificationDigit(adminUsersData.Select(u => u.Password).ToList(), TableAndColumnNamesEnum.AdminUserTable, TableAndColumnNamesEnum.AdminUserTablePasswordColumn);
+        }
+
+        public void AddOrUpdateVerificationDigit(IList<string> data, string table, string column)
+        {
+            var digitColumnContext = new DigitColumnVerificationContext();
+            var existingDigit = digitColumnContext.GetByTableAndColumnName(table, column);
+
+            var nameColumn = new DigitColumnVerification()
+            {
+                Id = existingDigit != null ? existingDigit.Id : 0,
+                Table = table,
+                Column = column,
+                VerificationDigit = SecurityDigitHelper.GenerateSecurityColumnDigit(data)
+            };
+
+            if (existingDigit != null)
+                digitColumnContext.Update(nameColumn);
+            else
+                digitColumnContext.Add(nameColumn);
         }
     }
 }

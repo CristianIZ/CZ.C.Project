@@ -6,8 +6,8 @@ using Cz.Project.Dto;
 using Cz.Project.Dto.Enums;
 using Cz.Project.Dto.Exceptions;
 using Cz.Project.GenericServices.Helpers;
-using Cz.Project.Services.Helpers;
 using Cz.Project.SQLContext;
+using Cz.Project.SQLContext.Helpers;
 using System;
 
 namespace Cz.Project.GenericServices.UserSession

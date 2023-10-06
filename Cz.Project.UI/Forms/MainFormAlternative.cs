@@ -85,8 +85,15 @@ namespace Cz.Project.UI.Forms
             var loginForm = new LoginForm();
             loginForm.ShowDialog();
 
-            lblUserName.Text = Session.GetInstance().AdminUser.Name;
-            this.Show();
+            if (Session.GetInstance().AdminUser == null)
+            {
+                this.Close();
+            }
+            else
+            {
+                lblUserName.Text = Session.GetInstance().AdminUser.Name;
+                this.Show();
+            }
         }
 
         private void OpenChildForm(Form childForm)

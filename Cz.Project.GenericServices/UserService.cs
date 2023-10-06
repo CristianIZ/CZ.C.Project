@@ -3,13 +3,13 @@ using Cz.Project.Domain;
 using Cz.Project.Dto;
 using Cz.Project.Abstraction.Exceptions;
 using Cz.Project.GenericServices.UserSession;
-using Cz.Project.Services.Helpers;
 using Cz.Project.SQLContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cz.Project.GenericServices.Helpers;
 using AutoMapper;
+using Cz.Project.SQLContext.Helpers;
 
 namespace Cz.Project.GenericServices
 {

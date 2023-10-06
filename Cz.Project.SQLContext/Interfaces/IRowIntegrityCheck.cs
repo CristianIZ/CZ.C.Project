@@ -6,7 +6,7 @@ namespace Cz.Project.SQLContext.Interfaces
 {
     public interface IRowIntegrityCheck<T> where T : class
     {
-        string GetSecurityDigit(T domainEntity);
-        void CheckSecurityDigit(T domainEntity);
+        void CheckTableIntegrity();
+        void CheckRowIntegrity(T domainEntity);
     }
 }

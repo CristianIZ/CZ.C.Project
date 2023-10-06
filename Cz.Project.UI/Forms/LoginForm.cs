@@ -1,4 +1,5 @@
 ﻿using Cz.Project.Abstraction.Enums;
+using Cz.Project.Abstraction.Exceptions;
 using Cz.Project.Dto.Enums;
 using Cz.Project.Dto.Exceptions;
 using Cz.Project.GenericServices;
@@ -83,6 +84,11 @@ namespace Cz.Project.UI.Forms
             {
                 LogHelper.Log(LogTypeCodeEnum.Error, $"Error al intentar iniciar sesion -> Contraseña incorrecta");
                 MessageBox.Show("Contraseña incorrecta");
+            }
+            catch (ColumnModificationException ex)
+            {
+                LogHelper.Log(LogTypeCodeEnum.Error, $"Error al intentar iniciar sesion -> Base de datos modificada");
+                MessageBox.Show($"{ex.Message} -> se debe restablecer la base de datos a la ultima version estable");
             }
             catch (Exception)
             {
