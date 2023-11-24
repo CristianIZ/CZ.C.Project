@@ -1,5 +1,7 @@
 ﻿using Cz.Project.Domain.Base;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,5 +18,7 @@ namespace Cz.Project.Domain
         [Required]
         [StringLength(200)]
         public string Password { get; set; }
+
+        public IList<Order> orders { get; set; }
     }
 }

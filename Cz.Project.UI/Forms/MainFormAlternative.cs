@@ -71,6 +71,21 @@ namespace Cz.Project.UI.Forms
             OpenChildForm(new BitacoraAndLogsForm());
         }
 
+        private void btnMakeOrder_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MakeOrderForm());
+        }
+
+        private void btnOrderManagement_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new OrderManagementForm());
+        }
+
+        private void btnOrderMonitor_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new OrderMonitorForm());
+        }
+
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.LogOut();

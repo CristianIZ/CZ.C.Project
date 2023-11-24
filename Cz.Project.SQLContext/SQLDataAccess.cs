@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Text;
 using System.Data.SqlTypes;
+using System.Linq;
 
 namespace Cz.Project.SQLContext
 {
@@ -87,12 +88,12 @@ namespace Cz.Project.SQLContext
             transaction.Dispose();
         }
 
-        public void ExecuteTransactionQuery(string query, ArrayList parameters, SqlTransaction tranx)
+        public int ExecuteTransactionQuery(string query, ArrayList parameters, SqlTransaction tranx)
         {
             try
             {
                 var cmd = new SqlCommand(query, Cnn, tranx);
-                ExecuteCommand(cmd, query, parameters);
+                return ExecuteCommand(cmd, query, parameters);
             }
             catch (Exception ex)
             {
@@ -100,7 +101,7 @@ namespace Cz.Project.SQLContext
             }
         }
 
-        public void ExecuteQuery(string query, ArrayList parameters)
+        public int ExecuteQuery(string query, ArrayList parameters)
         {
             OpenConnection();
 
@@ -108,7 +109,7 @@ namespace Cz.Project.SQLContext
             {
                 try
                 {
-                    ExecuteCommand(cmd, query, parameters);
+                    return ExecuteCommand(cmd, query, parameters);
                 }
                 catch (Exception)
                 {
@@ -121,7 +122,47 @@ namespace Cz.Project.SQLContext
             }
         }
 
-        private void ExecuteCommand(SqlCommand cmd, string query, ArrayList parameters)
+        public int ExecuteNonQuery(string query, ArrayList parameters)
+        {
+            OpenConnection();
+
+            using (var cmd = new SqlCommand(query, Cnn))
+            {
+                try
+                {
+                    return ExecuteCommandNonQuery(cmd, query, parameters);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    CloseConnection();
+                }
+            }
+        }
+
+        private int ExecuteCommand(SqlCommand cmd, string query, ArrayList parameters)
+        {
+            query = $"{query}; SELECT CAST(scope_identity() AS int)";
+
+            cmd.Connection = Cnn;
+            cmd.CommandText = query;
+            cmd.CommandType = CommandType.Text;
+
+            if ((parameters != null))
+            {
+                foreach (SqlParameter data in parameters)
+                {
+                    cmd.Parameters.Add(data);
+                }
+            }
+
+            return (int)cmd.ExecuteScalar();
+        }
+
+        private int ExecuteCommandNonQuery(SqlCommand cmd, string query, ArrayList parameters)
         {
             cmd.Connection = Cnn;
             cmd.CommandText = query;
@@ -135,7 +176,7 @@ namespace Cz.Project.SQLContext
                 }
             }
 
-            var result = cmd.ExecuteScalar();
+            return (int)cmd.ExecuteNonQuery();
         }
 
         public SqlCommand CreateCommand(string query, ArrayList parameters)

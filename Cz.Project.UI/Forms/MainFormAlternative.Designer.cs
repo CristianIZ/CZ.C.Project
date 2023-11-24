@@ -30,11 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormAlternative));
             panel1 = new System.Windows.Forms.Panel();
+            panel28 = new System.Windows.Forms.Panel();
+            btnOrderManagement = new System.Windows.Forms.Button();
+            panel29 = new System.Windows.Forms.Panel();
+            panel24 = new System.Windows.Forms.Panel();
+            btnOrderMonitor = new System.Windows.Forms.Button();
+            panel25 = new System.Windows.Forms.Panel();
             panel19 = new System.Windows.Forms.Panel();
+            panel11 = new System.Windows.Forms.Panel();
+            panel12 = new System.Windows.Forms.Panel();
             panel20 = new System.Windows.Forms.Panel();
             panel9 = new System.Windows.Forms.Panel();
             panel10 = new System.Windows.Forms.Panel();
             btnUsers = new System.Windows.Forms.Button();
+            panel23 = new System.Windows.Forms.Panel();
+            btnMakeOrder = new System.Windows.Forms.Button();
+            panel21 = new System.Windows.Forms.Panel();
             panel13 = new System.Windows.Forms.Panel();
             panel14 = new System.Windows.Forms.Panel();
             btnAddLanguaje = new System.Windows.Forms.Button();
@@ -52,18 +63,21 @@
             panel15 = new System.Windows.Forms.Panel();
             panel16 = new System.Windows.Forms.Panel();
             btnAssignLicenses = new System.Windows.Forms.Button();
+            btnBitacoraAndLogs = new System.Windows.Forms.Button();
+            panel22 = new System.Windows.Forms.Panel();
             lblTitle = new System.Windows.Forms.Label();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
             lblUserName = new System.Windows.Forms.Label();
             btnLogOut = new System.Windows.Forms.Button();
             pnlFormReplace = new System.Windows.Forms.Panel();
-            panel21 = new System.Windows.Forms.Panel();
-            panel22 = new System.Windows.Forms.Panel();
-            btnBitacoraAndLogs = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
+            panel28.SuspendLayout();
+            panel24.SuspendLayout();
             panel19.SuspendLayout();
+            panel11.SuspendLayout();
             panel9.SuspendLayout();
+            panel23.SuspendLayout();
             panel13.SuspendLayout();
             panel5.SuspendLayout();
             panel2.SuspendLayout();
@@ -72,15 +86,16 @@
             panel15.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel21.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = System.Drawing.Color.FromArgb(51, 51, 76);
-            panel1.Controls.Add(panel21);
+            panel1.Controls.Add(panel28);
+            panel1.Controls.Add(panel24);
             panel1.Controls.Add(panel19);
             panel1.Controls.Add(panel9);
+            panel1.Controls.Add(panel23);
             panel1.Controls.Add(panel13);
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(panel2);
@@ -90,16 +105,107 @@
             panel1.Dock = System.Windows.Forms.DockStyle.Left;
             panel1.Location = new System.Drawing.Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(220, 653);
+            panel1.Size = new System.Drawing.Size(220, 785);
             panel1.TabIndex = 0;
+            // 
+            // panel28
+            // 
+            panel28.Controls.Add(btnOrderManagement);
+            panel28.Controls.Add(panel29);
+            panel28.Location = new System.Drawing.Point(0, 473);
+            panel28.Name = "panel28";
+            panel28.Size = new System.Drawing.Size(220, 60);
+            panel28.TabIndex = 10;
+            // 
+            // btnOrderManagement
+            // 
+            btnOrderManagement.Dock = System.Windows.Forms.DockStyle.Right;
+            btnOrderManagement.FlatAppearance.BorderSize = 0;
+            btnOrderManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnOrderManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnOrderManagement.ForeColor = System.Drawing.Color.Gainsboro;
+            btnOrderManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnOrderManagement.Location = new System.Drawing.Point(62, 0);
+            btnOrderManagement.Name = "btnOrderManagement";
+            btnOrderManagement.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnOrderManagement.Size = new System.Drawing.Size(158, 60);
+            btnOrderManagement.TabIndex = 7;
+            btnOrderManagement.Text = "Gestionar Pedido";
+            btnOrderManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnOrderManagement.UseVisualStyleBackColor = true;
+            btnOrderManagement.Click += btnOrderManagement_Click;
+            // 
+            // panel29
+            // 
+            panel29.BackgroundImage = Properties.Resources.lista_de_verificacion;
+            panel29.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            panel29.Dock = System.Windows.Forms.DockStyle.Left;
+            panel29.Location = new System.Drawing.Point(0, 0);
+            panel29.Name = "panel29";
+            panel29.Size = new System.Drawing.Size(56, 60);
+            panel29.TabIndex = 0;
+            // 
+            // panel24
+            // 
+            panel24.Controls.Add(btnOrderMonitor);
+            panel24.Controls.Add(panel25);
+            panel24.Location = new System.Drawing.Point(0, 539);
+            panel24.Name = "panel24";
+            panel24.Size = new System.Drawing.Size(220, 60);
+            panel24.TabIndex = 9;
+            // 
+            // btnOrderMonitor
+            // 
+            btnOrderMonitor.Dock = System.Windows.Forms.DockStyle.Right;
+            btnOrderMonitor.FlatAppearance.BorderSize = 0;
+            btnOrderMonitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnOrderMonitor.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnOrderMonitor.ForeColor = System.Drawing.Color.Gainsboro;
+            btnOrderMonitor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnOrderMonitor.Location = new System.Drawing.Point(62, 0);
+            btnOrderMonitor.Name = "btnOrderMonitor";
+            btnOrderMonitor.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnOrderMonitor.Size = new System.Drawing.Size(158, 60);
+            btnOrderMonitor.TabIndex = 7;
+            btnOrderMonitor.Text = "Visualizar Pedido";
+            btnOrderMonitor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnOrderMonitor.UseVisualStyleBackColor = true;
+            btnOrderMonitor.Click += btnOrderMonitor_Click;
+            // 
+            // panel25
+            // 
+            panel25.BackgroundImage = Properties.Resources.tiempo;
+            panel25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            panel25.Dock = System.Windows.Forms.DockStyle.Left;
+            panel25.Location = new System.Drawing.Point(0, 0);
+            panel25.Name = "panel25";
+            panel25.Size = new System.Drawing.Size(56, 60);
+            panel25.TabIndex = 0;
             // 
             // panel19
             // 
+            panel19.Controls.Add(panel11);
             panel19.Controls.Add(panel20);
-            panel19.Location = new System.Drawing.Point(0, 565);
+            panel19.Location = new System.Drawing.Point(0, 671);
             panel19.Name = "panel19";
             panel19.Size = new System.Drawing.Size(220, 60);
             panel19.TabIndex = 2;
+            // 
+            // panel11
+            // 
+            panel11.Controls.Add(panel12);
+            panel11.Location = new System.Drawing.Point(8, -66);
+            panel11.Name = "panel11";
+            panel11.Size = new System.Drawing.Size(220, 60);
+            panel11.TabIndex = 3;
+            // 
+            // panel12
+            // 
+            panel12.Dock = System.Windows.Forms.DockStyle.Left;
+            panel12.Location = new System.Drawing.Point(0, 0);
+            panel12.Name = "panel12";
+            panel12.Size = new System.Drawing.Size(56, 60);
+            panel12.TabIndex = 0;
             // 
             // panel20
             // 
@@ -146,6 +252,43 @@
             btnUsers.UseVisualStyleBackColor = true;
             btnUsers.Click += btnUsers_Click;
             // 
+            // panel23
+            // 
+            panel23.Controls.Add(btnMakeOrder);
+            panel23.Controls.Add(panel21);
+            panel23.Location = new System.Drawing.Point(0, 407);
+            panel23.Name = "panel23";
+            panel23.Size = new System.Drawing.Size(220, 60);
+            panel23.TabIndex = 8;
+            // 
+            // btnMakeOrder
+            // 
+            btnMakeOrder.Dock = System.Windows.Forms.DockStyle.Right;
+            btnMakeOrder.FlatAppearance.BorderSize = 0;
+            btnMakeOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMakeOrder.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnMakeOrder.ForeColor = System.Drawing.Color.Gainsboro;
+            btnMakeOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMakeOrder.Location = new System.Drawing.Point(62, 0);
+            btnMakeOrder.Name = "btnMakeOrder";
+            btnMakeOrder.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnMakeOrder.Size = new System.Drawing.Size(158, 60);
+            btnMakeOrder.TabIndex = 7;
+            btnMakeOrder.Text = "Realizar Pedido";
+            btnMakeOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnMakeOrder.UseVisualStyleBackColor = true;
+            btnMakeOrder.Click += btnMakeOrder_Click;
+            // 
+            // panel21
+            // 
+            panel21.BackgroundImage = Properties.Resources.menu;
+            panel21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            panel21.Dock = System.Windows.Forms.DockStyle.Left;
+            panel21.Location = new System.Drawing.Point(0, 0);
+            panel21.Name = "panel21";
+            panel21.Size = new System.Drawing.Size(56, 60);
+            panel21.TabIndex = 0;
+            // 
             // panel13
             // 
             panel13.Controls.Add(panel14);
@@ -157,7 +300,8 @@
             // 
             // panel14
             // 
-            panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            panel14.BackgroundImage = Properties.Resources.traduccion;
+            panel14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             panel14.Dock = System.Windows.Forms.DockStyle.Left;
             panel14.Location = new System.Drawing.Point(0, 0);
             panel14.Name = "panel14";
@@ -193,7 +337,8 @@
             // 
             // panel6
             // 
-            panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            panel6.BackgroundImage = Properties.Resources._655c2be7a98f59000fe565241;
+            panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panel6.Dock = System.Windows.Forms.DockStyle.Left;
             panel6.Location = new System.Drawing.Point(0, 0);
             panel6.Name = "panel6";
@@ -281,7 +426,7 @@
             // 
             panel17.Controls.Add(btnConfig);
             panel17.Controls.Add(panel18);
-            panel17.Location = new System.Drawing.Point(0, 410);
+            panel17.Location = new System.Drawing.Point(0, 605);
             panel17.Name = "panel17";
             panel17.Size = new System.Drawing.Size(220, 60);
             panel17.TabIndex = 2;
@@ -350,6 +495,20 @@
             btnAssignLicenses.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnAssignLicenses.UseVisualStyleBackColor = true;
             btnAssignLicenses.Click += btnAssignLicenses_Click;
+            // 
+            // btnBitacoraAndLogs
+            // 
+            btnBitacoraAndLogs.Location = new System.Drawing.Point(0, 0);
+            btnBitacoraAndLogs.Name = "btnBitacoraAndLogs";
+            btnBitacoraAndLogs.Size = new System.Drawing.Size(75, 23);
+            btnBitacoraAndLogs.TabIndex = 0;
+            // 
+            // panel22
+            // 
+            panel22.Location = new System.Drawing.Point(0, 0);
+            panel22.Name = "panel22";
+            panel22.Size = new System.Drawing.Size(200, 100);
+            panel22.TabIndex = 0;
             // 
             // lblTitle
             // 
@@ -420,49 +579,14 @@
             pnlFormReplace.Dock = System.Windows.Forms.DockStyle.Fill;
             pnlFormReplace.Location = new System.Drawing.Point(220, 80);
             pnlFormReplace.Name = "pnlFormReplace";
-            pnlFormReplace.Size = new System.Drawing.Size(691, 573);
+            pnlFormReplace.Size = new System.Drawing.Size(691, 705);
             pnlFormReplace.TabIndex = 2;
-            // 
-            // panel21
-            // 
-            panel21.Controls.Add(btnBitacoraAndLogs);
-            panel21.Controls.Add(panel22);
-            panel21.Location = new System.Drawing.Point(0, 476);
-            panel21.Name = "panel21";
-            panel21.Size = new System.Drawing.Size(220, 60);
-            panel21.TabIndex = 3;
-            // 
-            // panel22
-            // 
-            panel22.Dock = System.Windows.Forms.DockStyle.Left;
-            panel22.Location = new System.Drawing.Point(0, 0);
-            panel22.Name = "panel22";
-            panel22.Size = new System.Drawing.Size(56, 60);
-            panel22.TabIndex = 0;
-            // 
-            // btnBitacoraAndLogs
-            // 
-            btnBitacoraAndLogs.Dock = System.Windows.Forms.DockStyle.Right;
-            btnBitacoraAndLogs.FlatAppearance.BorderSize = 0;
-            btnBitacoraAndLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnBitacoraAndLogs.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnBitacoraAndLogs.ForeColor = System.Drawing.Color.Gainsboro;
-            btnBitacoraAndLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnBitacoraAndLogs.Location = new System.Drawing.Point(62, 0);
-            btnBitacoraAndLogs.Name = "btnBitacoraAndLogs";
-            btnBitacoraAndLogs.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnBitacoraAndLogs.Size = new System.Drawing.Size(158, 60);
-            btnBitacoraAndLogs.TabIndex = 8;
-            btnBitacoraAndLogs.Text = "Bitacora y Logs";
-            btnBitacoraAndLogs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnBitacoraAndLogs.UseVisualStyleBackColor = true;
-            btnBitacoraAndLogs.Click += btnBitacoraAndLogs_Click;
             // 
             // MainFormAlternative
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(911, 653);
+            ClientSize = new System.Drawing.Size(911, 785);
             Controls.Add(pnlFormReplace);
             Controls.Add(panel3);
             Controls.Add(panel1);
@@ -471,8 +595,12 @@
             Text = "Restapp";
             Load += MainFormAlternative_Load;
             panel1.ResumeLayout(false);
+            panel28.ResumeLayout(false);
+            panel24.ResumeLayout(false);
             panel19.ResumeLayout(false);
+            panel11.ResumeLayout(false);
             panel9.ResumeLayout(false);
+            panel23.ResumeLayout(false);
             panel13.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel2.ResumeLayout(false);
@@ -484,7 +612,6 @@
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel21.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -509,8 +636,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel13;
@@ -519,11 +644,23 @@
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Button btnAssignLicenses;
-        private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnBitacoraAndLogs;
         private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.Panel panel28;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Button btnMakeOrder;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel25;
+        private System.Windows.Forms.Button btnOrderManagement;
+        private System.Windows.Forms.Button btnOrderMonitor;
     }
 }
