@@ -21,6 +21,20 @@ namespace Cz.Project.UI.Forms
 
         private void MainFormAlternative_Load(object sender, EventArgs e)
         {
+            try
+            {
+                // Check created database
+                if (!TestDatabaseHelper.IsDatabaseCreated())
+                {
+                    TestDatabaseHelper.CreateDatabase();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrio un error con la conexion a la base de datos");
+                this.Close();
+            }
+
             ForceLogin();
 
             TranslationHelper.Translation.Attach(this);
@@ -29,6 +43,7 @@ namespace Cz.Project.UI.Forms
             // btnLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.License };
             btnAssignLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.LicenseAssignment };
             btnConfig.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Config };
+
         }
 
         private void btnHome_Click(object sender, EventArgs e)

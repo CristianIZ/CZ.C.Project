@@ -24,7 +24,7 @@ namespace Cz.Project.SQLContext
             Cnn = new SqlConnection(CadenaCnn);
         }
 
-        private void OpenConnection()
+        public void OpenConnection()
         {
             if (Cnn.State == ConnectionState.Closed)
                 Cnn.Open();

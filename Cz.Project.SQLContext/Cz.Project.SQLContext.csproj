@@ -14,4 +14,13 @@
     <ProjectReference Include="..\Cz.Project.Dto\Cz.Project.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="CzData.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="CzSchema.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

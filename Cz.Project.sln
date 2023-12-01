@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.UI", "Cz.Project
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.GenericServices", "Cz.Project.GenericServices\Cz.Project.GenericServices.csproj", "{D8BDAB3A-4081-4B05-892E-6F449C843161}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{A86311B6-9409-4077-90B9-F0C78C36AD44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,8 @@ Global
 		{D8BDAB3A-4081-4B05-892E-6F449C843161}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8BDAB3A-4081-4B05-892E-6F449C843161}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8BDAB3A-4081-4B05-892E-6F449C843161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86311B6-9409-4077-90B9-F0C78C36AD44}.Debug|Any CPU.ActiveCfg = Debug
+		{A86311B6-9409-4077-90B9-F0C78C36AD44}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
