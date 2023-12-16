@@ -1,4 +1,5 @@
 ﻿using Cz.Project.Domain;
+using Cz.Project.SQLContext.Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,6 +47,23 @@ namespace Cz.Project.SQLContext.Services
                 var table = DA.Read(query);
                 return ReadInt(table, "Id");
             }
+        }
+
+        public IList<LicenseLicense> GetByFamilyLicenseId(int familyLicenseId)
+        {
+            string query = $"SELECT * FROM [dbo].[LicenseLicense] WHERE FamilyLicenseId = @FamilyLicenseId";
+
+            var sqlParameters = new ArrayList();
+            sqlParameters.Add(SqlHelper.CreateParameter("FamilyLicenseId", familyLicenseId));
+
+            IList<LicenseLicense> result;
+            using (var DA = new SQLDataAccess())
+            {
+                var tabla = DA.Read(query, sqlParameters);
+                result = ReadLicenses(tabla);
+            }
+
+            return result;
         }
 
         public int ReadInt(DataTable table, string columnToRead)

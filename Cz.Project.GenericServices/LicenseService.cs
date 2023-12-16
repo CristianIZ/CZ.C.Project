@@ -44,10 +44,10 @@ namespace Cz.Project.GenericServices
         /// Get from database and builds the composite
         /// </summary>
         /// <returns></returns>
-        public IList<ComponentDto> GetLicenseTree(int? familyId = null)
+        public IList<ComponentDto> GetLicenseTree(int familyId)
         {
             var licenses = new LicensesContext().GetAll();
-            var licenseLicense = new LicenseLicenseContext().GetAll();
+            var licenseLicense = new LicenseLicenseContext().GetByFamilyLicenseId(familyId);
 
             var licenseRelation = MapToCodeRelation(licenses, licenseLicense);
 

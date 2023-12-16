@@ -24,7 +24,7 @@ namespace Cz.Project.GenericServices
             var languajeContext = new LanguajesContext();
             var languaje = languajeContext.GetByName(languajeText);
 
-            if (languaje != null)
+            if (languaje != null && languaje.Count > 0)
                 throw new ApplicationException("El lenguaje ya existe");
 
             var languajes = languajeContext.GetAll();

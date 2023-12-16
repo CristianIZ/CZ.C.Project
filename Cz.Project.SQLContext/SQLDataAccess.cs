@@ -159,7 +159,16 @@ namespace Cz.Project.SQLContext
                 }
             }
 
-            return (int)cmd.ExecuteScalar();
+            var result = cmd.ExecuteScalar();
+
+            try
+            {
+                return (int)result;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         private int ExecuteCommandNonQuery(SqlCommand cmd, string query, ArrayList parameters)
@@ -176,7 +185,7 @@ namespace Cz.Project.SQLContext
                 }
             }
 
-            return (int)cmd.ExecuteNonQuery();
+            return cmd.ExecuteNonQuery();
         }
 
         public SqlCommand CreateCommand(string query, ArrayList parameters)

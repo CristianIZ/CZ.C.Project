@@ -87,6 +87,8 @@ namespace Cz.Project.UI.Forms
                 licenseService.SetPermissions(adminLicenses);
 
                 treeLicenses.Enabled = true;
+
+                MessageBox.Show("Guardado exitosamente");
             }
             catch (Exception ex)
             {
@@ -95,6 +97,16 @@ namespace Cz.Project.UI.Forms
         }
 
         private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.FillTreeView();
+        }
+
+        private void cmbFamily_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.FillTreeView();
+        }
+
+        private void FillTreeView()
         {
             try
             {
@@ -113,7 +125,7 @@ namespace Cz.Project.UI.Forms
                                                    treeLicenses,
                                                    adminUserLicenses?.Licenses);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

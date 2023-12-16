@@ -104,6 +104,7 @@
             cmbFamily.Name = "cmbFamily";
             cmbFamily.Size = new System.Drawing.Size(253, 23);
             cmbFamily.TabIndex = 10;
+            cmbFamily.SelectedIndexChanged += cmbFamily_SelectedIndexChanged;
             // 
             // label3
             // 
