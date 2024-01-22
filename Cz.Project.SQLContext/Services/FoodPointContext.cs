@@ -36,7 +36,7 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
-        public void Add(FoodPoint foodPoint)
+        public int Add(FoodPoint foodPoint)
         {
             string query = $"INSERT INTO [dbo].[FoodPoints] ([Name], [Key]) VALUES (@Name, @Key)";
 
@@ -46,7 +46,7 @@ namespace Cz.Project.SQLContext.Services
                 sqlParameters.Add(SqlHelper.CreateParameter("Name", foodPoint.Name));
                 sqlParameters.Add(SqlHelper.CreateParameter("Key", Guid.NewGuid()));
 
-                DA.ExecuteQuery(query, sqlParameters);
+                return DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

@@ -10,6 +10,21 @@ namespace Cz.Project.Services
 {
     public class FoodPointService
     {
+        public void Add(string name)
+        {
+            var fc = new FoodPointContext();
+            var foodPoint = new FoodPoint()
+            {
+                Name = name
+            };
+
+            var foodPointId = fc.Add(foodPoint);
+
+            new MenuService().CreateDefaultMenu(foodPointId);
+        }
+
+
+
         public IEnumerable<FoodPoint> GetAll()
         {
             var foodPoints = new FoodPointContext().GetAll();

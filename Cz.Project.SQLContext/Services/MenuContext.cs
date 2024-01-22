@@ -21,7 +21,7 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
-        public void Add(Menu menu, int foodPointId)
+        public int Add(Menu menu, int foodPointId)
         {
             string query = $"INSERT INTO [dbo].[Menus] ([Description], [FoodPointId]) VALUES (@Description, @FoodPointId)";
 
@@ -31,7 +31,7 @@ namespace Cz.Project.SQLContext.Services
                 sqlParameters.Add(SqlHelper.CreateParameter("Description", menu.Description));
                 sqlParameters.Add(SqlHelper.CreateParameter("FoodPointId", foodPointId));
 
-                DA.ExecuteQuery(query, sqlParameters);
+                return DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

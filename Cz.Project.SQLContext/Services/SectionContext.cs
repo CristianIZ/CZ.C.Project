@@ -21,7 +21,7 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
-        public void Add(Section section, int menuId)
+        public int Add(Section section, int menuId)
         {
             string query = $"INSERT INTO [dbo].[Sections] ([Name], [Description], [Position], [MenuId]) VALUES (@Name, @Description, @Position, @MenuId)";
 
@@ -29,11 +29,11 @@ namespace Cz.Project.SQLContext.Services
             {
                 var sqlParameters = new ArrayList();
                 sqlParameters.Add(SqlHelper.CreateParameter("Name", section.Name));
-                sqlParameters.Add(SqlHelper.CreateParameter("Description", section.Description));
+                sqlParameters.Add(SqlHelper.CreateParameter("Description", section.Description != null ? section.Description : string.Empty));
                 sqlParameters.Add(SqlHelper.CreateParameter("Position", section.Position));
                 sqlParameters.Add(SqlHelper.CreateParameter("MenuId", menuId));
 
-                DA.ExecuteQuery(query, sqlParameters);
+                return DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

@@ -22,7 +22,7 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
-        public void Add(Table table)
+        public int Add(Table table)
         {
             string query = $"INSERT INTO [dbo].[Tables] ([QR], [FoodPointId]) VALUES (@QR, @FoodPointId)";
 
@@ -32,7 +32,7 @@ namespace Cz.Project.SQLContext.Services
                 sqlParameters.Add(SqlHelper.CreateParameter("QR", Guid.NewGuid()));
                 sqlParameters.Add(SqlHelper.CreateParameter("FoodPointId", table.FoodPointId));
 
-                DA.ExecuteQuery(query, sqlParameters);
+                return DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

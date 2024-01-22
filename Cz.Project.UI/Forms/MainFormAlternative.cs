@@ -86,6 +86,11 @@ namespace Cz.Project.UI.Forms
             OpenChildForm(new OrderMonitorForm());
         }
 
+        private void btnMenuManagement_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new MenuManagement());
+        }
+
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Session.LogOut();
