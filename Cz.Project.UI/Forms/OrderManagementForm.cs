@@ -1,15 +1,12 @@
 ﻿using Cz.Project.Abstraction.Exceptions;
 using Cz.Project.Domain;
 using Cz.Project.Dto.Enums;
+using Cz.Project.GenericServices;
+using Cz.Project.GenericServices.UserSession;
 using Cz.Project.Services;
 using Cz.Project.Services.Simulator;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Cz.Project.UI.Forms
@@ -143,8 +140,10 @@ namespace Cz.Project.UI.Forms
 
         private void FillDatagrid()
         {
+            var sessionUser = Session.GetInstance().AdminUser;
+
             dgvOrders.DataSource = null;
-            dgvOrders.DataSource = new OrderService().GetAll();
+            dgvOrders.DataSource = new OrderService().GetByUserKeyOwner(sessionUser.Key);
             this.colorDgv();
         }
 

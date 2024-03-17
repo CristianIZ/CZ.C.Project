@@ -1,5 +1,6 @@
 ﻿using Cz.Project.Domain;
 using Cz.Project.Domain.Business;
+using Cz.Project.SQLContext;
 using Cz.Project.SQLContext.Services;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,13 @@ namespace Cz.Project.Services
 {
     public class FoodPointService
     {
-        public void Add(string name)
+        public void Add(string name, string userKey)
         {
             var fc = new FoodPointContext();
             var foodPoint = new FoodPoint()
             {
-                Name = name
+                Name = name,
+                User = new AdminUsersContext().GetByKey(userKey)
             };
 
             var foodPointId = fc.Add(foodPoint);
@@ -29,6 +31,26 @@ namespace Cz.Project.Services
         {
             var foodPoints = new FoodPointContext().GetAll();
 
+            foreach (var foodPoint in foodPoints)
+            {
+                foodPoint.Menu = this.IncludeMenu(foodPoint.Id);
+                foodPoint.Orders = this.IncludeOrder(foodPoint.Id);
+                foodPoint.Tables = this.IncludeTable(foodPoint.Id);
+            }
+
+            return foodPoints;
+        }
+
+        public IEnumerable<FoodPoint> GetByUserKey(string userKey)
+        {
+            var user = new AdminUsersContext().GetByKey(userKey);
+            return GetByUserId(user.Id);
+        }
+
+        public IEnumerable<FoodPoint> GetByUserId(int userId)
+        {
+            var foodPoints = new FoodPointContext().GetByUserId(userId);
+            
             foreach (var foodPoint in foodPoints)
             {
                 foodPoint.Menu = this.IncludeMenu(foodPoint.Id);

@@ -33,7 +33,7 @@ namespace Cz.Project.UI.Forms
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new HomeForm());
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
@@ -112,6 +112,7 @@ namespace Cz.Project.UI.Forms
             else
             {
                 lblUserName.Text = Session.GetInstance().AdminUser.Name;
+                OpenChildForm(new HomeForm());
                 this.Show();
             }
         }

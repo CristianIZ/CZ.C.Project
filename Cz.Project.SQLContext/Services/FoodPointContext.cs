@@ -22,6 +22,20 @@ namespace Cz.Project.SQLContext.Services
             }
         }
 
+        public IList<FoodPoint> GetByUserId(int userId)
+        {
+            string query = $"SELECT * FROM [FoodPoints] WHERE [UserId] = @UserId";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("UserId", userId));
+
+                var table = DA.Read(query, sqlParameters);
+                return ReadFoodPoint(table);
+            }
+        }
+
         public IList<FoodPoint> GetByName(string foodPointName)
         {
             string query = $"SELECT * FROM [FoodPoints] WHERE [Name] LIKE @Name";
@@ -38,13 +52,14 @@ namespace Cz.Project.SQLContext.Services
 
         public int Add(FoodPoint foodPoint)
         {
-            string query = $"INSERT INTO [dbo].[FoodPoints] ([Name], [Key]) VALUES (@Name, @Key)";
+            string query = $"INSERT INTO [dbo].[FoodPoints] ([Name], [Key], [UserId]) VALUES (@Name, @Key, @UserId)";
 
             using (var DA = new SQLDataAccess())
             {
                 var sqlParameters = new ArrayList();
                 sqlParameters.Add(SqlHelper.CreateParameter("Name", foodPoint.Name));
                 sqlParameters.Add(SqlHelper.CreateParameter("Key", Guid.NewGuid()));
+                sqlParameters.Add(SqlHelper.CreateParameter("UserId", foodPoint.User.Id));
 
                 return DA.ExecuteQuery(query, sqlParameters);
             }

@@ -1,5 +1,6 @@
 ﻿using Cz.Project.Domain;
 using Cz.Project.Domain.Business;
+using Cz.Project.GenericServices.UserSession;
 using Cz.Project.Services;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,9 @@ namespace Cz.Project.UI.Forms
 
             this.lblTableQuantity.Text = "0";
 
-            this.cmbFoodPointName.DataSource = new FoodPointService().GetAll();
+            this.cmbFoodPointName.DataSource = new FoodPointService().GetByUserKey(Session.GetInstance().AdminUser.Key);
+
+            this.ProcessFoodPointSelection();
         }
 
         private void cmbFoodPointName_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,8 +91,9 @@ namespace Cz.Project.UI.Forms
                     this.btnAddFoodPoint.Enabled = true;
                     this.btnAddTable.Enabled = false;
                     this.btnDeleteTable.Enabled = false;
-                    this.grpMenu.Enabled = false;
                     this.lblTableQuantity.Text = "0";
+
+                    this.grpMenu.Enabled = false;
 
                     return;
                 }
@@ -110,6 +114,10 @@ namespace Cz.Project.UI.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                this.ProcessMenuSelection();
+            }
         }
 
         private void ProcessMenuSelection()
@@ -127,6 +135,7 @@ namespace Cz.Project.UI.Forms
                     this.btnDeleteMenu.Enabled = false;
                     this.grpSection.Enabled = false;
 
+
                     return;
                 }
 
@@ -140,6 +149,10 @@ namespace Cz.Project.UI.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.ProcessSectionSelection();
             }
         }
 
@@ -171,6 +184,10 @@ namespace Cz.Project.UI.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                this.ProcessDishSelection();
+            }
         }
 
         private void ProcessDishSelection()
@@ -201,14 +218,9 @@ namespace Cz.Project.UI.Forms
             try
             {
                 var fs = new FoodPointService();
-                fs.Add(cmbFoodPointName.Text);
+                fs.Add(cmbFoodPointName.Text, Session.GetInstance().AdminUser.Key);
 
-                var response = MessageBox.Show("Se agrego correctamente un nuevo restorant. ¿Desea refrescar la vista?", "Nuevos datos", MessageBoxButtons.YesNo);
-
-                if (response == DialogResult.Yes)
-                {
-                    this.Refresh();
-                }
+                this.RefresView();
             }
             catch (Exception ex)
             {
@@ -230,7 +242,7 @@ namespace Cz.Project.UI.Forms
 
                 if (response == DialogResult.Yes)
                 {
-                    this.Refresh();
+                    this.RefresView();
                 }
             }
             catch (Exception ex)
@@ -250,13 +262,19 @@ namespace Cz.Project.UI.Forms
 
                 if (response == DialogResult.Yes)
                 {
-                    this.Refresh();
+                    this.RefresView();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void RefresView()
+        {
+            this.cmbFoodPointName.DataSource = new FoodPointService().GetByUserKey(Session.GetInstance().AdminUser.Key);
+            ProcessFoodPointSelection();
         }
     }
 }

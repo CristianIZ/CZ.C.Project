@@ -2,6 +2,7 @@
 using Cz.Project.Domain;
 using Cz.Project.Domain.Business;
 using Cz.Project.Dto.Enums;
+using Cz.Project.SQLContext;
 using Cz.Project.SQLContext.Enums;
 using Cz.Project.SQLContext.Services;
 using System;
@@ -39,11 +40,29 @@ namespace Cz.Project.Services
             orderContext.Add(order);
         }
 
-        public IEnumerable<Order> GetByUserId(int adminUserId) 
+        public IEnumerable<Order> GetByUserId(int adminUserId)
         {
             var orders = new OrderContext().GetByAdminUserId(adminUserId);
             this.IncludeOrderStatus(orders);
             this.IncludeDishOrder(orders);
+
+            return orders;
+        }
+
+        public IEnumerable<Order> GetByUserKeyOwner(string adminUserKey)
+        {
+            var user = new AdminUsersContext().GetByKey(adminUserKey);
+            var foodPointsOwner = new FoodPointContext().GetByUserId(user.Id);
+
+            var orders = new List<Order>();
+
+            foreach (var foodPoint in foodPointsOwner)
+            {
+                foodPoint.Orders = this.GetByFoodPointId(foodPoint.Id).ToList();
+
+                if (foodPoint.Orders != null)
+                    orders.AddRange(foodPoint.Orders);
+            }
 
             return orders;
         }
