@@ -9,6 +9,8 @@ using Cz.Project.GenericServices.Helpers;
 using Cz.Project.SQLContext;
 using Cz.Project.SQLContext.Helpers;
 using System;
+using System.ComponentModel;
+using System.Linq;
 
 namespace Cz.Project.GenericServices.UserSession
 {
@@ -94,6 +96,21 @@ namespace Cz.Project.GenericServices.UserSession
                     throw new CustomException("No existe niguna sesion iniciada");
                 }
             }
+        }
+
+        public static bool HasAccess(int licenseCode)
+        {
+            var session = Session.GetInstance();
+            var licenses = new AdminUserLicenseService().GetLicensesByUser(session.AdminUser.Key);
+
+            if (licenses != null &&
+                licenses.Licenses.Count != 0 &&
+                licenses.Licenses.Where(l => l.LicenseCode == licenseCode).Count() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

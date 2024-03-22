@@ -107,7 +107,7 @@
             Controls.Add(label1);
             Controls.Add(dgvOrders);
             Name = "OrderManagementForm";
-            Text = "OrderManagementForm";
+            Text = "Gestion de Ordenes";
             Load += OrderManagementForm_Load;
             Shown += OrderManagementForm_Shown;
             ((System.ComponentModel.ISupportInitialize)dgvOrders).EndInit();

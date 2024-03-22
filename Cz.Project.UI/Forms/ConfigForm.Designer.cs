@@ -58,7 +58,7 @@
             Controls.Add(cmbLanguaje);
             Controls.Add(label1);
             Name = "ConfigForm";
-            Text = "ConfigForm";
+            Text = "Configuracion";
             Load += ConfigForm_Load;
             ResumeLayout(false);
             PerformLayout();

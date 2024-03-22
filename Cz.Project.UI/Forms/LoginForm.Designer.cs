@@ -28,84 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.txtUserPassword = new System.Windows.Forms.TextBox();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.groupBox1.SuspendLayout();
-            this.SuspendLayout();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            label2 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            btnSubmit = new System.Windows.Forms.Button();
+            txtUserPassword = new System.Windows.Forms.TextBox();
+            txtUserName = new System.Windows.Forms.TextBox();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnSubmit);
-            this.groupBox1.Controls.Add(this.txtUserPassword);
-            this.groupBox1.Controls.Add(this.txtUserName);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 113);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Login";
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(btnSubmit);
+            groupBox1.Controls.Add(txtUserPassword);
+            groupBox1.Controls.Add(txtUserName);
+            groupBox1.Location = new System.Drawing.Point(12, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(200, 113);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Login";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Contraseña";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(6, 55);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(67, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Contraseña";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Usuario";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(6, 26);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(47, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Usuario";
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(119, 81);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 2;
-            this.btnSubmit.Text = "Aceptar";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            btnSubmit.Location = new System.Drawing.Point(119, 81);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new System.Drawing.Size(75, 23);
+            btnSubmit.TabIndex = 2;
+            btnSubmit.Text = "Aceptar";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // txtUserPassword
             // 
-            this.txtUserPassword.Location = new System.Drawing.Point(94, 52);
-            this.txtUserPassword.Name = "txtUserPassword";
-            this.txtUserPassword.Size = new System.Drawing.Size(100, 23);
-            this.txtUserPassword.TabIndex = 1;
+            txtUserPassword.Location = new System.Drawing.Point(94, 52);
+            txtUserPassword.Name = "txtUserPassword";
+            txtUserPassword.Size = new System.Drawing.Size(100, 23);
+            txtUserPassword.TabIndex = 1;
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(94, 23);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(100, 23);
-            this.txtUserName.TabIndex = 0;
+            txtUserName.Location = new System.Drawing.Point(94, 23);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new System.Drawing.Size(100, 23);
+            txtUserName.TabIndex = 0;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(220, 132);
-            this.Controls.Add(this.groupBox1);
-            this.Name = "LoginForm";
-            this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(220, 132);
+            Controls.Add(groupBox1);
+            Name = "LoginForm";
+            Text = "Login";
+            Load += LoginForm_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

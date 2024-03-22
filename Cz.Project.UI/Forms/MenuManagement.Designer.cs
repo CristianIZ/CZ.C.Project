@@ -46,9 +46,6 @@
             grpLocal = new System.Windows.Forms.GroupBox();
             grpMenu = new System.Windows.Forms.GroupBox();
             btnDeleteMenu = new System.Windows.Forms.Button();
-            btnUpdateSectionPosition = new System.Windows.Forms.Button();
-            numSectionPosition = new System.Windows.Forms.NumericUpDown();
-            label8 = new System.Windows.Forms.Label();
             btnDeleteSection = new System.Windows.Forms.Button();
             btnAddSection = new System.Windows.Forms.Button();
             cmbSectionName = new System.Windows.Forms.ComboBox();
@@ -59,7 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)numDishPrice).BeginInit();
             grpLocal.SuspendLayout();
             grpMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numSectionPosition).BeginInit();
             grpDish.SuspendLayout();
             grpSection.SuspendLayout();
             SuspendLayout();
@@ -155,6 +151,7 @@
             btnDeleteTable.TabIndex = 13;
             btnDeleteTable.Text = "Eliminar mesa";
             btnDeleteTable.UseVisualStyleBackColor = true;
+            btnDeleteTable.Click += btnDeleteTable_Click;
             // 
             // lblTableQuantity
             // 
@@ -185,6 +182,7 @@
             btnAddDish.TabIndex = 16;
             btnAddDish.Text = "Agregar";
             btnAddDish.UseVisualStyleBackColor = true;
+            btnAddDish.Click += btnAddDish_Click;
             // 
             // numDishPrice
             // 
@@ -253,33 +251,6 @@
             btnDeleteMenu.Text = "Eliminar";
             btnDeleteMenu.UseVisualStyleBackColor = true;
             // 
-            // btnUpdateSectionPosition
-            // 
-            btnUpdateSectionPosition.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnUpdateSectionPosition.Location = new System.Drawing.Point(216, 94);
-            btnUpdateSectionPosition.Name = "btnUpdateSectionPosition";
-            btnUpdateSectionPosition.Size = new System.Drawing.Size(112, 23);
-            btnUpdateSectionPosition.TabIndex = 23;
-            btnUpdateSectionPosition.Text = "Editar posicion";
-            btnUpdateSectionPosition.UseVisualStyleBackColor = true;
-            // 
-            // numSectionPosition
-            // 
-            numSectionPosition.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            numSectionPosition.Location = new System.Drawing.Point(64, 61);
-            numSectionPosition.Name = "numSectionPosition";
-            numSectionPosition.Size = new System.Drawing.Size(146, 23);
-            numSectionPosition.TabIndex = 22;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(6, 63);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(52, 15);
-            label8.TabIndex = 21;
-            label8.Text = "Posicion";
-            // 
             // btnDeleteSection
             // 
             btnDeleteSection.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
@@ -289,6 +260,7 @@
             btnDeleteSection.TabIndex = 20;
             btnDeleteSection.Text = "Eliminar";
             btnDeleteSection.UseVisualStyleBackColor = true;
+            btnDeleteSection.Click += btnDeleteSection_Click;
             // 
             // btnAddSection
             // 
@@ -299,6 +271,7 @@
             btnAddSection.TabIndex = 19;
             btnAddSection.Text = "Agregar";
             btnAddSection.UseVisualStyleBackColor = true;
+            btnAddSection.Click += btnAddSection_Click;
             // 
             // cmbSectionName
             // 
@@ -329,7 +302,7 @@
             grpDish.Controls.Add(btnAddDish);
             grpDish.Controls.Add(label7);
             grpDish.Controls.Add(numDishPrice);
-            grpDish.Location = new System.Drawing.Point(12, 361);
+            grpDish.Location = new System.Drawing.Point(12, 321);
             grpDish.Name = "grpDish";
             grpDish.Size = new System.Drawing.Size(452, 103);
             grpDish.TabIndex = 22;
@@ -345,20 +318,18 @@
             btnDeleteDish.TabIndex = 20;
             btnDeleteDish.Text = "Eliminar";
             btnDeleteDish.UseVisualStyleBackColor = true;
+            btnDeleteDish.Click += btnDeleteDish_Click;
             // 
             // grpSection
             // 
             grpSection.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            grpSection.Controls.Add(btnUpdateSectionPosition);
             grpSection.Controls.Add(cmbSectionName);
-            grpSection.Controls.Add(numSectionPosition);
             grpSection.Controls.Add(label3);
-            grpSection.Controls.Add(label8);
             grpSection.Controls.Add(btnAddSection);
             grpSection.Controls.Add(btnDeleteSection);
             grpSection.Location = new System.Drawing.Point(12, 221);
             grpSection.Name = "grpSection";
-            grpSection.Size = new System.Drawing.Size(452, 134);
+            grpSection.Size = new System.Drawing.Size(452, 94);
             grpSection.TabIndex = 23;
             grpSection.TabStop = false;
             grpSection.Text = "Section";
@@ -367,20 +338,19 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(473, 478);
+            ClientSize = new System.Drawing.Size(473, 432);
             Controls.Add(grpSection);
             Controls.Add(grpDish);
             Controls.Add(grpMenu);
             Controls.Add(grpLocal);
             Name = "MenuManagement";
-            Text = "MenuManagement";
+            Text = "Gestion de Menu";
             Load += MenuManagement_Load;
             ((System.ComponentModel.ISupportInitialize)numDishPrice).EndInit();
             grpLocal.ResumeLayout(false);
             grpLocal.PerformLayout();
             grpMenu.ResumeLayout(false);
             grpMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numSectionPosition).EndInit();
             grpDish.ResumeLayout(false);
             grpDish.PerformLayout();
             grpSection.ResumeLayout(false);
@@ -413,10 +383,7 @@
         private System.Windows.Forms.Button btnDeleteSection;
         private System.Windows.Forms.Button btnAddSection;
         private System.Windows.Forms.Button btnDeleteMenu;
-        private System.Windows.Forms.NumericUpDown numSectionPosition;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnDeleteDish;
-        private System.Windows.Forms.Button btnUpdateSectionPosition;
         private System.Windows.Forms.GroupBox grpSection;
         private System.Windows.Forms.Label lblTableQuantity;
     }

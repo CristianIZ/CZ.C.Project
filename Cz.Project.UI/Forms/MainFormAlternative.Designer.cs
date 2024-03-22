@@ -654,7 +654,7 @@
             Controls.Add(panel1);
             MinimumSize = new System.Drawing.Size(800, 600);
             Name = "MainFormAlternative";
-            Text = "Restapp";
+            Text = "ServiceBar";
             Load += MainFormAlternative_Load;
             panel1.ResumeLayout(false);
             panel17.ResumeLayout(false);

@@ -145,6 +145,10 @@ namespace Cz.Project.UI.Forms
             dgvOrders.DataSource = null;
             dgvOrders.DataSource = new OrderService().GetByUserKeyOwner(sessionUser.Key);
             this.colorDgv();
+
+            if (dgvOrders.SelectedCells.Count == 0)
+                return;
+
             this.ButtonConfiguration(GetSelectedOrder());
         }
 

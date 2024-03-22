@@ -27,6 +27,12 @@ namespace Cz.Project.Services
             return sections;
         }
 
+        public void DeleteSection(Section section)
+        {
+            var sectionContext = new SectionContext();
+            sectionContext.DeleteSection(section.Id);
+        }
+
         public void CreateDefaultSection(int menuId)
         {
             var section1 = new Section()

@@ -134,7 +134,7 @@
             Controls.Add(label1);
             Controls.Add(treeviewNewFamily);
             Name = "FamilyLicenseForm";
-            Text = "FamilyLicenseForm";
+            Text = "Licencias";
             Load += FamilyLicenseForm_Load;
             ResumeLayout(false);
             PerformLayout();

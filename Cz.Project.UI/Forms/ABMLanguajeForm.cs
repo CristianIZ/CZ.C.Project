@@ -91,6 +91,7 @@ namespace Cz.Project.UI
              var tService = new TranslationService();
             tService.AddWord((LanguajeDto)cmbSourceLanguaje.SelectedItem, (LanguajeDto)cmbTargetLanguaje.SelectedItem, (WordDto)cmbWord.SelectedItem, txtTranslation.Text.Trim());
 
+            MessageBox.Show("Palabra agregada exitosamente");
         }
 
         public void InitializeCombobox()

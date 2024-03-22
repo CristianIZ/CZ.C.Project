@@ -30,6 +30,12 @@ namespace Cz.Project.Services
             return dishes;
         }
 
+        public void DeleteDish(Dish dish)
+        {
+            var dishContext = new DishContext();
+            dishContext.DeleteDish(dish.Id);
+        }
+
         public void CreateDefaultStarters(int sectionId)
         {
             var dish1 = new Dish()

@@ -193,7 +193,7 @@
             Controls.Add(lstOrderItems);
             Controls.Add(label1);
             Name = "OrderMonitorForm";
-            Text = "OrderMonitorForm";
+            Text = "Mis Pedidos";
             Load += OrderMonitorForm_Load;
             ResumeLayout(false);
             PerformLayout();

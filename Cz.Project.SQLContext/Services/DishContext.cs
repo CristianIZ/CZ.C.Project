@@ -12,7 +12,7 @@ namespace Cz.Project.SQLContext.Services
     {
         public IList<Dish> GetAll()
         {
-            string query = $"SELECT * FROM [Dishes]";
+            string query = $"SELECT * FROM [Dishes] AND IsDeleted != 1";
 
             using (var DA = new SQLDataAccess())
             {
@@ -23,13 +23,14 @@ namespace Cz.Project.SQLContext.Services
 
         public int Add(Dish dish, int sectionId)
         {
-            string query = $"INSERT INTO [dbo].[Dishes] ([Name], [Description], [SectionId]) VALUES (@Name, @Description, @SectionId)";
+            string query = $"INSERT INTO [dbo].[Dishes] ([Name], [Description], [Price], [SectionId]) VALUES (@Name, @Description, @Price, @SectionId)";
 
             using (var DA = new SQLDataAccess())
             {
                 var sqlParameters = new ArrayList();
                 sqlParameters.Add(SqlHelper.CreateParameter("Name", dish.Name));
                 sqlParameters.Add(SqlHelper.CreateParameter("Description", dish.Description != null ? dish.Description : string.Empty));
+                sqlParameters.Add(SqlHelper.CreateParameter("Price", dish.Price));
                 sqlParameters.Add(SqlHelper.CreateParameter("SectionId", sectionId));
 
                 return DA.ExecuteQuery(query, sqlParameters);
@@ -38,7 +39,7 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<Dish> GetBySectionId(int sectionId)
         {
-            string query = $"SELECT * FROM [Dishes] WHERE SectionId = @SectionId";
+            string query = $"SELECT * FROM [Dishes] WHERE SectionId = @SectionId AND IsDeleted != 1";
 
             using (var DA = new SQLDataAccess())
             {
@@ -61,6 +62,19 @@ namespace Cz.Project.SQLContext.Services
 
                 var dish = DA.Read(query, sqlParameters);
                 return ReadDish(dish).First();
+            }
+        }
+
+        public void DeleteDish(int dishId)
+        {
+            string query = $"UPDATE [Dishes] SET IsDeleted = 1 WHERE Id = @Id";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Id", dishId));
+
+                var dish = DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

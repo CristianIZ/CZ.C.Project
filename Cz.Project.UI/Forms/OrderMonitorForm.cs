@@ -52,7 +52,7 @@ namespace Cz.Project.UI.Forms
 
             foreach (var dishOrder in order.DishOrders)
             {
-                var dish = new DishService().GetById(dishOrder.Id);
+                var dish = new DishService().GetById(dishOrder.DishId);
                 dishes.Add(dish);
             }
 

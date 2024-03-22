@@ -119,7 +119,7 @@
             Controls.Add(txtLicenseName);
             Controls.Add(licensesTreeView);
             Name = "LicenseForm";
-            Text = "LicenseForm";
+            Text = "Licencias";
             Load += LicenseForm_Load;
             ResumeLayout(false);
             PerformLayout();

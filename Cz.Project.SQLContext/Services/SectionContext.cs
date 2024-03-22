@@ -12,7 +12,7 @@ namespace Cz.Project.SQLContext.Services
     {
         public IList<Section> GetAll()
         {
-            string query = $"SELECT * FROM [Sections]";
+            string query = $"SELECT * FROM [Sections] AND [IsDeleted] = 0";
 
             using (var DA = new SQLDataAccess())
             {
@@ -39,7 +39,7 @@ namespace Cz.Project.SQLContext.Services
 
         public IList<Section> GetByMenuId(int menuId)
         {
-            string query = $"SELECT * FROM [Sections] WHERE MenuId = @MenuId";
+            string query = $"SELECT * FROM [Sections] WHERE MenuId = @MenuId AND [IsDeleted] = 0";
 
             using (var DA = new SQLDataAccess())
             {
@@ -53,7 +53,7 @@ namespace Cz.Project.SQLContext.Services
 
         public Section GetById(int id)
         {
-            string query = $"SELECT * FROM [Sections] WHERE Id = @Id";
+            string query = $"SELECT * FROM [Sections] WHERE Id = @Id AND [IsDeleted] = 0";
 
             using (var DA = new SQLDataAccess())
             {
@@ -87,6 +87,19 @@ namespace Cz.Project.SQLContext.Services
                 Name = dataRow["Name"].ToString(),
                 Position = Convert.ToInt32(dataRow["Position"]),
             };
+        }
+
+        public void DeleteSection(int sectionId)
+        {
+            string query = $"UPDATE [Sections] SET IsDeleted = 1 WHERE Id = @Id; UPDATE [Dishes] SET IsDeleted = 1 WHERE SectionId = @Id";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("Id", sectionId));
+
+                var dish = DA.ExecuteQuery(query, sqlParameters);
+            }
         }
     }
 }

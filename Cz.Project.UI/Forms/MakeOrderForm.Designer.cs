@@ -50,7 +50,7 @@
             treeViewMenu.Name = "treeViewMenu";
             treeViewMenu.Size = new System.Drawing.Size(526, 398);
             treeViewMenu.TabIndex = 0;
-            treeViewMenu.AfterCheck += treeViewMenu_AfterCheck;
+            treeViewMenu.NodeMouseClick += treeViewMenu_NodeMouseClick;
             // 
             // label1
             // 
@@ -175,7 +175,7 @@
             Controls.Add(label1);
             Controls.Add(treeViewMenu);
             Name = "MakeOrderForm";
-            Text = "MakeOrderForm";
+            Text = "Realizar Pedido";
             Load += MakeOrderForm_Load;
             ((System.ComponentModel.ISupportInitialize)qrPic).EndInit();
             ResumeLayout(false);

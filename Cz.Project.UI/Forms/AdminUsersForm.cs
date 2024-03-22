@@ -3,6 +3,7 @@ using Cz.Project.GenericServices;
 using System;
 using System.Windows.Forms;
 using Cz.Project.Abstraction.Exceptions;
+using Cz.Project.GenericServices.UserSession;
 
 namespace Cz.Project.UI.Forms
 {
@@ -52,6 +53,12 @@ namespace Cz.Project.UI.Forms
                     throw new CustomException("No hay items seleccionados");
 
                 var selectedUser = (AdminUserDto)lstUsers.SelectedItems[0];
+
+                if (selectedUser.Key == Session.GetInstance().AdminUser.Key)
+                {
+                    MessageBox.Show("No se puede eliminar el usuario porque esta siendo usado");
+                    return;
+                }
 
                 var sqlUserContext = new UserService();
                 sqlUserContext.Delete(selectedUser);

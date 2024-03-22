@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Cz.Project.SQLContext.Services
 {
@@ -33,6 +34,19 @@ namespace Cz.Project.SQLContext.Services
                 sqlParameters.Add(SqlHelper.CreateParameter("FoodPointId", table.FoodPointId));
 
                 return DA.ExecuteQuery(query, sqlParameters);
+            }
+        }
+
+        public void Delete(Guid qr)
+        {
+            string query = $"DELETE FROM [Tables] WHERE QR = @QR";
+
+            using (var DA = new SQLDataAccess())
+            {
+                var sqlParameters = new ArrayList();
+                sqlParameters.Add(SqlHelper.CreateParameter("QR", qr));
+
+                var dish = DA.ExecuteQuery(query, sqlParameters);
             }
         }
 

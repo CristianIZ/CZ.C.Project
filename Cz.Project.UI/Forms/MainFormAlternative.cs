@@ -97,6 +97,24 @@ namespace Cz.Project.UI.Forms
 
         private void btnMenuManagement_Click(object sender, EventArgs e)
         {
+            if (!Session.HasAccess(4))
+            {
+                MessageBox.Show("No tiene permisos para acceder a esta vista");
+                return;
+            }
+
+            if (!Session.HasAccess(5))
+            {
+                MessageBox.Show("No tiene permisos para acceder a esta vista");
+                return;
+            }
+
+            if (!Session.HasAccess(6))
+            {
+                MessageBox.Show("No tiene permisos para acceder a esta vista");
+                return;
+            }
+
             OpenChildForm(new MenuManagement());
         }
 
@@ -128,18 +146,25 @@ namespace Cz.Project.UI.Forms
 
         private void OpenChildForm(Form childForm)
         {
-            if (ActiveForm != null)
-                ActiveForm.Close();
+            try
+            {
+                if (ActiveForm != null)
+                    ActiveForm.Close();
 
-            ActiveForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.pnlFormReplace.Controls.Add(childForm);
-            this.pnlFormReplace.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-            lblTitle.Text = childForm.Text;
+                ActiveForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                this.pnlFormReplace.Controls.Add(childForm);
+                this.pnlFormReplace.Tag = childForm;
+                childForm.BringToFront();
+                childForm.Show();
+                lblTitle.Text = childForm.Text;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Update(LanguajeDto languaje)

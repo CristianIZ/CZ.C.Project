@@ -188,7 +188,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "ABMLanguajeForm";
-            Text = "ABMLanguajeForm";
+            Text = "Nuevo Lenguaje";
             Load += ABMLanguajeForm_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

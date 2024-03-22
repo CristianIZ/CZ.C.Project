@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cz.Project.Business\Cz.Project.Business.csproj" />
     <ProjectReference Include="..\Cz.Project.Domain\Cz.Project.Domain.csproj" />
     <ProjectReference Include="..\Cz.Project.Dto\Cz.Project.Dto.csproj" />
     <ProjectReference Include="..\Cz.Project.GenericServices\Cz.Project.GenericServices.csproj" />

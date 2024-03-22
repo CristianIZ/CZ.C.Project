@@ -129,7 +129,7 @@
             Controls.Add(label1);
             Controls.Add(cmbUsers);
             Name = "UserLicenseForm";
-            Text = "UserLicenseForm";
+            Text = "Licencias de usuarios";
             Load += UserLicenseForm_Load;
             ResumeLayout(false);
             PerformLayout();

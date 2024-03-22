@@ -77,8 +77,22 @@ namespace Cz.Project.UI.Forms
         {
             try
             {
-                var dishes = this.GetSelectedDishes();
                 var selectedTable = (Table)this.cmbTables.SelectedItem;
+
+                if (selectedTable == null)
+                {
+                    MessageBox.Show("Debe seleccionar una mesa para realizar un pedido");
+                    return;
+                }
+
+                var dishes = this.GetSelectedDishes();
+
+                if (dishes.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar al menos un elemento para pedir");
+                    return;
+                }
+
                 var foodPoint = new FoodPointService().GetById(selectedTable.FoodPointId);
                 var status = new StatusService().GetByCode(StatusCodeEnum.InConfirmationProcess);
 
@@ -118,7 +132,6 @@ namespace Cz.Project.UI.Forms
             return dishes;
         }
 
-
         private void PopulateTreeview(Menu menu)
         {
             this.treeViewMenu.Nodes.Clear();
@@ -145,7 +158,7 @@ namespace Cz.Project.UI.Forms
             }
         }
 
-        private void treeViewMenu_AfterCheck(object sender, TreeViewEventArgs e)
+        private void treeViewMenu_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             var dishes = this.GetSelectedDishes();
             lblTotalAmount.Text = dishes.Sum(d => d.Price).ToString();

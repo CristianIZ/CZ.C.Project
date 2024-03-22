@@ -22,5 +22,10 @@ namespace Cz.Project.Services
         {
             return new TableContext().GetAll();
         }
+
+        public void DeleteTable(Guid qr)
+        {
+            new TableContext().Delete(qr);
+        }
     }
 }

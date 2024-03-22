@@ -18,12 +18,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.Services", "Cz.P
 		{EE6F8941-9B0E-445A-9EE8-CB0B6D97AA5A} = {EE6F8941-9B0E-445A-9EE8-CB0B6D97AA5A}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.Business", "Cz.Project.Business\Cz.Project.Business.csproj", "{6DC8505C-1470-48F6-8A98-BD2E675DEE0D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{4D6B4CB1-6888-403B-96DF-688B6EB48219} = {4D6B4CB1-6888-403B-96DF-688B6EB48219}
-		{74ECE065-E631-49F2-B863-1591545B2DCE} = {74ECE065-E631-49F2-B863-1591545B2DCE}
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.Abstraction", "Cz.Project.Abstraction\Cz.Project.Abstraction.csproj", "{A230EE39-2178-4D0B-92CC-136F4523720C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Context", "Context", "{B724452F-E7E9-42CE-8CD1-AF0CCAD9A006}"
@@ -36,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.Project.GenericServices"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security Helper Program", "Security Helper Program", "{5CD4313E-95F6-49D0-826A-7D2032E310AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cz.SecurityColumGenerator", "Cz.SecurityColumGenerator\Cz.SecurityColumGenerator.csproj", "{391D4A7D-0E37-441A-82FB-07D6FB23833D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cz.SecurityColumGenerator", "Cz.SecurityColumGenerator\Cz.SecurityColumGenerator.csproj", "{391D4A7D-0E37-441A-82FB-07D6FB23833D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +50,6 @@ Global
 		{4D6B4CB1-6888-403B-96DF-688B6EB48219}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D6B4CB1-6888-403B-96DF-688B6EB48219}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D6B4CB1-6888-403B-96DF-688B6EB48219}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6DC8505C-1470-48F6-8A98-BD2E675DEE0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DC8505C-1470-48F6-8A98-BD2E675DEE0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DC8505C-1470-48F6-8A98-BD2E675DEE0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DC8505C-1470-48F6-8A98-BD2E675DEE0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A230EE39-2178-4D0B-92CC-136F4523720C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A230EE39-2178-4D0B-92CC-136F4523720C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A230EE39-2178-4D0B-92CC-136F4523720C}.Release|Any CPU.ActiveCfg = Release|Any CPU

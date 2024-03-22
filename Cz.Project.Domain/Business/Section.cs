@@ -11,6 +11,7 @@ namespace Cz.Project.Domain.Business
         public string Name { get; set; }
         public string Description { get; set; }
         public int Position { get; set; }
+        public bool IsDeleted { get; set; }
         public IList<Dish> Dishes { get; set; }
 
         public override string ToString()

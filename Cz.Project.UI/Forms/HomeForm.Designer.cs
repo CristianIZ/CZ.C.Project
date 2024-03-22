@@ -104,7 +104,6 @@
             Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(4);
             Name = "HomeForm";
-            Text = "HomeForm";
             ResumeLayout(false);
             PerformLayout();
         }
