@@ -109,6 +109,8 @@ namespace Cz.Project.UI.Forms
 
                 new OrderService().Add(order, dishes);
                 lblStatus.Text = "In confirmation process";
+
+                MessageBox.Show("Orden realizada con exito");
             }
             catch (Exception ex)
             {
