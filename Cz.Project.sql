@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Cz.Project]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Database [Cz.Project]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE DATABASE [Cz.Project]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +84,7 @@ ALTER DATABASE [Cz.Project] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANU
 GO
 USE [Cz.Project]
 GO
-/****** Object:  Table [dbo].[AdminUserHistorical]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[AdminUserHistorical]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -102,7 +102,7 @@ CREATE TABLE [dbo].[AdminUserHistorical](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AdminUserLicenses]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[AdminUserLicenses]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -117,7 +117,7 @@ CREATE TABLE [dbo].[AdminUserLicenses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AdminUsers]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[AdminUsers]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,7 +134,7 @@ CREATE TABLE [dbo].[AdminUsers](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Bitacoras]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Bitacoras]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,7 +151,7 @@ CREATE TABLE [dbo].[Bitacoras](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DigitColumnVerifications]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[DigitColumnVerifications]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -167,7 +167,7 @@ CREATE TABLE [dbo].[DigitColumnVerifications](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Dishes]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Dishes]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,13 +178,14 @@ CREATE TABLE [dbo].[Dishes](
 	[Description] [nvarchar](max) NULL,
 	[SectionId] [int] NOT NULL,
 	[Price] [float] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
  CONSTRAINT [PK_Dishes] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DishOrders]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[DishOrders]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,7 +200,7 @@ CREATE TABLE [dbo].[DishOrders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EventTypes]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[EventTypes]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -214,7 +215,7 @@ CREATE TABLE [dbo].[EventTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FamilyLicenses]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[FamilyLicenses]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -228,7 +229,7 @@ CREATE TABLE [dbo].[FamilyLicenses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[FoodPoints]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[FoodPoints]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -244,7 +245,7 @@ CREATE TABLE [dbo].[FoodPoints](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Languajes]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Languajes]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -259,7 +260,7 @@ CREATE TABLE [dbo].[Languajes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LicenseLicense]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[LicenseLicense]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +272,7 @@ CREATE TABLE [dbo].[LicenseLicense](
 	[FamilyLicenseId] [int] NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Licenses]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Licenses]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -286,7 +287,7 @@ CREATE TABLE [dbo].[Licenses](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Logs]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Logs]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -302,7 +303,7 @@ CREATE TABLE [dbo].[Logs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LogTypes]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[LogTypes]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -317,7 +318,7 @@ CREATE TABLE [dbo].[LogTypes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Menus]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Menus]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -326,13 +327,14 @@ CREATE TABLE [dbo].[Menus](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Description] [nvarchar](max) NULL,
 	[FoodPointId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
  CONSTRAINT [PK_Menus] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -355,7 +357,7 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Sections]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Sections]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -366,13 +368,14 @@ CREATE TABLE [dbo].[Sections](
 	[Description] [nvarchar](max) NULL,
 	[Position] [int] NOT NULL,
 	[MenuId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
  CONSTRAINT [PK_Sections] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Status]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Status]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -387,7 +390,7 @@ CREATE TABLE [dbo].[Status](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tables]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Tables]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -402,7 +405,7 @@ CREATE TABLE [dbo].[Tables](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Words]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Table [dbo].[Words]    Script Date: 22/3/2024 18:35:40 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -426,12 +429,6 @@ INSERT [dbo].[AdminUsers] ([Id], [Name], [Password], [Key], [CheckDigit]) VALUES
 GO
 SET IDENTITY_INSERT [dbo].[AdminUsers] OFF
 GO
-SET IDENTITY_INSERT [dbo].[Bitacoras] ON 
-GO
-INSERT [dbo].[Bitacoras] ([Id], [TypeId], [Text], [UserId], [Date]) VALUES (1, 1, N'El usuario Admin inicio sesion', 1, CAST(N'2024-03-19T12:32:12.3400000' AS DateTime2))
-GO
-SET IDENTITY_INSERT [dbo].[Bitacoras] OFF
-GO
 SET IDENTITY_INSERT [dbo].[DigitColumnVerifications] ON 
 GO
 INSERT [dbo].[DigitColumnVerifications] ([Id], [Table], [Column], [VerificationDigit]) VALUES (1, N'AdminUsers', N'Name', N'U2n6xCxzuj4=')
@@ -446,37 +443,37 @@ SET IDENTITY_INSERT [dbo].[DigitColumnVerifications] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Dishes] ON 
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (1, N'Carne al horno', N'Carne al horno con agregado de papas al horno', 1, 2916)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (1, N'Carne al horno', N'Carne al horno con agregado de papas al horno', 1, 2866, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (2, N'Hamburguesa con queso', N'Carne, queso, lechuga', 1, 204)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (2, N'Hamburguesa con queso', N'Carne, queso, lechuga', 1, 9245, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (3, N'Fideos con tuco', N'Fideos caseros con tuco', 2, 1792)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (3, N'Fideos con tuco', N'Fideos caseros con tuco', 2, 2235, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (4, N'Coca cola', N'Clasica bebida adictiva', 3, 717)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (4, N'Coca cola', N'Clasica bebida adictiva', 3, 84, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (5, N'Pepsi', N'Otra clasica bebida adictiva', 3, 4577)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (5, N'Pepsi', N'Otra clasica bebida adictiva', 3, 4395, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (6, N'Carne al horno', N'Carne al horno con agregado de papas al horno', 4, 4800)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (6, N'Carne al horno', N'Carne al horno con agregado de papas al horno', 4, 2426, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (7, N'Empanad de carne', N'Empanada de carne al horno sin papas', 4, 3717)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (7, N'Empanad de carne', N'Empanada de carne al horno sin papas', 4, 3429, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (8, N'Fideos con albondingas', N'Fideos con tuco y albondigas', 5, 5828)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (8, N'Fideos con albondingas', N'Fideos con tuco y albondigas', 5, 2170, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (9, N'Sorrentinos', N'Con salsa blanca', 6, 2402)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (9, N'Sorrentinos', N'Con salsa blanca', 6, 4320, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (10, N'Asado', N'A la parrilla', 6, 9103)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (10, N'Asado', N'A la parrilla', 6, 9736, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (11, N'Churrasco', N'Carne a la plancha', 7, 4679)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (11, N'Churrasco', N'Carne a la plancha', 7, 3061, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (12, N'Ñoquis', N'Con salsa mixta', 7, 6348)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (12, N'Ñoquis', N'Con salsa mixta', 7, 2816, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (13, N'Costillas de cerdo', N'Recien extraidas de dicho animal', 8, 8843)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (13, N'Costillas de cerdo', N'Recien extraidas de dicho animal', 8, 3939, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (14, N'Milanesa', N'Tipica milanesa Argentina', 8, 6976)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (14, N'Milanesa', N'Tipica milanesa Argentina', 8, 7687, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (15, N'Ravioles', N'De verdura como le gustan a mi amigo el tano', 9, 3263)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (15, N'Ravioles', N'De verdura como le gustan a mi amigo el tano', 9, 4477, 0)
 GO
-INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price]) VALUES (16, N'Canelones', N'Con verdura o de jamon y queso', 9, 5163)
+INSERT [dbo].[Dishes] ([Id], [Name], [Description], [SectionId], [Price], [IsDeleted]) VALUES (16, N'Canelones', N'Con verdura o de jamon y queso', 9, 4721, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Dishes] OFF
 GO
@@ -502,13 +499,13 @@ SET IDENTITY_INSERT [dbo].[FamilyLicenses] OFF
 GO
 SET IDENTITY_INSERT [dbo].[FoodPoints] ON 
 GO
-INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (1, N'Barba roja', N'31C163A7-0A73-45C3-922A-09B4F3A53365', 1)
+INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (1, N'Barba roja', N'F2455280-F173-49C5-9527-8BC7C4406D8C', 1)
 GO
-INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (2, N'Checka', N'A868C9D0-6ED7-40CE-B290-0C693009BDF5', 1)
+INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (2, N'Checka', N'B69D00D0-FE61-4933-B6EE-D0117A768021', 1)
 GO
-INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (3, N'MC Donald', N'D633DC80-EF1A-4769-9B0B-4ED972E982C9', 1)
+INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (3, N'MC Donald', N'E2FFEA28-C917-4DEA-B627-CA172B82ACD8', 1)
 GO
-INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (4, N'Burguer King', N'AFACC120-1152-4241-BB8E-D9D01CC5E976', 1)
+INSERT [dbo].[FoodPoints] ([Id], [Name], [Key], [UserId]) VALUES (4, N'Burguer King', N'69A4A5C1-960C-454D-8135-20F6314F806E', 1)
 GO
 SET IDENTITY_INSERT [dbo].[FoodPoints] OFF
 GO
@@ -568,14 +565,6 @@ INSERT [dbo].[Licenses] ([Id], [Name], [Code]) VALUES (10, N'Close time', 10)
 GO
 SET IDENTITY_INSERT [dbo].[Licenses] OFF
 GO
-SET IDENTITY_INSERT [dbo].[Logs] ON 
-GO
-INSERT [dbo].[Logs] ([Id], [TypeId], [Message], [Date]) VALUES (1, 1, N'Se esta intentando iniciar sesion con el usuario: Admin', CAST(N'2024-03-19T12:32:12.2633333' AS DateTime2))
-GO
-INSERT [dbo].[Logs] ([Id], [TypeId], [Message], [Date]) VALUES (2, 1, N'Usuario Admin Key: 27b2feeb-71de-4994-8e10-e22f867ce6d1 Inicio sesion', CAST(N'2024-03-19T12:32:12.3333333' AS DateTime2))
-GO
-SET IDENTITY_INSERT [dbo].[Logs] OFF
-GO
 SET IDENTITY_INSERT [dbo].[LogTypes] ON 
 GO
 INSERT [dbo].[LogTypes] ([Id], [Code], [Name]) VALUES (1, 1, N'Info')
@@ -588,35 +577,35 @@ SET IDENTITY_INSERT [dbo].[LogTypes] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Menus] ON 
 GO
-INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId]) VALUES (1, N'Menu del bar Barba Roja', 1)
+INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId], [IsDeleted]) VALUES (1, N'Menu del bar Barba Roja', 1, 0)
 GO
-INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId]) VALUES (2, N'Menu del bar Checka', 2)
+INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId], [IsDeleted]) VALUES (2, N'Menu del bar Checka', 2, 0)
 GO
-INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId]) VALUES (3, N'Menu de MacDonalds', 3)
+INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId], [IsDeleted]) VALUES (3, N'Menu de MacDonalds', 3, 0)
 GO
-INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId]) VALUES (4, N'Menu de Burguer King', 4)
+INSERT [dbo].[Menus] ([Id], [Description], [FoodPointId], [IsDeleted]) VALUES (4, N'Menu de Burguer King', 4, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Menus] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Sections] ON 
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (1, N'Carnes', N'Seccion de carnes del menu', 1, 1)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (1, N'Carnes', N'Seccion de carnes del menu', 1, 1, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (2, N'Pastas', N'Seccion de pastas del menu', 2, 1)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (2, N'Pastas', N'Seccion de pastas del menu', 2, 1, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (3, N'Bebidas', N'Seccion de bebidas del menu', 3, 1)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (3, N'Bebidas', N'Seccion de bebidas del menu', 3, 1, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (4, N'Carnes', N'Seccion de carnes del menu', 1, 2)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (4, N'Carnes', N'Seccion de carnes del menu', 1, 2, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (5, N'Pastas', N'Seccion de pastas del menu', 2, 2)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (5, N'Pastas', N'Seccion de pastas del menu', 2, 2, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (6, N'Carnes', N'Seccion de carnes del menu', 1, 3)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (6, N'Carnes', N'Seccion de carnes del menu', 1, 3, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (7, N'Pastas', N'Seccion de pastas del menu', 2, 3)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (7, N'Pastas', N'Seccion de pastas del menu', 2, 3, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (8, N'Carnes', N'Seccion de carnes del menu', 1, 4)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (8, N'Carnes', N'Seccion de carnes del menu', 1, 4, 0)
 GO
-INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId]) VALUES (9, N'Pastas', N'Seccion de pastas del menu', 2, 4)
+INSERT [dbo].[Sections] ([Id], [Name], [Description], [Position], [MenuId], [IsDeleted]) VALUES (9, N'Pastas', N'Seccion de pastas del menu', 2, 4, 0)
 GO
 SET IDENTITY_INSERT [dbo].[Sections] OFF
 GO
@@ -646,25 +635,25 @@ SET IDENTITY_INSERT [dbo].[Status] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Tables] ON 
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (1, N'80a4447e-b663-4f7b-b2f4-4f30dab174ad', 1)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (1, N'194a0d86-ada4-4ac2-8a2f-b93dd11b61ed', 1)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (2, N'5c7ea574-c135-4cde-acd4-b68fc323b82a', 1)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (2, N'a959d1ea-6103-4fb4-abfc-e0b450547f01', 1)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (3, N'54044ced-7da7-4a0b-8e2d-d7b774419524', 1)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (3, N'8dbf0480-8d96-427d-9294-a5b5d303e29f', 1)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (4, N'635d7923-2c10-4ac2-8cda-d55d1cfc6604', 2)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (4, N'dc797add-74a1-4f27-8a95-9eaf3f155976', 2)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (5, N'1c05e797-4430-4503-a09f-5340b58351cd', 2)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (5, N'9aee03c0-ed77-4b7a-9b2a-16338bdd0be7', 2)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (6, N'8c739832-694c-4ce8-a7a7-ae5a795aba5c', 3)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (6, N'910f29f9-d23b-4594-8f3e-54d77039310a', 3)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (7, N'cc565416-18fe-4544-a704-0343c98cfe19', 3)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (7, N'869fc4e6-84df-4c14-81bf-6ef4438c9456', 3)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (8, N'cb1f7fd3-bf92-4514-989c-e4aa6dda9c2e', 4)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (8, N'f5baf69f-4846-413f-9812-41c53f871ab6', 4)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (9, N'c67001c8-9d18-4b77-8009-2152bb932a34', 4)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (9, N'ac695f9b-e52c-4cc5-af65-9bc8c349d874', 4)
 GO
-INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (10, N'936d3751-0fbe-4872-a61b-26e7e8a60e79', 4)
+INSERT [dbo].[Tables] ([Id], [QR], [FoodPointId]) VALUES (10, N'2a3b3386-67ff-4f9d-a2f9-0237874a7a1d', 4)
 GO
 SET IDENTITY_INSERT [dbo].[Tables] OFF
 GO
@@ -690,21 +679,41 @@ INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (9, 2, N'Asigna
 GO
 INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (10, 2, N'Permisos', 5)
 GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (11, 1, N'Add Languaje', 6)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (12, 1, N'Make Order', 7)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (13, 1, N'Order Management', 8)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (14, 1, N'View Orders', 9)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (15, 1, N'Menu Management', 10)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (16, 2, N'Nuevo Lenguaje', 6)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (17, 2, N'Realizar Pedido', 7)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (18, 2, N'Gestionar Pedido', 8)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (19, 2, N'Visualizar Pedido', 9)
+GO
+INSERT [dbo].[Words] ([Id], [LanguajeId], [Text], [Code]) VALUES (20, 2, N'Gestionar Menu', 10)
+GO
 SET IDENTITY_INSERT [dbo].[Words] OFF
 GO
-/****** Object:  Index [IX_AdminUserHistorical_UserId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_AdminUserHistorical_UserId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_AdminUserHistorical_UserId] ON [dbo].[AdminUserHistorical]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_AdminUserLicenses_AdminUserId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_AdminUserLicenses_AdminUserId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_AdminUserLicenses_AdminUserId] ON [dbo].[AdminUserLicenses]
 (
 	[AdminUserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_AdminUserLicenses_LicensesId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_AdminUserLicenses_LicensesId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_AdminUserLicenses_LicensesId] ON [dbo].[AdminUserLicenses]
 (
 	[LicensesId] ASC
@@ -712,7 +721,7 @@ CREATE NONCLUSTERED INDEX [IX_AdminUserLicenses_LicensesId] ON [dbo].[AdminUserL
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_UQ_NameUniqueColumn]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_UQ_NameUniqueColumn]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_UQ_NameUniqueColumn] ON [dbo].[AdminUsers]
 (
 	[Name] ASC
@@ -720,91 +729,91 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_UQ_NameUniqueColumn] ON [dbo].[AdminUsers]
 WHERE ([Name] IS NOT NULL)
 WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Bitacoras_TypeId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Bitacoras_TypeId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Bitacoras_TypeId] ON [dbo].[Bitacoras]
 (
 	[TypeId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Bitacoras_UserId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Bitacoras_UserId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Bitacoras_UserId] ON [dbo].[Bitacoras]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Dishes_SectionId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Dishes_SectionId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Dishes_SectionId] ON [dbo].[Dishes]
 (
 	[SectionId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_DishOrders_DishId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_DishOrders_DishId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_DishOrders_DishId] ON [dbo].[DishOrders]
 (
 	[DishId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_DishOrders_OrderId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_DishOrders_OrderId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_DishOrders_OrderId] ON [dbo].[DishOrders]
 (
 	[OrderId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_FoodPoints_UserId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_FoodPoints_UserId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_FoodPoints_UserId] ON [dbo].[FoodPoints]
 (
 	[UserId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_LicenseLicense_FamilyLicenseId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_LicenseLicense_FamilyLicenseId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_LicenseLicense_FamilyLicenseId] ON [dbo].[LicenseLicense]
 (
 	[FamilyLicenseId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Logs_TypeId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Logs_TypeId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Logs_TypeId] ON [dbo].[Logs]
 (
 	[TypeId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Menus_FoodPointId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Menus_FoodPointId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Menus_FoodPointId] ON [dbo].[Menus]
 (
 	[FoodPointId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Orders_AdminUsersId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Orders_AdminUsersId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Orders_AdminUsersId] ON [dbo].[Orders]
 (
 	[AdminUsersId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Orders_FoodPointId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Orders_FoodPointId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Orders_FoodPointId] ON [dbo].[Orders]
 (
 	[FoodPointId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Orders_StatusId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Orders_StatusId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Orders_StatusId] ON [dbo].[Orders]
 (
 	[StatusId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Sections_MenuId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Sections_MenuId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Sections_MenuId] ON [dbo].[Sections]
 (
 	[MenuId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Tables_FoodPointId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Tables_FoodPointId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Tables_FoodPointId] ON [dbo].[Tables]
 (
 	[FoodPointId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Words_LanguajeId]    Script Date: 19/3/2024 12:34:32 ******/
+/****** Object:  Index [IX_Words_LanguajeId]    Script Date: 22/3/2024 18:35:40 ******/
 CREATE NONCLUSTERED INDEX [IX_Words_LanguajeId] ON [dbo].[Words]
 (
 	[LanguajeId] ASC
@@ -820,11 +829,15 @@ ALTER TABLE [dbo].[Dishes] ADD  DEFAULT ((0)) FOR [SectionId]
 GO
 ALTER TABLE [dbo].[Dishes] ADD  DEFAULT ((0.0000000000000000e+000)) FOR [Price]
 GO
+ALTER TABLE [dbo].[Dishes] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsDeleted]
+GO
 ALTER TABLE [dbo].[FoodPoints] ADD  DEFAULT ((0)) FOR [UserId]
 GO
 ALTER TABLE [dbo].[Licenses] ADD  DEFAULT ((0)) FOR [Code]
 GO
 ALTER TABLE [dbo].[Logs] ADD  DEFAULT ('0001-01-01T00:00:00.0000000') FOR [Date]
+GO
+ALTER TABLE [dbo].[Menus] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsDeleted]
 GO
 ALTER TABLE [dbo].[Orders] ADD  DEFAULT ((0)) FOR [StatusId]
 GO
@@ -833,6 +846,8 @@ GO
 ALTER TABLE [dbo].[Orders] ADD  DEFAULT ((0)) FOR [FoodPointId]
 GO
 ALTER TABLE [dbo].[Sections] ADD  DEFAULT ((0)) FOR [MenuId]
+GO
+ALTER TABLE [dbo].[Sections] ADD  DEFAULT (CONVERT([bit],(0))) FOR [IsDeleted]
 GO
 ALTER TABLE [dbo].[Tables] ADD  DEFAULT ((0)) FOR [FoodPointId]
 GO
