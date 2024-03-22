@@ -1,6 +1,7 @@
 ﻿using Cz.Project.Abstraction;
 using Cz.Project.Abstraction.Enums;
 using Cz.Project.Abstraction.Translation_Observer;
+using Cz.Project.Domain;
 using Cz.Project.GenericServices;
 using Cz.Project.GenericServices.Helpers;
 using Cz.Project.GenericServices.UserSession;
@@ -29,6 +30,14 @@ namespace Cz.Project.UI.Forms
             // btnLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.License };
             btnAssignLicenses.Tag = new WordDto() { Code = (int)MainFormWordsEnum.LicenseAssignment };
             btnConfig.Tag = new WordDto() { Code = (int)MainFormWordsEnum.Config };
+
+            btnAddLanguaje.Tag = new WordDto() { Code = (int)MainFormWordsEnum.AddLanguaje };
+            btnMakeOrder.Tag = new WordDto() { Code = (int)MainFormWordsEnum.MakeOrder };
+            btnOrderManagement.Tag = new WordDto() { Code = (int)MainFormWordsEnum.OrderManagement };
+            btnOrderMonitor.Tag = new WordDto() { Code = (int)MainFormWordsEnum.OrderMonitor };
+            btnMenuManagement.Tag = new WordDto() { Code = (int)MainFormWordsEnum.MenuManagement };
+
+            pnlFamilyLicense.Hide();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -139,11 +148,17 @@ namespace Cz.Project.UI.Forms
             var words = translationService.GetWords(languaje);
 
             var identation = "    ";
-            btnHome.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.Home).Select(w => w.Text).First()}";
-            btnUsers.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.UserManagement).Select(w => w.Text).First()}";
+            btnHome.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.Home).Select(w => w.Text).First()}";
+            btnUsers.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.UserManagement).Select(w => w.Text).First()}";
             // btnLicenses.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.License).Select(w => w.Text).First()}";
-            btnAssignLicenses.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.LicenseAssignment).Select(w => w.Text).First()}";
-            btnConfig.Text = $"{identation}{words.Where(w => w.Code == (int)MainFormWordsEnum.Config).Select(w => w.Text).First()}";
+            btnAssignLicenses.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.LicenseAssignment).Select(w => w.Text).First()}";
+            btnConfig.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.Config).Select(w => w.Text).First()}";
+
+            btnAddLanguaje.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.AddLanguaje).Select(w => w.Text).First()}";
+            btnMakeOrder.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.MakeOrder).Select(w => w.Text).First()}";
+            btnOrderManagement.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.OrderManagement).Select(w => w.Text).First()}";
+            btnOrderMonitor.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.OrderMonitor).Select(w => w.Text).First()}";
+            btnMenuManagement.Text = $"{words.Where(w => w.Code == (int)MainFormWordsEnum.MenuManagement).Select(w => w.Text).First()}";
         }
     }
 }

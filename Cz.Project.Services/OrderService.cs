@@ -115,7 +115,9 @@ namespace Cz.Project.Services
 
         public IEnumerable<Order> GetByFoodPointId(int foodPointId)
         {
-            return new OrderContext().GetByFoodPointId(foodPointId);
+            var orders = new OrderContext().GetByFoodPointId(foodPointId);
+            IncludeOrderStatus(orders);
+            return orders;
         }
 
         public void ChangeOrderStatus(int orderId, StatusCodeEnum statusCodeEnum)

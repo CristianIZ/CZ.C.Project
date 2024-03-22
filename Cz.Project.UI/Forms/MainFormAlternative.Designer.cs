@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormAlternative));
             panel1 = new System.Windows.Forms.Panel();
+            panel17 = new System.Windows.Forms.Panel();
+            btnConfig = new System.Windows.Forms.Button();
+            panel18 = new System.Windows.Forms.Panel();
+            panel26 = new System.Windows.Forms.Panel();
+            btnMenuManagement = new System.Windows.Forms.Button();
+            panel27 = new System.Windows.Forms.Panel();
+            panel30 = new System.Windows.Forms.Panel();
+            panel31 = new System.Windows.Forms.Panel();
             panel28 = new System.Windows.Forms.Panel();
             btnOrderManagement = new System.Windows.Forms.Button();
             panel29 = new System.Windows.Forms.Panel();
@@ -49,7 +57,7 @@
             panel13 = new System.Windows.Forms.Panel();
             panel14 = new System.Windows.Forms.Panel();
             btnAddLanguaje = new System.Windows.Forms.Button();
-            panel5 = new System.Windows.Forms.Panel();
+            pnlFamilyLicense = new System.Windows.Forms.Panel();
             panel6 = new System.Windows.Forms.Panel();
             btnFamilyLicenses = new System.Windows.Forms.Button();
             panel2 = new System.Windows.Forms.Panel();
@@ -57,9 +65,6 @@
             panel7 = new System.Windows.Forms.Panel();
             panel8 = new System.Windows.Forms.Panel();
             btnHome = new System.Windows.Forms.Button();
-            panel17 = new System.Windows.Forms.Panel();
-            btnConfig = new System.Windows.Forms.Button();
-            panel18 = new System.Windows.Forms.Panel();
             panel15 = new System.Windows.Forms.Panel();
             panel16 = new System.Windows.Forms.Panel();
             btnAssignLicenses = new System.Windows.Forms.Button();
@@ -71,12 +76,10 @@
             lblUserName = new System.Windows.Forms.Label();
             btnLogOut = new System.Windows.Forms.Button();
             pnlFormReplace = new System.Windows.Forms.Panel();
-            panel26 = new System.Windows.Forms.Panel();
-            panel27 = new System.Windows.Forms.Panel();
-            panel30 = new System.Windows.Forms.Panel();
-            panel31 = new System.Windows.Forms.Panel();
-            btnMenuManagement = new System.Windows.Forms.Button();
             panel1.SuspendLayout();
+            panel17.SuspendLayout();
+            panel26.SuspendLayout();
+            panel27.SuspendLayout();
             panel28.SuspendLayout();
             panel24.SuspendLayout();
             panel19.SuspendLayout();
@@ -84,15 +87,12 @@
             panel9.SuspendLayout();
             panel23.SuspendLayout();
             panel13.SuspendLayout();
-            panel5.SuspendLayout();
+            pnlFamilyLicense.SuspendLayout();
             panel2.SuspendLayout();
             panel7.SuspendLayout();
-            panel17.SuspendLayout();
             panel15.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
-            panel26.SuspendLayout();
-            panel27.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -106,7 +106,7 @@
             panel1.Controls.Add(panel9);
             panel1.Controls.Add(panel23);
             panel1.Controls.Add(panel13);
-            panel1.Controls.Add(panel5);
+            panel1.Controls.Add(pnlFamilyLicense);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(panel7);
             panel1.Controls.Add(panel15);
@@ -115,6 +115,97 @@
             panel1.Name = "panel1";
             panel1.Size = new System.Drawing.Size(220, 813);
             panel1.TabIndex = 0;
+            // 
+            // panel17
+            // 
+            panel17.Controls.Add(btnConfig);
+            panel17.Controls.Add(panel18);
+            panel17.Location = new System.Drawing.Point(0, 671);
+            panel17.Name = "panel17";
+            panel17.Size = new System.Drawing.Size(220, 60);
+            panel17.TabIndex = 2;
+            // 
+            // btnConfig
+            // 
+            btnConfig.Dock = System.Windows.Forms.DockStyle.Right;
+            btnConfig.FlatAppearance.BorderSize = 0;
+            btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnConfig.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnConfig.ForeColor = System.Drawing.Color.Gainsboro;
+            btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnConfig.Location = new System.Drawing.Point(62, 0);
+            btnConfig.Name = "btnConfig";
+            btnConfig.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnConfig.Size = new System.Drawing.Size(158, 60);
+            btnConfig.TabIndex = 7;
+            btnConfig.Text = "Config";
+            btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnConfig.UseVisualStyleBackColor = true;
+            btnConfig.Click += btnConfig_Click;
+            // 
+            // panel18
+            // 
+            panel18.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel18.BackgroundImage");
+            panel18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            panel18.Dock = System.Windows.Forms.DockStyle.Left;
+            panel18.Location = new System.Drawing.Point(0, 0);
+            panel18.Name = "panel18";
+            panel18.Size = new System.Drawing.Size(56, 60);
+            panel18.TabIndex = 0;
+            // 
+            // panel26
+            // 
+            panel26.Controls.Add(btnMenuManagement);
+            panel26.Controls.Add(panel27);
+            panel26.Controls.Add(panel31);
+            panel26.Location = new System.Drawing.Point(0, 605);
+            panel26.Name = "panel26";
+            panel26.Size = new System.Drawing.Size(220, 60);
+            panel26.TabIndex = 4;
+            // 
+            // btnMenuManagement
+            // 
+            btnMenuManagement.Dock = System.Windows.Forms.DockStyle.Right;
+            btnMenuManagement.FlatAppearance.BorderSize = 0;
+            btnMenuManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnMenuManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnMenuManagement.ForeColor = System.Drawing.Color.Gainsboro;
+            btnMenuManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnMenuManagement.Location = new System.Drawing.Point(62, 0);
+            btnMenuManagement.Name = "btnMenuManagement";
+            btnMenuManagement.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnMenuManagement.Size = new System.Drawing.Size(158, 60);
+            btnMenuManagement.TabIndex = 8;
+            btnMenuManagement.Text = "Gestion de Menu";
+            btnMenuManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            btnMenuManagement.UseVisualStyleBackColor = true;
+            btnMenuManagement.Click += btnMenuManagement_Click;
+            // 
+            // panel27
+            // 
+            panel27.Controls.Add(panel30);
+            panel27.Location = new System.Drawing.Point(8, -66);
+            panel27.Name = "panel27";
+            panel27.Size = new System.Drawing.Size(220, 60);
+            panel27.TabIndex = 3;
+            // 
+            // panel30
+            // 
+            panel30.Dock = System.Windows.Forms.DockStyle.Left;
+            panel30.Location = new System.Drawing.Point(0, 0);
+            panel30.Name = "panel30";
+            panel30.Size = new System.Drawing.Size(56, 60);
+            panel30.TabIndex = 0;
+            // 
+            // panel31
+            // 
+            panel31.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel31.BackgroundImage");
+            panel31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            panel31.Dock = System.Windows.Forms.DockStyle.Left;
+            panel31.Location = new System.Drawing.Point(0, 0);
+            panel31.Name = "panel31";
+            panel31.Size = new System.Drawing.Size(56, 60);
+            panel31.TabIndex = 0;
             // 
             // panel28
             // 
@@ -334,14 +425,14 @@
             btnAddLanguaje.UseVisualStyleBackColor = true;
             btnAddLanguaje.Click += btnAddLanguaje_Click;
             // 
-            // panel5
+            // pnlFamilyLicense
             // 
-            panel5.Controls.Add(panel6);
-            panel5.Controls.Add(btnFamilyLicenses);
-            panel5.Location = new System.Drawing.Point(0, 212);
-            panel5.Name = "panel5";
-            panel5.Size = new System.Drawing.Size(220, 60);
-            panel5.TabIndex = 0;
+            pnlFamilyLicense.Controls.Add(panel6);
+            pnlFamilyLicense.Controls.Add(btnFamilyLicenses);
+            pnlFamilyLicense.Location = new System.Drawing.Point(0, 212);
+            pnlFamilyLicense.Name = "pnlFamilyLicense";
+            pnlFamilyLicense.Size = new System.Drawing.Size(220, 60);
+            pnlFamilyLicense.TabIndex = 0;
             // 
             // panel6
             // 
@@ -389,9 +480,9 @@
             label1.ForeColor = System.Drawing.Color.Gainsboro;
             label1.Location = new System.Drawing.Point(50, 25);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(83, 25);
+            label1.Size = new System.Drawing.Size(106, 25);
             label1.TabIndex = 0;
-            label1.Text = "Restapp";
+            label1.Text = "ServiceBar";
             // 
             // panel7
             // 
@@ -429,43 +520,6 @@
             btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             btnHome.UseVisualStyleBackColor = true;
             btnHome.Click += btnHome_Click;
-            // 
-            // panel17
-            // 
-            panel17.Controls.Add(btnConfig);
-            panel17.Controls.Add(panel18);
-            panel17.Location = new System.Drawing.Point(0, 671);
-            panel17.Name = "panel17";
-            panel17.Size = new System.Drawing.Size(220, 60);
-            panel17.TabIndex = 2;
-            // 
-            // btnConfig
-            // 
-            btnConfig.Dock = System.Windows.Forms.DockStyle.Right;
-            btnConfig.FlatAppearance.BorderSize = 0;
-            btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnConfig.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnConfig.ForeColor = System.Drawing.Color.Gainsboro;
-            btnConfig.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnConfig.Location = new System.Drawing.Point(62, 0);
-            btnConfig.Name = "btnConfig";
-            btnConfig.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnConfig.Size = new System.Drawing.Size(158, 60);
-            btnConfig.TabIndex = 7;
-            btnConfig.Text = "Config";
-            btnConfig.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnConfig.UseVisualStyleBackColor = true;
-            btnConfig.Click += btnConfig_Click;
-            // 
-            // panel18
-            // 
-            panel18.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel18.BackgroundImage");
-            panel18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            panel18.Dock = System.Windows.Forms.DockStyle.Left;
-            panel18.Location = new System.Drawing.Point(0, 0);
-            panel18.Name = "panel18";
-            panel18.Size = new System.Drawing.Size(56, 60);
-            panel18.TabIndex = 0;
             // 
             // panel15
             // 
@@ -590,60 +644,6 @@
             pnlFormReplace.Size = new System.Drawing.Size(763, 733);
             pnlFormReplace.TabIndex = 2;
             // 
-            // panel26
-            // 
-            panel26.Controls.Add(btnMenuManagement);
-            panel26.Controls.Add(panel27);
-            panel26.Controls.Add(panel31);
-            panel26.Location = new System.Drawing.Point(0, 605);
-            panel26.Name = "panel26";
-            panel26.Size = new System.Drawing.Size(220, 60);
-            panel26.TabIndex = 4;
-            // 
-            // panel27
-            // 
-            panel27.Controls.Add(panel30);
-            panel27.Location = new System.Drawing.Point(8, -66);
-            panel27.Name = "panel27";
-            panel27.Size = new System.Drawing.Size(220, 60);
-            panel27.TabIndex = 3;
-            // 
-            // panel30
-            // 
-            panel30.Dock = System.Windows.Forms.DockStyle.Left;
-            panel30.Location = new System.Drawing.Point(0, 0);
-            panel30.Name = "panel30";
-            panel30.Size = new System.Drawing.Size(56, 60);
-            panel30.TabIndex = 0;
-            // 
-            // panel31
-            // 
-            panel31.BackgroundImage = (System.Drawing.Image)resources.GetObject("panel31.BackgroundImage");
-            panel31.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            panel31.Dock = System.Windows.Forms.DockStyle.Left;
-            panel31.Location = new System.Drawing.Point(0, 0);
-            panel31.Name = "panel31";
-            panel31.Size = new System.Drawing.Size(56, 60);
-            panel31.TabIndex = 0;
-            // 
-            // btnMenuManagement
-            // 
-            btnMenuManagement.Dock = System.Windows.Forms.DockStyle.Right;
-            btnMenuManagement.FlatAppearance.BorderSize = 0;
-            btnMenuManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnMenuManagement.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            btnMenuManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            btnMenuManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnMenuManagement.Location = new System.Drawing.Point(62, 0);
-            btnMenuManagement.Name = "btnMenuManagement";
-            btnMenuManagement.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            btnMenuManagement.Size = new System.Drawing.Size(158, 60);
-            btnMenuManagement.TabIndex = 8;
-            btnMenuManagement.Text = "Gestion de Menu";
-            btnMenuManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            btnMenuManagement.UseVisualStyleBackColor = true;
-            btnMenuManagement.Click += btnMenuManagement_Click;
-            // 
             // MainFormAlternative
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -657,6 +657,9 @@
             Text = "Restapp";
             Load += MainFormAlternative_Load;
             panel1.ResumeLayout(false);
+            panel17.ResumeLayout(false);
+            panel26.ResumeLayout(false);
+            panel27.ResumeLayout(false);
             panel28.ResumeLayout(false);
             panel24.ResumeLayout(false);
             panel19.ResumeLayout(false);
@@ -664,18 +667,15 @@
             panel9.ResumeLayout(false);
             panel23.ResumeLayout(false);
             panel13.ResumeLayout(false);
-            panel5.ResumeLayout(false);
+            pnlFamilyLicense.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel7.ResumeLayout(false);
-            panel17.ResumeLayout(false);
             panel15.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel26.ResumeLayout(false);
-            panel27.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -696,7 +696,7 @@
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Button btnAddLanguaje;
         private System.Windows.Forms.Button btnFamilyLicenses;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel pnlFamilyLicense;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel10;
